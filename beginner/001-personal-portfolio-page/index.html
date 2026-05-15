@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT_CODE.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <nav class="main-nav">
+                <a href="#hero" class="nav-logo">Your Name</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm <span class="highlight">Your Name</span>.</h1>
+                    <p class="tagline">A passionate Web Developer focused on creating intuitive and engaging user experiences.</p>
+                    <div class="hero-actions">
+                        <a href="#portfolio" class="button primary-button">View My Work</a>
+                        <a href="#contact" class="button secondary-button">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="images/profile.jpg" alt="Your Name profile picture">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section section-padding">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="images/about.jpg" alt="Your Name working at a desk">
+                    </div>
+                    <div class="about-text">
+                        <p>Hello! I'm Your Name, a web developer with a knack for building beautiful and functional web applications. My journey into web development began with a curiosity for how websites work, which quickly turned into a passion for crafting them myself.</p>
+                        <p>I specialize in front-end development, bringing designs to life with clean, semantic HTML, responsive CSS, and interactive JavaScript. I'm always eager to learn new technologies and improve my skills to deliver the best possible solutions.</p>
+                        <p>When I'm not coding, you can find me hiking, reading a good book, or exploring new coffee shops. I believe in continuous learning and enjoy contributing to open-source projects.</p>
+                        <a href="files/your-resume.pdf" download class="button primary-button">Download Resume</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section section-padding bg-light">
+            <div class="container">
+                <h2>My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fab fa-html5"></i>
+                        <h3>HTML5</h3>
+                        <p>Semantic structuring and accessibility best practices.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-css3-alt"></i>
+                        <h3>CSS3</h3>
+                        <p>Styling, Flexbox, Grid, Responsive Design, SASS/LESS.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-js"></i>
+                        <h3>JavaScript</h3>
+                        <p>Interactive UIs, DOM manipulation, ES6+ features.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-react"></i>
+                        <h3>React</h3>
+                        <p>Component-based architecture, state management.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-git-alt"></i>
+                        <h3>Git & GitHub</h3>
+                        <p>Version control, collaboration, code management.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-terminal"></i>
+                        <h3>Terminal</h3>
+                        <p>Command line proficiency for development workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio-section section-padding">
+            <div class="container">
+                <h2>My Portfolio</h2>
+                <div class="portfolio-grid">
+                    <article class="portfolio-item">
+                        <img src="images/project1.jpg" alt="Project 1 thumbnail">
+                        <div class="item-overlay">
+                            <h3>Project Title One</h3>
+                            <p>A responsive e-commerce site built with HTML, CSS, and JavaScript.</p>
+                            <div class="item-links">
+                                <a href="#" target="_blank" class="button small-button">Live Demo</a>
+                                <a href="#" target="_blank" class="button small-button">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="portfolio-item">
+                        <img src="images/project2.jpg" alt="Project 2 thumbnail">
+                        <div class="item-overlay">
+                            <h3>Project Title Two</h3>
+                            <p>Interactive to-do list application using React and local storage.</p>
+                            <div class="item-links">
+                                <a href="#" target="_blank" class="button small-button">Live Demo</a>
+                                <a href="#" target="_blank" class="button small-button">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="portfolio-item">
+                        <img src="images/project3.jpg" alt="Project 3 thumbnail">
+                        <div class="item-overlay">
+                            <h3>Project Title Three</h3>
+                            <p>A blog platform with a custom CMS, developed with Node.js and Express.</p>
+                            <div class="item-links">
+                                <a href="#" target="_blank" class="button small-button">Live Demo</a>
+                                <a href="#" target="_blank" class="button small-button">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="portfolio-item">
+                        <img src="images/project4.jpg" alt="Project 4 thumbnail">
+                        <div class="item-overlay">
+                            <h3>Project Title Four</h3>
+                            <p>Weather forecasting app consuming a third-party API.</p>
+                            <div class="item-links">
+                                <a href="#" target="_blank" class="button small-button">Live Demo</a>
+                                <a href="#" target="_blank" class="button small-button">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section section-padding bg-light">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p class="contact-intro">I'm always open to new opportunities, collaborations, and interesting projects. Feel free to reach out!</p>
+                <div class="contact-content">
+                    <form action="YOUR_FORM_SUBMISSION_ENDPOINT" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="button primary-button">Send Message</button>
+                    </form>
+                    <div class="

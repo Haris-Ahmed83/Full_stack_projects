@@ -1,0 +1,6 @@
+/* 1. Custom Properties (CSS Variables) */
+:root {
+    --primary-color: #3498db; /* Blue */
+    --secondary-color: #2ecc71; /* Green */
+    --accent-color: #e74c3c; /* Red */
+    --text-color: #333;
