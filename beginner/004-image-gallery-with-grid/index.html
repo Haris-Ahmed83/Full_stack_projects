@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>My Image Gallery</h1>
+    </header>
+
+    <main class="gallery-grid">
+        <div class="gallery-item">
+            <img src="images/image1.jpg" alt="Mountain Landscape 1">
+            <div class="overlay">
+                <span class="caption">Mountain Landscape 1</span>
+                <button class="view-btn">View</button>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/image2.jpg" alt="Cityscape at Night">
+            <div class="overlay">
+                <span class="caption">Cityscape at Night</span>
+                <button class="view-btn">View</button>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/image3.jpg" alt="Forest Path">
+            <div class="overlay">
+                <span class="caption">Forest Path</span>
+                <button class="view-btn">View</button>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/image4.jpg" alt="Ocean Sunset">
+            <div class="overlay">
+                <span class="caption">Ocean Sunset</span>
+                <button class="view-btn">View</button>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/image5.jpg" alt="Desert Dunes">
+            <div class="overlay">
+                <span class="caption">Desert Dunes</span>
+                <button class="view-btn">View</button>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/image6.jpg" alt="Winter Wonderland">
+            <div class="overlay">
+                <span class="caption">Winter Wonderland</span>
+                <button class="view-btn">View</button>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/image7.jpg" alt="Tropical Beach">
+            <div class="overlay">
+                <span class="caption">Tropical Beach</span>
+                <button class="view-btn">View</button>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/image8.jpg" alt="Autumn Forest">
+            <div class="overlay">
+                <span class="caption">Autumn Forest</span>
+                <button class="view-btn">View</button>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/image9.jpg" alt="Starry Night Sky">
+            <div class="overlay">
+                <span class="caption">Starry Night Sky</span>
+                <button class="view-btn">View</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
