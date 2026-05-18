@@ -1,0 +1,160 @@
+:root {
+    /* Color Palette */
+    --bg-color: #1a1a2e;
+    --text-color: #e0e0e0;
+    --accent-color: #e94560;
+    --secondary-text-color: #92b4d4;
+    --shadow-color: rgba(233, 69, 96, 0.4);
+
+    /* Typography */
+    --font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --time-font-size-large: 8rem;
+    --time-font-size-medium: 6rem;
+    --time-font-size-small: 4rem;
+    --ampm-font-size-large: 2.5rem;
+    --ampm-font-size-medium: 2rem;
+    --ampm-font-size-small: 1.5rem;
+    --date-font-size-large: 1.8rem;
+    --date-font-size-medium: 1.5rem;
+    --date-font-size-small: 1.2rem;
+
+    /* Spacing */
+    --spacing-unit: 1rem;
+    --clock-padding: 3rem 4rem;
+    --clock-border-radius: 1.5rem;
+}
+
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Clock Container */
+.clock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(145deg, #23233b, #151525);
+    padding: var(--clock-padding);
+    border-radius: var(--clock-border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    max-width: 90vw; /* Ensure it doesn't overflow on small screens */
+}
+
+/* Time Display */
+.time-display {
+    display: flex;
+    align-items: baseline;
+    font-size: var(--time-font-size-large);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-unit);
+    text-shadow: 0 0 15px var(--shadow-color), 0 0 30px var(--shadow-color);
+}
+
+.time-display span {
+    padding: 0 0.1em;
+}
+
+.time-display .separator {
+    color: var(--accent-color);
+    opacity: 0.7;
+    animation: blink 1s infinite steps(1, start);
+}
+
+/* Blinking Separator Animation */
+@keyframes blink {
+    0% { opacity: 0.7; }
+    50% { opacity: 0; }
+    100% { opacity: 0.7; }
+}
+
+#ampm {
+    font-size: var(--ampm-font-size-large);
+    color: var(--accent-color);
+    margin-left: 0.5em;
+    align-self: flex-end; /* Align AM/PM to the bottom of the time digits */
+    font-weight: normal;
+    text-shadow: none;
+}
+
+/* Date Display */
+.date-display {
+    font-size: var(--date-font-size-large);
+    color: var(--secondary-text-color);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    margin-top: var(--spacing-unit);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        --time-font-size-large: 6rem;
+        --ampm-font-size-large: 2rem;
+        --date-font-size-large: 1.5rem;
+        --clock-padding: 2rem 3rem;
+    }
+    .time-display {
+        font-size: var(--time-font-size-medium);
+    }
+    #ampm {
+        font-size: var(--ampm-font-size-medium);
+    }
+    .date-display {
+        font-size: var(--date-font-size-medium);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --time-font-size-large: 4rem;
+        --ampm-font-size-large: 1.5rem;
+        --date-font-size-large: 1.2rem;
+        --clock-padding: 1.5rem 2rem;
+    }
+    .time-display {
+        font-size: var(--time-font-size-small);
+    }
+    #ampm {
+        font-size: var(--ampm-font-size-small);
+    }
+    .date-display {
+        font-size: var(--date-font-size-small);
+    }
+    .time-display span {
+        padding: 0 0.05em;
+    }
+    .time-display .separator {
+        margin: 0 0.1em;
+    }
+    #ampm {
+        margin-left: 0.3em;
+    }
+}
+
+@media (max-width: 320px) {
+    .time-display {
+        flex-wrap: wrap; /* Allow time components to wrap if too narrow */
+        justify-content: center;
+    }
+    #ampm {
+        width: 100%; /* Take full width below time if wrapped */
+        text-align: center;
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}
