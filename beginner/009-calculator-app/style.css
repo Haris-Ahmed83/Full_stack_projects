@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.calculator {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    width: 300px;
+}
+
+.display {
+    background-color: #222;
+    color: #fff;
+    font-size: 2.5em;
+    padding: 15px;
+    text-align: right;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow-x: auto;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    background-color: #555;
+    color: #fff;
+    font-size: 1.5em;
+    padding: 20px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover {
+    background-color: #777;
+}
+
+.btn:active {
+    background-color: #444;
+}
+
+.btn.operator {
+    background-color: #f90;
+}
+
+.btn.operator:hover {
+    background-color: #ffa500;
+}
+
+.btn.operator:active {
+    background-color: #e68a00;
+}
+
+.btn.clear, .btn.delete {
+    background-color: #d90000;
+}
+
+.btn.clear:hover, .btn.delete:hover {
+    background-color: #ff0000;
+}
+
+.btn.clear:active, .btn.delete:active {
+    background-color: #b30000;
+}
+
+.btn.equals {
+    background-color: #0c0;
+}
+
+.btn.equals:hover {
+    background-color: #0f0;
+}
+
+.btn.equals:active {
+    background-color: #090;
+}
+
+.btn.span-two {
+    grid-column: span 2;
+}
+
+.btn:focus {
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+}
