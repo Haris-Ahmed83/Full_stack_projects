@@ -1,0 +1,11 @@
+/* Basic Reset & Global Styles */
+html {
+    scroll-behavior: smooth; /* For smooth scrolling to sections */
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
