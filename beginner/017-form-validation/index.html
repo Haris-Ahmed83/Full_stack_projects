@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+        }
+        .form-group.error input {
+            border-color: #e74c3c;
+        }
+        .form-group.success input {
+            border-color: #2ecc71;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 17px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .success-message {
+            color: #2ecc71;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username">
+                <div class="error-message" id="usernameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter email">
+                <div class="error-message" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+                <div class="error-message" id="passwordError"></div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm password">
+                <div class="error-message" id="confirmPasswordError"></div>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <div class="success-message" id="formSuccess">Registration successful!</div>
+    </div>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const formSuccessMessage = document.getElementById('formSuccess');
+
+        // Regular Expressions for validation
+        const usernameRegex = /^[a-zA-Z0-9]{3,16}$/; // 3-16 alphanumeric characters
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // Min 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char
+
+        // Function to display error message
+        function setError(element, message) {
+            const formGroup = element.parentElement;
+            const errorDisplay = formGroup.querySelector('.error-message');
+
+            errorDisplay.textContent = message;
+            errorDisplay.style.display = 'block';
+            formGroup.classList.add('error');
+            formGroup.classList.remove('success');
+        }
+
+        // Function to clear error message
+        function setSuccess(element) {
+            const formGroup = element.parentElement;
+            const errorDisplay = formGroup.querySelector('.error-message');
+
+            errorDisplay.textContent = '';
+            errorDisplay.style.display = 'none';
+            formGroup.classList.remove('error');
+            formGroup.classList.add('success');
+        }
+
+        // Validate Username
+        function validateUsername() {
+            const username = usernameInput.value.trim();
+            if (username === '') {
+                setError(usernameInput, 'Username is required.');
+                return false;
+            } else if (!usernameRegex.test(username)) {
+                setError(usernameInput, 'Username must be 3-16 alphanumeric characters.');
+                return false;
+            } else {
+                setSuccess(usernameInput);
+                return true;
+            }
+        }
+
+        // Validate Email
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            if (email === '') {
+                setError(emailInput, 'Email is required.');
+                return false;
+            } else if (!emailRegex.test(email)) {
+                setError(emailInput, 'Please enter a valid email address.');
+                return false;
+            } else {
+                setSuccess(emailInput);
+                return true;
+            }
+        }
+
+        // Validate Password
+        function validatePassword() {
+            const password = passwordInput.value.trim();
+            if (password === '') {
+                setError(passwordInput, 'Password is required.');
+                return false;
+            } else if (!passwordRegex.test(password)) {
+                setError(passwordInput, 'Password must be at least 8 characters long, contain 1 uppercase, 1 lowercase, 1 number, and 1 special character.');
+                return false;
+            } else {
+                setSuccess(passwordInput);
+                return true;
+            }
+        }
+
+        // Validate Confirm Password
+        function validateConfirmPassword() {
+            const password = passwordInput.value.trim();
+            const confirmPassword = confirmPasswordInput.value.trim();
+            if (confirmPassword === '') {
+                setError(confirmPasswordInput, 'Please confirm your password.');
+                return false;
+            } else if (password !== confirmPassword) {
+                setError(confirmPasswordInput, 'Passwords do not match.');
+                return false;
+            } else {
+                setSuccess(confirmPasswordInput);
+                return true;
+            }
+        }
+
+        // Event Listeners for real-time validation (on blur)
+        usernameInput.addEventListener('blur', validateUsername);
+        emailInput.addEventListener('blur', validateEmail);
+        passwordInput.addEventListener('blur', validatePassword);
+        confirmPasswordInput.addEventListener('blur', validateConfirmPassword);
+
+        // Event listener for input (clears error if valid as user types)
+        usernameInput.addEventListener('input', () => {
+            if (usernameRegex.test(usernameInput.value.trim())) {
+                setSuccess(usernameInput);
+            }
+        });
+        email

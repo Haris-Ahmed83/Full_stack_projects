@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Color Picker</h1>
+
+        <div class="color-display-wrapper">
+            <div id="color-display" class="color-display"></div>
+            <input type="color" id="color-input" value="#000000">
+        </div>
+
+        <div class="color-values">
+            <div class="value-group">
+                <label for="hex-value">HEX:</label>
+                <input type="text" id="hex-value" value="#000000" readonly>
+                <button id="copy-hex-btn">Copy</button>
+            </div>
+            <div class="value-group">
+                <label for="rgb-value">RGB:</label>
+                <input type="text" id="rgb-value" value="rgb(0, 0, 0)" readonly>
+                <button id="copy-rgb-btn">Copy</button>
+            </div>
+        </div>
+        <p id="copy-message" class="copy-message"></p>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
