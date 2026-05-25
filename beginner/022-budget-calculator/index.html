@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Budget Calculator</h1>
+        <div class="budget-input-section">
+            <div class="input-group">
+                <label for="budgetAmount">Set Your Monthly Budget:</label>
+                <input type="number" id="budgetAmount" placeholder="e.g., 2000" min="0">
+                <button id="setBudgetBtn">Set Budget</button>
+            </div>
+            <div class="budget-summary">
+                <p>Total Budget: <span id="displayTotalBudget">$0.00</span></p>
+                <p>Total Expenses: <span id="displayTotalExpenses">$0.00</span></p>
+                <p>Remaining Budget: <span id="displayRemainingBudget" class="positive">$0.00</span></p>
+            </div>
+        </div>
+
+        <div class="expense-input-section">
+            <h2>Add New Expense</h2>
+            <div class="input-group">
+                <label for="expenseName">Expense Name:</label>
+                <input type="text" id="expenseName" placeholder="e.g., Groceries">
+            </div>
+            <div class="input-group">
+                <label for="expenseAmount">Expense Amount:</label>
+                <input type="number" id="expenseAmount" placeholder="e.g., 150.75" min="0">
+            </div>
+            <button id="addExpenseBtn">Add Expense</button>
+        </div>
+
+        <div class="expense-list-section">
+            <h2>Your Expenses</h2>
+            <ul id="expenseList">
+                <!-- Expenses will be dynamically added here -->
+            </ul>
+            <button id="clearAllExpensesBtn" class="clear-button">Clear All Expenses</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

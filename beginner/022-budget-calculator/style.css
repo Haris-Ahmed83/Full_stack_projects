@@ -1,0 +1,191 @@
+/* General Styling */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #7b4f9a; /* A shade of purple */
+    --secondary-color: #f7f7f7;
+    --dark-text: #333;
+    --light-text: #fff;
+    --success-color: #2ecc71; /* Green for income */
+    --danger-color: #c0392b; /* Red for expenses */
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--dark-text);
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background-color: var(--light-text);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+h1 {
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    color: var(--primary-color);
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+}
+
+/* Balance Section */
+#balance {
+    font-size: 32px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Income/Expense Summary */
+.inc-exp-container {
+    background-color: var(--secondary-color);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.inc-exp-container > div {
+    flex: 1;
+    text-align: center;
+}
+
+.inc-exp-container > div:first-of-type {
+    border-right: 1px solid #dedede;
+}
+
+.money {
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin: 5px 0;
+}
+
+.money.plus {
+    color: var(--success-color);
+}
+
+.money.minus {
+    color: var(--danger-color);
+}
+
+/* Form Styling */
+.form-control {
+    margin: 20px 0;
+}
+
+.form-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-control input[type="text"],
+.form-control input[type="number"] {
+    border: 1px solid #dedede;
+    border-radius: 4px;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    box-shadow: var(--shadow);
+    color: var(--light-text);
+    border: 0;
+    display: block;
+    font-size: 16px;
+    margin: 10px 0 30px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #6a4283; /* Slightly darker primary */
+}
+
+.btn:focus,
+.delete-btn:focus {
+    outline: 0;
+}
+
+/* Transaction List */
+.list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.list li {
+    background-color: var(--light-text);
+    box-shadow: var(--shadow);
+    color: var(--dark-text);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.list li.plus {
+    border-right: 5px solid var(--success-color);
+}
+
+.list li.minus {
+    border-right: 5px solid var(--danger-color);
+}
+
+.delete-btn {
+    cursor: pointer;
+    background-color: var(--danger-color);
+    border: 0;
+    color: var(--light-text);
+    font-size: 20px;
+    line-height: 20px;
+    padding: 2px 5px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-100%, -50%);
+    opacity: 0;
+    transition: opacity 0
