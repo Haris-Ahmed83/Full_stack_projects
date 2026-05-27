@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filterable Product Grid</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Our Products</h1>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search products...">
+            </div>
+            <div class="filter-group">
+                <label for="categoryFilter">Category:</label>
+                <select id="categoryFilter">
+                    <option value="all">All</option>
+                    <!-- Categories will be dynamically loaded here -->
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="sortOrder">Sort by Price:</label>
+                <select id="sortOrder">
+                    <option value="default">Default</option>
+                    <option value="asc">Low to High</option>
+                    <option value="desc">High to Low</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            <!-- Product cards will be dynamically loaded here -->
+        </div>
+
+        <div id="noResults" class="no-results-message" style="display: none;">
+            No products found matching your criteria.
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

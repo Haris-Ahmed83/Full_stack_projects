@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .drop-zone {
+            width: 250px;
+            min-height: 300px;
+            border: 2px dashed #ccc;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .drop-zone.hover {
+            background-color: #e0f7fa;
+            border-color: #00bcd4;
+        }
+
+        .drop-zone h3 {
+            margin-top: 0;
+            color: #555;
+        }
+
+        .draggable {
+            width: 220px;
+            height: 60px;
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: grab;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .draggable:active {
+            cursor: grabbing;
+        }
+
+        .draggable.dragging {
+            opacity: 0.5;
+            transform: scale(0.95);
+        }
+
+        /* Styles for different items */
+        .draggable.item1 { background-color: #f44336; }
+        .draggable.item2 { background-color: #2196F3; }
+        .draggable.item3 { background-color: #FFC107; }
+        .draggable.item4 { background-color: #9C27B0; }
+        .draggable.item5 { background-color: #009688; }
+        .draggable.item6 { background-color: #FF5722; }
+        .draggable.item7 { background-color: #607D8B; }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="drop-zone" id="zone1">
+            <h3>Available Items</h3>
+            <div class="draggable item1" draggable="true" id="item1">Item 1</div>
+            <div class="draggable item2" draggable="true" id="item2">Item 2</div>
+            <div class="draggable item3" draggable="true" id="item3">Item 3</div>
+            <div class="draggable item4" draggable="true" id="item4">Item 4</div>
+            <div class="draggable item5" draggable="true" id="item5">Item 5</div>
+        </div>
+
+        <div class="drop-zone" id="zone2">
+            <h3>Drop Here</h3>
+        </div>
+
+        <div class="drop-zone" id="zone3">
+            <h3>Another Zone</h3>
+        </div>
+    </div>
+
+    <script>
+        const draggables = document.querySelectorAll('.draggable');
+        const dropZones = document.querySelectorAll('.drop-zone');
+
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', (e) => {
+                e.target.classList.add('dragging');
+                e.dataTransfer.setData('text/plain', e.target.id); // Store the ID of the dragged element
+                // Optional: set a custom drag image
+                // let img = new Image();
+                // img.src = 'path/to/drag_icon.png';
+                // e.dataTransfer.setDragImage(img, 10, 10);
+            });
+
+            draggable.addEventListener('dragend', (e) => {
+                e.target.classList.remove('dragging');
+            });
+        });
+
+        dropZones.forEach(zone => {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault(); // Essential to allow dropping
+                zone.classList.add('hover');
+            });
+
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('hover');
+            });
+
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('hover');
+                const draggableId = e.dataTransfer.getData('text/plain');
+                const draggableElement = document.getElementById(draggableId);
+                
+                if (draggableElement) {
+                    // Check if the drop zone is not the current parent of the draggable
+                    if (draggableElement.parentNode !== zone) {
+                        zone.appendChild(draggableElement);
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
