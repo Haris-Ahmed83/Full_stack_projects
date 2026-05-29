@@ -1,0 +1,8 @@
+/* General styling for the container */
+.tabs-container {
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden; /* To ensure

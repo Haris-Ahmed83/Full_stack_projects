@@ -1,0 +1,8 @@
+/* General body styling for centering the example */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-wrap: wrap; /* Allow multiple tooltips to wrap */
+    justify-content: center;
+    align-items: center;
+    min-height:

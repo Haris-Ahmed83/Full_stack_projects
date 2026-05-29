@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hover over elements for a tooltip!</h1>
+
+        <p>
+            This is some <span class="tooltip-trigger" data-tooltip="This is a simple text tooltip!">text with a tooltip</span>.
+            You can add tooltips to various inline elements.
+        </p>
+
+        <button class="tooltip-trigger" data-tooltip="Clicking this button does something!">Hover me</button>
+
+        <a href="#" class="tooltip-trigger" data-tooltip="This link goes nowhere exciting.">Link with tooltip</a>
+
+        <div class="card tooltip-trigger" data-tooltip="This is a tooltip for a whole card!">
+            <h3>Card Title</h3>
+            <p>Some content inside the card.</p>
+        </div>
+
+        <p>
+            Another example with a <span class="tooltip-trigger tooltip-bottom" data-tooltip="This tooltip appears below!">bottom tooltip</span>.
+            And one more with a <span class="tooltip-trigger tooltip-right" data-tooltip="This tooltip is on the right!">right tooltip</span>.
+        </p>
+    </div>
+</body>
+</html>
