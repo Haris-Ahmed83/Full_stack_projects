@@ -1,0 +1,11 @@
+/* Basic Reset & Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Assumes Poppins is imported, e.g., via Google Fonts */
+    color: #ffffff;
+    line

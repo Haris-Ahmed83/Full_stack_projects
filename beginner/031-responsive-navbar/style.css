@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Navbar Container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    position: relative; /* Needed for absolute positioning of mobile menu */
+    z-index: 1000; /* Ensure navbar is above other content */
+}
+
+/* Navbar Logo */
+.navbar-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Navigation Links (Mobile-first: Hidden by default, styled for vertical stack) */
+.nav-links {
+    display: none; /* Hidden on mobile by default */
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%; /* Position below the navbar */
+    left: 0;
+    background-color: #333;

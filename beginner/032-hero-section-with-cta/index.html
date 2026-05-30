@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section with CTA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient-start: #4facfe;
+            --primary-gradient-end: #00f2fe;
+            --text-color-light: #ffffff;
+            --text-color-dark: #333;
+            --button-bg: #ffffff;
+            --button-text: #4facfe;
+            --button-hover-bg: rgba(255, 255, 255, 0.9);
+            --button-hover-text: #00f2fe;
+            --max-width: 1200px;
+            --padding-x: 20px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5; /* Fallback background */
+        }
+
+        .hero-section {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            color: var(--text-color-light);
+            text-align: center;
+            padding: 100px var(--padding-x);
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: backgroundShift 15s ease infinite alternate; /* Animation for background */
+            min-height: 100vh; /* Ensure it takes full viewport height */
+        }
+
+        @keyframes backgroundShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0; /* Initially hidden for animation */
+            transform: translateY(20px); /* Initially slightly below for animation */
+            animation: fadeInSlideUp 1s ease-out forwards;
+            animation-delay: 0.5s; /* Delay content animation */
+        }
+
+        @keyframes fadeInSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-gradient-end), var(--primary-gradient-start));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            color: var(--text-color-light); /* Text color changes to white on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content p {
+                font-size: 1.1em;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1em;
+            }
+
+            .hero-section {
+                padding: 80px var(--padding-x);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .cta-button {
+                padding: 10px 25px;
+                font-size: 0.9em;
+            }
+
+            .hero-section {
+                padding: 60px var(--padding-x);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Unlock Your Potential with Our Innovative Solutions</h1>
+            <p>We provide cutting-edge tools and services designed to help you achieve your goals faster and more efficiently. Join us today!</p>
+            <a href="#" class="cta-button">Get Started Now</a>
+        </div>
+    </section>
+</body>
+</html>
