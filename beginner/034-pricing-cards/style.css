@@ -1,0 +1,13 @@
+/* General Reset & Box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body & Basic Typography */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.

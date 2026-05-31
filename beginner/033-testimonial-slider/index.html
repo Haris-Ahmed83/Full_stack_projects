@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonial Slider</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="slider-container">
+        <div class="testimonial-slider">
+            <div class="testimonial-item active">
+                <img src="https://via.placeholder.com/100/f8f8f8/333333?text=User1" alt="User 1" class="testimonial-img">
+                <p class="testimonial-quote">"This product has truly transformed my workflow. Highly recommended!"</p>
+                <h4 class="testimonial-author">- Jane Doe, CEO of Company A</h4>
+            </div>
+
+            <div class="testimonial-item">
+                <img src="https://via.placeholder.com/100/f8f8f8/333333?text=User2" alt="User 2" class="testimonial-img">
+                <p class="testimonial-quote">"An amazing experience from start to finish. The support team is fantastic!"</p>
+                <h4 class="testimonial-author">- John Smith, Marketing Director</h4>
+            </div>
+
+            <div class="testimonial-item">
+                <img src="https://via.placeholder.com/100/f8f8f8/333333?text=User3" alt="User 3" class="testimonial-img">
+                <p class="testimonial-quote">"I never thought I'd find a solution this perfect. Five stars all the way!"</p>
+                <h4 class="testimonial-author">- Emily White, Freelancer</h4>
+            </div>
+
+            <div class="testimonial-item">
+                <img src="https://via.placeholder.com/100/f8f8f8/333333?text=User4" alt="User 4" class="testimonial-img">
+                <p class="testimonial-quote">"Incredible value for money. It's a game-changer for my business."</p>
+                <h4 class="testimonial-author">- Michael Brown, Small Business Owner</h4>
+            </div>
+        </div>
+
+        <button id="prevBtn" class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <button id="nextBtn" class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="dot-navigation">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
