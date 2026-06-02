@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #282c34;
+    color: #abb2bf;
+    overflow: hidden;
+}
+
+.typewriter-container {
+    padding: 20px;
+    border: 1px solid #61afef;
+    border-radius: 8px;
+    background-color: #3e4451;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    text-align: left;
+    white-space: pre-wrap; /* Preserves whitespace and wraps text */
+    word-wrap: break-word; /* Breaks long words */
+}
+
+.typewriter-text {
+    font-size: 1.8em;
+    display: inline-block; /* Allows the cursor to sit next to the growing text */
+    overflow: hidden; /* Hide text that is not yet "typed" (handled by JS) */
+    border-right: 2px solid transparent; /* Placeholder for cursor, initially transparent */
+}
+
+/* Blinking Cursor */
+.typewriter-text.typing::after {
+    content: '';
+    display: inline-block;
+    width: 2px; /* Width of the cursor */
+    height: 1.2em; /* Height of the cursor, relative to font size */
+    background-color: #61afef; /* Cursor color */
+    margin-left: 5px;

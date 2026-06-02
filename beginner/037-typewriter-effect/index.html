@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typewriter Effect</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #282c34;
+            color: #61dafb;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden; /* Prevent scrollbar if text is wider than viewport */
+        }
+
+        .container {
+            text-align: center;
+            font-size: 3em;
+            white-space: nowrap; /* Prevent text from wrapping prematurely */
+            overflow: hidden; /* Hide text that hasn't been "typed" yet */
+            position: relative;
+        }
+
+        .typed-text {
+            display: inline-block; /* Allows cursor to sit next to it properly */
+            margin: 0;
+            padding: 0;
+            vertical-align: middle; /* Align with cursor */
+        }
+
+        .cursor {
+            display: inline-block;
+            background-color: #61dafb;
+            width: 8px;
+            height: 1em; /* Match font height for a better look */
+            margin-left: 5px;
+            animation: blink 0.7s infinite alternate; /* CSS Animation for blinking */
+            vertical-align: middle; /* Align with text */
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- The text will be inserted here by JavaScript -->
+        <h1 class="typed-text" id="typewriter-text"></h1><span class="cursor"></span>
+    </div>
+
+    <script>
+        const textElement = document.getElementById('typewriter-text');
+        // Define the text to be typed
+        const textToType = "Hello, world! This is a simple typewriter effect.";
+        let charIndex = 0; // Current character index
+        const typingSpeed = 100; // Speed in milliseconds per character
+
+        function typeWriter() {
+            // Check if there are more characters to type
+            if (charIndex < textToType.length) {
+                // Append the next character to the text content
+                textElement.textContent += textToType.charAt(charIndex);
+                charIndex++; // Move to the next character
+                // Call typeWriter again after a delay
+                setTimeout(typeWriter, typingSpeed);
+            } else {
+                // Typing complete. The cursor will continue to blink next to the text.
+                // You could add logic here to hide the cursor, or start deleting, etc.
+            }
+        }
+
+        // Start the typewriter effect when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', typeWriter);
+    </script>

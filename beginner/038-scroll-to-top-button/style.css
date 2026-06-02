@@ -1,0 +1,7 @@
+/* Basic body styling to ensure there's scrollable content */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    min-height: 200vh; /* Ensures the page is tall enough to scroll */
+    padding: 20px;
+    background-
