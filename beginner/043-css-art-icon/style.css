@@ -1,0 +1,14 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Light background */
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.cloud-icon {
+    width: 180px;
+    height: 100px;
+    background: linear-gradient(135deg, #

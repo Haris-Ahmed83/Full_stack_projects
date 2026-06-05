@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Art Icon</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            overflow: hidden;
+        }
+
+        .icon-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            border-radius: 25%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2),
+                        inset 0 0 10px rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-container::before {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            /* This creates a "cut-out" effect or a central element */
+        }
+
+        .icon-container::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1; /* Ensure it's above the ::before element */
+        }
+    </style>
+</head>
+<body>
+    <div class="icon-container"></div>
+</body>
+</html>
