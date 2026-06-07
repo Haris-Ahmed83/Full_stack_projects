@@ -1,0 +1,11 @@
+/* Basic Reset & Box Sizing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Root Variables (Light Theme Defaults) */
+:root {
+  --background-color: #f0f0f0;
+  --text-color: #333;

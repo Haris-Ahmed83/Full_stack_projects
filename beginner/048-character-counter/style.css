@@ -1,0 +1,145 @@
+:root {
+    --primary-bg: #f4f7f6;
+    --secondary-bg: #ffffff;
+    --text-color: #333;
+    --accent-color: #007bff;
+    --warning-color: #ffc107;
+    --error-color: #dc3545;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+
+    --font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --border-radius: 8px;
+    --spacing-unit: 1rem;
+}
+
+/* Universal box-sizing for consistent layout */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--spacing-unit);
+}
+
+.container {
+    background-color: var(--secondary-bg);
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-unit);
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: var(--spacing-unit);
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: var(--spacing-unit);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    resize: vertical; /* Allow vertical resizing only */
+    outline: none;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.counter-info {
+    display: flex;
+    justify-content: flex-end; /* Align count to the right */
+    font-size: 0.9rem;
+    color: var(--text-color);
+    gap: 0.25rem; /* Small gap between current count and slash */
+}
+
+/* Styling for when current count is in warning or error state */
+.current-count.warning {
+    color: var(--warning-color);
+    font-weight: bold;
+}
+
+.current-count.error {
+    color: var(--error-color);
+    font-weight: bold;
+}
+
+.message {
+    font-size: 0.9rem;
+    text-align: right;
+    color: var(--text-color);
+}
+
+/* Styling for specific message parts */
+.message .warning-message {
+    color: var(--warning-color);
+    font-weight: bold;
+}
+
+.message .error-message {
+    color: var(--error-color);
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-unit);
+        margin: 0 var(--spacing-unit);
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    textarea {
+        min-height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .container {
+        border-radius: 0;
+        box-shadow: none;
+        padding: var(--spacing-unit);
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    textarea {
+        font-size: 0.9rem;
+    }
+
+    .counter-info, .message {
+        font-size: 0.8rem;
+    }
+}
