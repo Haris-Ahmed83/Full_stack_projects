@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightbox Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>My Awesome Lightbox Gallery</h1>
+
+    <div class="gallery-container">
+        <a href="images/full-1.jpg" data-lightbox="gallery-set" data-title="A beautiful landscape.">
+            <img src="images/thumb-1.jpg" alt="Landscape thumbnail">
+        </a>
+        <a href="images/full-2.jpg" data-lightbox="gallery-set" data-title="City skyline at night.">
+            <img src="images/thumb-2.jpg" alt="City thumbnail">
+        </a>
+        <a href="images/full-3.jpg" data-lightbox="gallery-set" data-title="Close-up of a flower.">
+            <img src="images/thumb-3.jpg" alt="Flower thumbnail">
+        </a>
+        <a href="images/full-4.jpg" data-lightbox="gallery-set" data-title="Mountain range in the morning.">
+            <img src="images/thumb-4.jpg" alt="Mountain thumbnail">
+        </a>
+        <a href="images/full-5.jpg" data-lightbox="gallery-set" data-title="Ocean waves crashing.">
+            <img src="images/thumb-5.jpg" alt="Ocean thumbnail">
+        </a>
+    </div>
+
+    <div id="lightbox-overlay" class="lightbox-overlay">
+        <div class="lightbox-content">
+            <button id="lightbox-close" class="lightbox-close">&times;</button>
+            <button id="lightbox-prev" class="lightbox-nav lightbox-prev">&#10094;</button>
+            <img id="lightbox-image" src="" alt="Lightbox Image">
+            <button id="lightbox-next" class="lightbox-nav lightbox-next">&#10095;</button>
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
