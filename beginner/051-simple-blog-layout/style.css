@@ -1,0 +1,119 @@
+/* Project #51: Simple Blog Layout */
+
+/* Basic Reset & Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base Body Styles & Typography */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif; /* A modern sans-serif font */
+    line-height: 1.7;
+    color: #333;
+    background-color: #f9f9f9;
+    font-size: 16px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif; /* A classic serif font for headings */
+    margin-bottom: 0.8em;
+    color: #222;
+    line-height: 1.3;
+}
+
+h1 { font-size: 2.8em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+h4 { font-size: 1.4em; }
+
+p {
+    margin-bottom: 1em;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Container for Centering Content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 5px 0;
+}
+
+nav ul li a:hover {
+    color: #ffc107; /* A subtle hover color */
+    text-decoration: none;
+}
+
+/* Main Content Grid */
+main {
+    padding: 40px 0;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column for small screens */
+    gap: 40px;
+}
+
+/* Media query for larger screens: two columns */
+@media (min-width: 768px) {
+    .blog-grid {
+        grid-template-columns: 2fr 1fr; /* Main content (2 parts) and sidebar (1 part) */
+    }
+}
+
+/* Article Styles */
+article {
+    background-color: #
