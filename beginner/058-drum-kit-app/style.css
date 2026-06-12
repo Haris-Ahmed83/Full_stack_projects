@@ -1,0 +1,25 @@
+html {
+  font-size: 10px;
+  background: #2b2b2b;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.keys {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.7);
