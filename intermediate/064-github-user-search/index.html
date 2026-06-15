@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>GitHub User Search</h1>
+    </header>
+    <main class="main-content">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Enter GitHub username..." aria-label="GitHub username search">
+            <button id="searchButton">Search</button>
+        </div>
+
+        <!-- Status messages for loading, errors, or no results -->
+        <div id="statusMessage" class="status-message"></div>
+
+        <!-- Container for dynamically generated user cards -->
+        <div id="userCardsContainer" class="user-cards-container">
+            <!-- User cards will be injected here by JavaScript -->
+        </div>
+    </main>
+    <script src="script.js" defer></script>
+</body>
+</html>

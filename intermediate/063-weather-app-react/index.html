@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="weather-app">
+        <h1 class="app-title">Weather Dashboard</h1>
+
+        <div class="search-box">
+            <input type="text" id="city-input" placeholder="Enter city name..." autocomplete="off">
+            <button id="search-button">Search</button>
+        </div>
+
+        <!-- Loading spinner, hidden by default -->
+        <div id="loading-spinner" class="loading-spinner hidden"></div>
+
+        <!-- Weather display area, hidden by default -->
+        <div id="weather-display" class="weather-display hidden">
+            <h2 id="city-name"></h2>
+            <div class="main-info">
+                <img id="weather-icon" src="" alt="Weather icon" class="weather-icon">
+                <p id="temperature" class="temperature"></p>
+            </div>
+            <p id="description" class="description"></p>
+            
+            <div class="details-grid">
+                <div class="detail-item">
+                    <span class="detail-label">Humidity:</span>
+                    <span id="humidity" class="detail-value"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Wind Speed:</span>
+                    <span id="wind-speed" class="detail-value"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Pressure:</span>
+                    <span id="pressure" class="detail-value"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Feels Like:</span>
+                    <span id="feels-like" class="detail-value"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error message area, hidden by default -->
+        <div id="error-message" class="error-message hidden"></div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

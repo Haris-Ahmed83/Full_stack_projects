@@ -1,0 +1,259 @@
+/* Custom Properties for theme consistency and easy changes */
+:root {
+    --primary-color: #4A90E2; /* A vibrant blue for main accents */
+    --secondary-color: #8CCBFB; /* Lighter blue for subtle highlights */
+    --background-color: #F0F2F5; /* Light grey for the overall body background */
+    --card-background: #FFFFFF; /* White for the app's main container */
+    --text-color: #333333; /* Dark grey for primary text */
+    --light-text-color: #666666; /* Medium grey for secondary text */
+    --error-color: #D9534F; /* Red for error messages */
+    --border-radius: 12px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    --transition-speed: 0.3s ease; /* Smooth transitions for interactive elements */
+}
+
+/* Base Styles: Reset and general typography */
+* {
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font stack */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px; /* Padding around the app on larger screens */
+}
+
+/* Weather App Container */
+.weather-app {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 30px;
+    width: 100%;
+    max-width: 450px; /* Max width for a clean, focused UI */
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Spacing between sections */
+    text-align: center;
+    transition: transform var(--transition-speed); /* Hover effect */
+}
+
+.weather-app:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+/* App Title */
+.app-title {
+    color: var(--primary-color);
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Search Box Layout (Flexbox) */
+.search-box {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.search-box input {
+    flex-grow: 1; /* Input takes up available space */
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    outline: none; /* Remove default focus outline */
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.search-box input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); /* Subtle glow on focus */
+}
+
+.search-box button {
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.search-box button:hover {
+    background-color: #3a7bd5; /* Slightly darker blue on hover */
+    transform: translateY(-2px);
+}
+
+.search-box button:active {
+    transform: translateY(0); /* Reset on click */
+}
+
+/* Loading Spinner Animation */
+.loading-spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-color); /* Primary color for the spinning part */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite; /* Infinite spin animation */
+    margin: 30px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Weather Display Layout (Flexbox for main info, Grid for details) */
+.weather-display {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#city-name {
+    font-size: 2.5em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.main-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.weather-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.temperature {
+    font-size: 3.5em;
+    font-weight: 700;
+    color: var(--text-color);
+    line-height: 1; /* Prevent extra space below the number */
+}
+
+.temperature::after {
+    content: '°C'; /* Add Celsius symbol */
+    font-size: 0.5em;
+    vertical-align: super;
+}
+
+.description {
+    font-size: 1.3em;
+    color: var(--light-text-color);
+    text-transform: capitalize; /* Capitalize the first letter of the description */
+    margin-bottom: 20px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid for details */
+    gap: 20px;
+    text-align: left;
+    background-color: #f8f9fa; /* Slightly different background for the details section */
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detail-label {
+    font-size: 0.9em;
+    color: var(--light-text-color);
+    font-weight: 500;
+}
+
+.detail-value {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Error Message Styling */
+.error-message {
+    color: var(--error-color);
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+/* Utility Class: Hides elements */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 500px) {
+    body {
+        padding: 10px; /* Reduce body padding on small screens */
+    }
+
+    .weather-app {
+        padding: 20px;
+        margin: 0; /* No margin, let padding handle spacing */
+        border-radius: 0; /* Full width on very small screens, remove border-radius */
+        box-shadow: none; /* Remove shadow to blend with body */
+    }
+
+    .app-title {
+        font-size: 1.8em;
+    }
+
+    .search-box {
+        flex-direction: column; /* Stack input and button vertically */
+    }
+
+    .search-box input,
+    .search-box button {
+        width: 100%; /* Make them full width */
+    }
+
+    #city-name {
+        font-size: 2em;
+    }
+
+    .temperature {
+        font-size: 3em;
+    }
+
+    .main-info {
+        flex-direction: column; /* Stack icon and temp vertically */
+        gap: 5px;
+    }
+
+    .weather-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .description {
+        font-size: 1.1em;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr; /* Stack details vertically */
+    }
+}
