@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Recipe Finder</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for recipes (e.g., chicken, pasta, beef)...">
+                <button id="searchButton">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content container">
+        <section class="results-section">
+            <div id="loadingMessage" class="message hidden">
+                <div class="spinner"></div>
+                <span>Loading recipes...</span>
+            </div>
+            <div id="errorMessage" class="message error hidden"></div>
+            <div id="noResultsMessage" class="message info hidden">No recipes found. Try a different search!</div>
+            <div id="recipeGrid" class="recipe-grid">
+                <!-- Recipe cards will be injected here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
