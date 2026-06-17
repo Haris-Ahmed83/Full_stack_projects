@@ -1,0 +1,165 @@
+/* General Body & Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Lato', sans-serif; /* A common modern sans-serif font */
+  background-color: #f4f4f4; /* Light background */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+h1, h2, h3, h4 {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+h1 {
+  letter-spacing: 1px;
+}
+
+/* Container for the whole app */
+.container {
+  width: 100%;
+  max-width: 400px; /* A good width for a mobile-first feel, but also works on desktop */
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Balance Display */
+.balance {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.balance h4 {
+  margin: 0;
+  color: #777;
+  font-weight: 500;
+}
+
+.balance #balance-amount {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Income/Expense Summary */
+.inc-exp-container {
+  background-color: #f9f9f9;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.inc-exp-container > div {
+  flex: 1;
+  text-align: center;
+}
+
+.inc-exp-container > div:first-of-type {
+  border-right: 1px solid #dedede;
+}
+
+.money {
+  font-size: 1.3em;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+
+.money.plus {
+  color: #2ecc71; /* Green for income */
+}
+
+.money.minus {
+  color: #c0392b; /* Red for expense */
+}
+
+/* Transaction List */
+h3 {
+  border-bottom: 1px solid #dedede;
+  padding-bottom: 10px;
+  margin: 20px 0 10px;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.list li {
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.list li.plus {
+  border-right: 5px solid #2ecc71;
+}
+
+.list li.minus {
+  border-right: 5px solid #c0392b;
+}
+
+.delete-btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 18px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.list li:hover .delete-btn {
+  opacity: 1;
+}
+
+/* Form */
+label {
+  display: inline-block;
+  margin: 10px 0;
+  color: #555;
+}
+
+input[type='text'],
+input[type='number'] {
+  border: 1px solid

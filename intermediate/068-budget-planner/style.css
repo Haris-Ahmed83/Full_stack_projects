@@ -1,0 +1,13 @@
+/* Global Styles & Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #4CAF50; /* Green for positive/income */
+    --secondary-color: #f44336; /* Red for negative/expense */
+    --accent-color: #2196F3; /* Blue for general actions/progress */
+    --text-color: #333;
+    --light-text-color:
