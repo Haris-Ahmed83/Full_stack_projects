@@ -1,0 +1,207 @@
+:root {
+    /* Colors */
+    --primary-color: #6366f1; /* Indigo 500 */
+    --primary-light: #818cf8; /* Indigo 400 */
+    --text-color: #334155; /* Slate 700 */
+    --text-light: #64748b; /* Slate 500 */
+    --background-color: #f8fafc; /* Slate 50 */
+    --card-background: #ffffff;
+    --border-color: #e2e8f0; /* Slate 200 */
+    --focus-ring-color: #a5b4fc; /* Indigo 300 */
+
+    /* Typography */
+    --font-family: 'Inter', sans-serif;
+    --font-size-base: 1rem; /* 16px */
+    --font-size-lg: 1.125rem; /* 18px */
+    --font-size-xl: 1.5rem; /* 24px */
+    --font-weight-normal: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Spacing */
+    --spacing-xs: 0.25rem; /* 4px */
+    --spacing-sm: 0.5rem; /* 8px */
+    --spacing-md: 1rem; /* 16px */
+    --spacing-lg: 1.5rem; /* 24px */
+    --spacing-xl: 2rem; /* 32px */
+
+    /* Borders & Shadows */
+    --border-radius-sm: 0.25rem;
+    --border-radius-md: 0.5rem;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Base styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top */
+    min-height: 100vh;
+    padding: var(--spacing-xl);
+}
+
+/* Accordion Wrapper for centering and max-width */
+.accordion-wrapper {
+    width: 100%;
+    max-width: 768px; /* Max width for content */
+    margin: 0 auto;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+}
+
+.accordion-wrapper h1 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Accordion Container */
+.accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm); /* Space between accordion items */
+}
+
+/* Individual Accordion Item */
+.accordion-item {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    overflow: hidden; /* Essential for content transition */
+}
+
+/* Accordion Header (Button) */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--card-background);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-color);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.accordion-header:hover {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+}
+
+.accordion-header:focus-visible {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-md); /* Apply focus ring to the entire item's shape */
+}
+
+/* Accordion Icon (plus/minus effect) */
+.accordion-icon {
+    position: relative;
+    width: 1.5em; /* Maintain aspect ratio */
+    height: 1.5em;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    margin-left: var(--spacing-md);
+}
+
+.accordion-icon::before,
+.accordion-icon::after {
+    content: '';
+    position: absolute;
+    background-color: var(--text-light);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Vertical bar for plus */
+.accordion-icon::before {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+}
+
+/* Horizontal bar for plus */
+.accordion-icon::after {
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    transform: translateX(-50%);
+}
+
+/* Icon state when expanded (aria-expanded="true") */
+.accordion-header[aria-expanded="true"] .accordion-icon::before {
+    background-color: var(--primary-color);
+}
+
+.accordion-header[aria-expanded="true"] .accordion-icon::after {
+    transform: translateX(-50%) rotate(90deg); /* Rotate vertical bar to become horizontal, forming a minus */
+    background-color: var(--primary-color);
+}
+
+/* Accordion Content */
+.accordion-content {
+    max-height: 0; /* Initial collapsed state */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out; /* Smooth transition for expand/collapse */
+    background-color: var(--background-color);
+    color: var(--text-light);
+}
+
+/* Inner div for content padding, so max-height doesn't include padding when collapsed */
+.accordion-content-inner {
+    padding: 0 var(--spacing-lg) var(--spacing-lg); /* Padding only when expanded */
+}
+
+.accordion-content-inner p {
+    margin-bottom: var(--spacing-sm);
+}
+
+.accordion-content-inner p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: var(--spacing-md);
+    }
+
+    .accordion-wrapper {
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius-sm);
+    }
+
+    .accordion-wrapper h1 {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .accordion-header {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-base);
+    }
+
+    .accordion-content-inner {
+        padding: 0 var(--spacing-md) var(--spacing-md);
+    }
+}

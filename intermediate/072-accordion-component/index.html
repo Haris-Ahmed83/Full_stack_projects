@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Accordion Component</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Inter for a modern, clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="accordion-wrapper">
+        <h1>Frequently Asked Questions</h1>
+        <div class="accordion-container">
+            <!-- Accordion Item 1 -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-title">What is an accordion component?</span>
+                    <span class="accordion-icon"></span>
+                </button>
+                <div class="accordion-content" aria-hidden="true">
+                    <div class="accordion-content-inner">
+                        <p>An accordion is a graphical user interface (GUI) control element that comprises a vertically stacked list of items. Each item can be "expanded" or "collapsed" to reveal or hide its associated content. This design pattern is commonly used to save screen space and organize related information.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Item 2 -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-title">How do I use this accordion?</span>
+                    <span class="accordion-icon"></span>
+                </button>
+                <div class="accordion-content" aria-hidden="true">
+                    <div class="accordion-content-inner">
+                        <p>Simply click on the header of any item to expand it and reveal its content. Clicking again will collapse the item, hiding its content. By default, you can open multiple items simultaneously, allowing you to view several answers at once.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Item 3 -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-title">Is this component accessible?</span>
+                    <span class="accordion-icon"></span>
+                </button>
+                <div class="accordion-content" aria-hidden="true">
+                    <div class="accordion-content-inner">
+                        <p>Yes, this component is built with accessibility in mind, utilizing WAI-ARIA attributes like <code>aria-expanded</code> and <code>aria-hidden</code>. These attributes help screen readers and other assistive technologies understand the state and purpose of the accordion elements, making it navigable and understandable for all users.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Item 4 -->
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-title">Can I customize the styling?</span>
+                    <span class="accordion-icon"></span>
+                </button>
+                <div class="accordion-content" aria-hidden="true">
+                    <div class="accordion-content-inner">
+                        <p>Absolutely! The styling is handled by a separate <code>style.css</code> file, using modern CSS features like custom properties (CSS variables), flexbox, and responsive design. You can easily modify colors, fonts, spacing, and transition effects to match your brand or design preferences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Link to script.js at the end of the body for better performance -->
+    <script src="script.js"></script>
+</body>
+</html>
