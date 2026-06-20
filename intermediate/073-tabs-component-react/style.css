@@ -1,0 +1,203 @@
+:root {
+    /* Color Palette */
+    --primary-color: #007bff; /* Blue */
+    --accent-color: #6c757d;  /* Grey */
+    --text-color: #343a40;    /* Dark Grey */
+    --light-text-color: #ffffff;
+    --background-color: #f8f9fa; /* Light Grey Background */
+    --card-bg-color: #ffffff;    /* White Card Background */
+    --border-color: #dee2e6;  /* Light Border */
+    --hover-bg-color: #e9ecef; /* Lighter Grey for hover */
+    --active-tab-bg: var(--primary-color);
+    --active-tab-text: var(--light-text-color);
+
+    /* Spacing & Sizing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --max-width: 960px;
+
+    /* Typography */
+    --font-family-sans: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 1.75rem;
+    --font-size-h3: 1.25rem;
+
+    /* Borders & Shadows */
+    --border-radius: 0.5rem;
+    --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --transition-speed: 0.3s ease;
+}
+
+/* Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for better content display */
+    min-height: 100vh;
+    padding: var(--spacing-xl);
+}
+
+/* Container for overall layout */
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: auto;
+    padding: var(--spacing-lg);
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+li {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Tabs Component Styling */
+.tabs-component {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.tab-headers {
+    display: flex; /* Arrange tab headers in a row */
+    flex-wrap: wrap; /* Allow headers to wrap on smaller screens */
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.tab-header {
+    flex-grow: 1; /* Allow buttons to grow to fill space */
+    min-width: 120px; /* Minimum width for each tab header */
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    background-color: transparent;
+    color: var(--accent-color);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: color var(--transition-speed), background-color var(--transition-speed), border-color var(--transition-speed);
+    border-bottom: 3px solid transparent; /* For active indicator */
+    text-align: center;
+    white-space: nowrap; /* Prevent text wrapping within a tab */
+}
+
+.tab-header:hover:not(.active) {
+    color: var(--primary-color);
+    background-color: var(--hover-bg-color);
+}
+
+.tab-header.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-content-panels {
+    padding-top: var(--spacing-md); /* Space between headers and content */
+}
+
+.tab-panel {
+    display: none; /* Hide all panels by default */
+    animation: fadeIn var(--transition-speed) forwards; /* Smooth entrance */
+}
+
+.tab-panel.active {
+    display: block; /* Show active panel */
+}
+
+/* Fade-in animation for tab content */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    :root {
+        --font-size-h1: 2rem;
+        --font-size-h2: 1.5rem;
+        --spacing-lg: 1rem;
+        --spacing-xl: 1.5rem;
+    }
+
+    body {
+        padding: var(--spacing-lg);
+    }
+
+    .tab-headers {
+        flex-direction: column; /* Stack tabs vertically on smaller screens */
+        border-bottom: none; /* Remove bottom border for stacked tabs */
+    }
+
+    .tab-header {
+        border-bottom: 1px solid var(--border-color); /* Add individual borders */
+        border-left: 3px solid transparent; /* For vertical active indicator */
+        text-align: left;
+        padding: var(--spacing-md);
+    }
+
+    .tab-header:first-child {
+        border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
+    }
+
+    .tab-header:last-child {
+        border-bottom-left-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+    }
+
+    .tab-header.active {
+        border-bottom-color: transparent; /* Reset horizontal indicator */
+        border-left-color: var(--primary-color); /* Apply vertical indicator */
+        background-color: var(--hover-bg-color); /* Give a slight background */
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-size-h1: 1.75rem;
+        --font-size-base: 0.9rem;
+    }
+
+    .container {
+        padding: var(--spacing-md);
+    }
+}

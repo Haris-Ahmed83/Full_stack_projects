@@ -1,0 +1,191 @@
+/* Custom Properties */
+:root {
+    --primary-color: #4CAF50; /* Green */
+    --secondary-color: #2196F3; /* Blue */
+    --accent-color: #FFC107; /* Amber */
+    --background-color: #f4f7f6;
+    --card-background-color: #ffffff;
+    --text-color: #333;
+    --light-text-color: #666;
+    --border-color: #e0e0e0;
+
+    --spacing-xs: 4px;
+    --spacing-s: 8px;
+    --spacing-m: 16px;
+    --spacing-l: 24px;
+    --spacing-xl: 32px;
+
+    --border-radius-s: 4px;
+    --border-radius-m: 8px;
+
+    --font-family-sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+    --progress-bar-height: 28px;
+    --progress-bar-background: var(--border-color);
+    --progress-bar-fill-color: var(--primary-color);
+    --progress-bar-transition-duration: 0.6s;
+}
+
+/* Global Styles */
+body {
+    font-family: var(--font-family-sans);
+    margin: 0;
+    padding: var(--spacing-xl);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex; /* Use flex for overall page layout */
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-l);
+    background-color: var(--card-background-color);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: var(--border-radius-m);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.page-header h1 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-s);
+}
+
+.page-header p {
+    color: var(--light-text-color);
+    font-size: 0.95em;
+}
+
+/* Progress Bars Grid */
+.progress-bars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: var(--spacing-l);
+    padding: var(--spacing-l) 0;
+    flex-grow: 1; /* Allow main content to grow */
+}
+
+/* Progress Bar Component Styles */
+.progress-bar-component {
+    background-color: var(--card-background-color);
+    border-radius: var(--border-radius-m);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: var(--spacing-m);
+    transition: transform 0.2s ease-in-out; /* Little hover effect */
+}
+
+.progress-bar-component:hover {
+    transform: translateY(-3px);
+}
+
+.progress-bar-label-text {
+    font-weight: bold;
+    margin-bottom: var(--spacing-s);
+    display: block; /* Ensures label takes its own line */
+    color: var(--text-color);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: var(--progress-bar-height);
+    background-color: var(--progress-bar-background);
+    border-radius: var(--border-radius-s);
+    overflow: hidden; /* Ensures fill stays within bounds */
+    position: relative; /* For label inside if desired, but here label is above */
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%; /* Initial width */
+    background-color: var(--progress-bar-fill-color);
+    border-radius: var(--border-radius-s);
+    display: flex; /* For centering value text inside fill */
+    align-items: center;
+    justify-content: center;
+    color: white; /* Text color for value inside bar */
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: width var(--progress-bar-transition-duration) ease-out, background-color 0.3s ease-in-out;
+}
+
+/* Controls Section */
+.controls {
+    background-color: var(--card-background-color);
+    border-radius: var(--border-radius-m);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: var(--spacing-l);
+    margin-top: var(--spacing-xl);
+    text-align: center;
+}
+
+.controls h2 {
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-l);
+}
+
+.control-group {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: var(--spacing-m);
+    justify-content: center;
+    margin-bottom: var(--spacing-m);
+}
+
+.controls button,
+.controls input[type="text"],
+.controls input[type="number"] {
+    padding: var(--spacing-s) var(--spacing-m);
+    border-radius: var(--border-radius-s);
+    border: 1px solid var(--border-color);
+    font-family: var(--font-family-sans);
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.controls button {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+.controls button:hover {
+    background-color: #1976D2; /* Darker blue */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.controls label {
+    align-self: center;
+    margin-right: var(--spacing-xs);
+    color: var(--light-text-color);
+}
+
+.controls input[type="text"],
+.controls input[type="number"] {
+    flex-grow: 1; /* Allow inputs to take available space */
+    max-width: 150px; /* Limit input width */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: var(--spacing-m);
+    }
+    .progress-bars-grid {
+        grid-template-columns: 1fr; /* Stack bars on small screens */
+        gap: var(--spacing-m);
+    }
+    .control-group {
+        flex-direction: column; /* Stack controls vertically */
+        align-items: stretch;
+    }
+    .controls input[type="text"],
+    .controls input[type="number"] {
+        max-width: none; /* Full width for inputs on small screens */
+    }
+}

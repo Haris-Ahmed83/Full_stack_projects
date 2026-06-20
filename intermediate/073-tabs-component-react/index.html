@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Tabs Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Our Services</h1>
+        <div class="tabs-component">
+            <div class="tab-headers" role="tablist" aria-label="Service Categories">
+                <button class="tab-header active" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" data-tab-index="0">
+                    Web Development
+                </button>
+                <button class="tab-header" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" data-tab-index="1">
+                    UI/UX Design
+                </button>
+                <button class="tab-header" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" data-tab-index="2">
+                    Cloud Solutions
+                </button>
+                <button class="tab-header" role="tab" aria-selected="false" aria-controls="tab-panel-4" id="tab-4" data-tab-index="3">
+                    Digital Marketing
+                </button>
+            </div>
+
+            <div class="tab-content-panels">
+                <div class="tab-panel active" role="tabpanel" aria-labelledby="tab-1" id="tab-panel-1" data-tab-index="0">
+                    <h2>Custom Web Development</h2>
+                    <p>We build robust, scalable, and secure web applications tailored to your business needs. From front-end interfaces to back-end systems, we use cutting-edge technologies to deliver exceptional digital experiences.</p>
+                    <ul>
+                        <li>Responsive Design</li>
+                        <li>API Integrations</li>
+                        <li>E-commerce Solutions</li>
+                        <li>Content Management Systems</li>
+                    </ul>
+                    <p>Our team ensures your website is optimized for performance and user engagement across all devices.</p>
+                </div>
+
+                <div class="tab-panel" role="tabpanel" aria-labelledby="tab-2" id="tab-panel-2" data-tab-index="1">
+                    <h2>Intuitive UI/UX Design</h2>
+                    <p>Crafting beautiful and user-friendly interfaces is at the heart of what we do. Our design process focuses on understanding your users to create intuitive and engaging experiences that drive results.</p>
+                    <ul>
+                        <li>User Research & Persona Development</li>
+                        <li>Wireframing & Prototyping</li>
+                        <li>Information Architecture</li>
+                        <li>Usability Testing</li>
+                    </ul>
+                    <p>We combine aesthetics with functionality to deliver designs that delight users and meet business objectives.</p>
+                </div>
+
+                <div class="tab-panel" role="tabpanel" aria-labelledby="tab-3" id="tab-panel-3" data-tab-index="2">
+                    <h2>Scalable Cloud Solutions</h2>
+                    <p>Leverage the power of the cloud to enhance your infrastructure, improve efficiency, and reduce operational costs. We offer comprehensive cloud strategy, migration, and management services.</p>
+                    <ul>
+                        <li>AWS, Azure, Google Cloud</li>
+                        <li>Cloud Migration & Optimization</li>
+                        <li>Serverless Architectures</li>
+                        <li>DevOps & CI/CD</li>
+                    </ul>
+                    <p>Ensure your applications are always available, secure, and performant with our expert cloud services.</p>
+                </div>
+
+                <div class="tab-panel" role="tabpanel" aria-labelledby="tab-4" id="tab-panel-4" data-tab-index="3">
+                    <h2>Effective Digital Marketing</h2>
+                    <p>Boost your online presence and reach your target audience with our data-driven digital marketing strategies. We help businesses grow through a combination of proven techniques.</p>
+                    <ul>
+                        <li>Search Engine Optimization (SEO)</li>
+                        <li>Social Media Marketing (SMM)</li>
+                        <li>Pay-Per-Click (PPC) Advertising</li>
+                        <li>Content Marketing</li>
+                    </ul>
+                    <p>Let us help you connect with your customers and achieve your marketing goals.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

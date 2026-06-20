@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar Component</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="page-header">
+        <h1>Dynamic Progress Bars</h1>
+        <p>Demonstrating a reusable progress bar component with vanilla JavaScript and modern CSS.</p>
+    </header>
+
+    <main class="progress-bars-grid" id="progressBarsContainer">
+        <!-- Progress bar components will be injected here by script.js -->
+    </main>
+
+    <section class="controls">
+        <h2>Control Progress</h2>
+        <div class="control-group">
+            <button id="updateBar1Btn">Update Task 1 (Random)</button>
+            <button id="resetBarsBtn">Reset All</button>
+            <button id="addBarBtn">Add New Bar</button>
+        </div>
+        <div class="control-group">
+            <label for="specificBarId">Update Specific Bar (ID):</label>
+            <input type="text" id="specificBarId" value="task-1">
+            <label for="specificBarValue">Value (0-100):</label>
+            <input type="number" id="specificBarValue" min="0" max="100" value="50">
+            <button id="updateSpecificBarBtn">Update</button>
+        </div>
+    </section>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
