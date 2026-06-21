@@ -1,0 +1,157 @@
+/* Global styles & Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.form-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 650px;
+    padding: 40px;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 700;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+    padding: 0 20px; /* Add some padding to prevent circles from touching edges */
+}
+
+.progress-indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #e0e0e0;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.progress-step {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    z-index: 1; /* Ensure step circles are above the line */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: default; /* Not clickable directly, navigation is via buttons */
+}
+
+.progress-step.active {
+    background-color: #007bff;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.progress-step.completed {
+    background-color: #28a745;
+    transform: scale(1);
+}
+
+/* Form Steps */
+.form-step {
+    display: none; /* Hidden by default, JS will show/hide */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-step.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 1.05em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Validation */
+.error-message {
+    color: #dc3545;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none; /* Hidden by default, shown by JS when invalid */
+    font-weight: 500;
+}
+
+.form-group.invalid .error-message {
+    display: block;
+}
+
+.form-group.invalid input,
+.form-

@@ -1,0 +1,124 @@
+:root {
+    --primary-color: #6a11cb; /* Deep purple */
+    --secondary-color: #2575fc; /* Bright blue */
+    --text-color: #333;
+    --light-text-color: #666;
+    --background-color: #f0f2f5;
+    --card-background: #fff;
+    --star-color-inactive: #ccc;
+    --star-color-active: #ffc107; /* Gold */
+    --star-color-hover: #ffdb58; /* Lighter gold */
+    --star-size: 2.5em;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2.5rem;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.rating-container {
+    background-color: var(--card-background);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-size: 2em;
+}
+
+.rating-description {
+    color: var(--light-text-color);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1em;
+}
+
+.star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 0.2em; /* Space between stars */
+    margin-bottom: var(--spacing-md);
+    font-size: var(--star-size);
+    cursor: pointer;
+}
+
+.star {
+    color: var(--star-color-inactive);
+    transition: color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    user-select: none; /* Prevent text selection */
+    padding: 0 0.05em; /* Small padding for better click/hover area */
+    outline: none; /* Remove default outline for custom focus style */
+}
+
+/* Visual style for stars that are part of the active rating (hover or selected) */
+.star.active {
+    color: var(--star-color-active);
+}
+
+/* Visual style for stars that have been clicked/selected */
+.star.selected {
+    color: var(--star-color-active);
+}
+
+/* Hover effect for individual stars */
+.star:hover {
+    transform: scale(1.1);
+}
+
+/* Focus state for keyboard navigation */
+.star:focus {
+    box-shadow: 0 0 0 3px var(--secondary-color), 0 0 0 6px rgba(106, 17, 203, 0.3);
+    border-radius: 4px; /* Slight border-radius for the focus ring */
+}
+
+.rating-display {
+    margin-top: var(--spacing-md);
+    font-size: 1.2em;
+    color: var(--light-text-color);
+}
+
+#current-rating-value {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    :root {
+        --star-size: 2em;
+        --spacing-md: 1rem;
+        --spacing-lg: 2rem;
+    }
+
+    .rating-container {
+        padding: var(--spacing-md);
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .rating-description,
+    .rating-display {
+        font-size: 1em;
+    }
+}
