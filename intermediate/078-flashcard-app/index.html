@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .flashcard-wrapper {
+            perspective: 1000px;
+            width: 100%;
+            height: 200px; /* Fixed height for the card */
+            max-width: 400px;
+        }
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            font-size: 1.5em;
+            text-align: center;
+            color: #333;
+        }
+        .flashcard-front {
+            background-color: #fff;
+            z-index: 2;
+        }
+        .flashcard-back {
+            background-color: #e0f7fa;
+            transform: rotateY(180deg);
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button.nav-button {
+            background-color: #007bff;
+            color: white;
+        }
+        button.nav-button:hover {
+            background-color: #0056b3;
+        }
+        button#addCardBtn {
+            background-color: #28a745;
+            color: white;
+        }
+        button#addCardBtn:hover {
+            background-color: #218838;
+        }
+        button#resetCardsBtn {
+            background-color: #dc3545;
+            color: white;
+        }
+        button#resetCardsBtn:hover {
+            background-color: #c82333;
+        }
+        .card-count {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        .no-cards {
+            font-size: 1.2em;
+            color: #888;
+            margin-top: 50px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .modal-content label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .modal-content textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            resize: vertical;
+            min-height: 80px;
+        }
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .modal-buttons button {
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+        button#saveCardBtn {
+            background-color: #28a745;
+            color: white;
+        }
+        button#cancelAddCardBtn {
+            background-color: #6c757d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flashcard App</h1>
+
+    <div class="container">
+        <div class="flashcard-wrapper" id="flashcardWrapper">
+            <!-- Flashcard content will be dynamically loaded here -->
+        </div>
+
+        <div class="card-count" id="cardCount"></div>
+
+        <div class="controls">
+            <button class="nav-button" id="prevBtn" disabled>Previous</button>
+            <button class="nav-button" id="nextBtn" disabled>Next</button>
+        </div>
+        <div class="controls">
+            <button id="addCardBtn">Add New Card</button>
+            <button id="resetCardsBtn">Reset All Cards</button>
+        </div>
+    </div>
+
+    <div id="addCardModal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Flashcard</h2>
+            <label for="frontText">Front of Card (Question):</label>
+            <textarea id="frontText" placeholder="Enter question here..."></textarea>
+            <label for="backText">Back of Card (Answer):</label>
+            <textarea id="backText" placeholder="Enter answer here..."></textarea>
+            <div class="modal-buttons">
+                <button id="saveCardBtn">Save Card</button>
+                <button id="cancelAddCardBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const flashcardWrapper = document.getElementById('flashcardWrapper');
+        const cardCountDisplay = document.getElementById('cardCount');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const addCardBtn = document.getElementById('addCardBtn');
+        const resetCardsBtn = document.getElementById('resetCardsBtn');
+
+        const addCardModal = document.getElementById('addCardModal');
+        const frontTextarea = document.getElementById('frontText');
+        const backTextarea = document.getElementById('backText');
+        const saveCardBtn = document.getElementById('saveCardBtn');
+        const cancelAddCardBtn = document.getElementById('cancelAddCardBtn');
+
+        let flashcards = [];
+        let currentCardIndex = 0;
+        let isFlipped = false; // State for the current card's flip status
+
+        const LOCAL_STORAGE_KEY = 'flashcardAppData';
+
+        // Load flashcards from localStorage
+        function loadFlashcards() {
+            const storedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+            if (storedData) {
+                flashcards = JSON.parse(storedData);
+            } else {
+                // Default cards if none in localStorage
+                flashcards = [
+                    { id: Date.now() + 1, front: 'What is the capital of France?', back: 'Paris' },
+                    { id: Date.now() + 2, front: 'What is the largest ocean on Earth?', back: 'Pacific Ocean' },
+                    { id: Date.now() + 3, front: 'Who painted the Mona Lisa?', back: 'Leonardo da Vinci' }
+                ];
+            }
+        }
+
+        // Save flashcards to localStorage
+        function saveFlashcards() {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(flashcards));
+        }
+
+        // Render the current flashcard
+        function renderCard() {
+            flashcardWrapper.innerHTML = ''; // Clear previous card
+            isFlipped = false; // Reset flip state for new card
+
+            if (flashcards.length === 0) {
+                flashcardWrapper.innerHTML = '<div class="no-cards">No flashcards yet! Click "Add New Card" to create one.</div>';
+                cardCountDisplay.textContent = '0 / 0';
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+                return;
+            }
+
+            const card = flashcards[currentCardIndex];
+            const flashcardDiv = document.createElement('div');
+            flashcardDiv.classList.add('flashcard');
+            flashcardDiv.id = `card-${card.id}`;
+
+            flashcardDiv.innerHTML = `
+                <div class="flashcard-front">${card.front}</div>
+                <div class="flashcard-back">${card.back}</div>
+            `;
+            flashcardWrapper.appendChild(flashcardDiv);
+
+            // Add click listener to flip the card
+            flashcardDiv.addEventListener('click', () => {
+                isFlipped = !isFlipped;
+                flashcardDiv.classList.toggle('flipped', isFlipped);
+            });
+
+            updateControls();
+            updateCardCount();
+        }
+
+        // Update navigation button states
+        function updateControls() {
+            prevBtn.disabled = currentCardIndex === 0;
+            nextBtn.disabled = currentCardIndex === flashcards.length - 1 || flashcards.length === 0;
+        }
+
+        // Update card count display
+        function updateCardCount() {
+            cardCountDisplay.textContent = `${flashcards.length > 0 ? currentCardIndex + 1 : 0} / ${flashcards.length}`;
+        }
+
+        // Event Listeners
+        prevBtn.addEventListener('click', () => {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                renderCard();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentCardIndex < flashcards.length - 1) {
+                currentCardIndex++;
+                renderCard();
+            }
+        });
+
+        addCardBtn.addEventListener('click', () => {
+            frontTextarea.value = '';
+            backTextarea.value = '';
+            addCardModal.style.display = 'flex';
+        });
+
+        cancelAddCardBtn.addEventListener('click', () => {
+            addCardModal.style.display = 'none';
+        });
+
+        saveCardBtn.addEventListener('click', () => {
+            const front = frontTextarea.value.trim();
+            const back = backTextarea.value.trim();
+
+            if (front && back) {
+                const newCard = {
+                    id: Date.now(),
+                    front: front,
+                    back: back
+                };
+                flashcards.push(newCard);
+                saveFlashcards();
+                currentCardIndex = flashcards.length - 1; // Go to the newly added card
+                renderCard();
+                addCardModal.style.display = 'none';
+            } else {
+                alert('Please enter text for both front and back of the card.');
+            }
+        });
+
+        resetCardsBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to reset all flashcards to default? This cannot be undone.')) {
+                localStorage.removeItem(LOCAL_STORAGE_KEY);
+                flashcards = []; // Clear current array
+                loadFlashcards(); // Load default cards
+                currentCardIndex = 0;
+                renderCard();
+                alert('Flashcards have been reset to default.');
+            }
+        });
+
+        // Initialize the app
+        loadFlashcards();
+        renderCard();
+    </script>
+</body>
+</html>

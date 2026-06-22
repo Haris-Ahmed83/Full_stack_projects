@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="quiz-container">
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <h1>Welcome to the JavaScript Quiz!</h1>
+            <p>Test your knowledge on web development fundamentals. You have <span id="initial-time">60</span> seconds to answer all questions!</p>
+            <button id="start-button" class="btn primary">Start Quiz</button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="screen hidden">
+            <div class="quiz-header">
+                <div class="timer">Time: <span id="time-left">60</span>s</div>
+            </div>
+            <h2 id="question">Question text goes here?</h2>
+            <div id="options-container" class="options-grid">
+                <!-- Answer options will be injected here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen hidden">
+            <h1>Quiz Finished!</h1>
+            <p>Your final score: <span id="score">0</span> out of <span id="total-questions"></span></p>
+            <p id="final-message">Well done!</p>
+            <button id="restart-button" class="btn primary">Restart Quiz</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

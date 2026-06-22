@@ -1,0 +1,160 @@
+/* General styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#root {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+/* Flashcard Container */
+.flashcard-container {
+    width: 100%;
+    max-width: 400px; /* Max width for the card itself */
+    height: 250px;
+    perspective: 1000px; /* For 3D effect */
+    margin: 30px auto;
+}
+
+.flashcard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d; /* Keep children in 3D space */
+    transition: transform 0.6s ease-in-out;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.flashcard.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.flashcard-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the back of the element when facing away */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    border-radius: 15px;
+    background-color: #ffffff;
+    word-wrap: break-word; /* Ensure long words break */
+    overflow: hidden; /* Hide content that overflows */
+}
+
+.flashcard-front {
+    background-color: #ffffff;
+    color: #34495e;
+}
+
+.flashcard-back {
+    background-color: #e8f5e9; /* Slightly different color for back */
+    color: #27ae60;
+    transform: rotateY(180deg); /* Initially rotated to be hidden */
+}
+
+/* Controls/Navigation */
+.controls {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+.btn-add {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-add:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+/* For smaller screens */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .flashcard-container {
+        height: 200px;
+    }
+
+    .flashcard-face {
+        font-size: 1.2em;
+        padding: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+/* Styles for adding/editing cards (if applicable) */
+.form
