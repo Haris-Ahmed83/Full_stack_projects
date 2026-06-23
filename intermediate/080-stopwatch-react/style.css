@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto+Mono:wght@400;700&display=swap');
+
+:root {
+    /* Colors */
+    --bg-color: #1a1a2e; /* Dark background */
+    --container-bg: #16213e; /* Slightly lighter dark for container */
+    --text-color: #e0e0e0; /* Light text */
+    --accent-color: #0f3460; /* Darker accent, used for display background */
+    --primary-btn-bg: #e94560; /* Reddish for start */
+    --primary-btn-text: #ffffff;
+    --secondary-btn-bg: #533483; /* Purplish for pause */
+    --secondary-btn-text: #ffffff;
+    --tertiary-btn-bg: #007bff; /* Blue for reset */
+    --tertiary-btn-text: #ffffff;
+    --quaternary-btn-bg: #808080; /* Gray for lap */
+    --quaternary-btn-text: #ffffff;
+    --disabled-color: #4a4a4a; /* Gray for disabled buttons */
+    --border-color: #0f3460; /* Dark blue border */
+
+    /* Spacing */
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+
+    /* Typography */
+    --font-family-body: 'Inter', sans-serif;
+    --font-family-display: 'Roboto Mono', monospace;
+    --font-size-base: 16px;
+    --font-size-h1: 2.5rem;
+    --font-size-display: 4rem;
+    --font-size-btn: 1.1rem;
+    --font-size-lap-title: 1.8rem;
+    --font-size-lap-item: 1rem;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    display: flex; /* Flexbox for centering content */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: var(--spacing-md);
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.container {
+    background-color: var(--container-bg);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: var(--spacing-xl);
+    text-align: center;
+    max-width: 500px;
+    width: 100%; /* Ensure it takes full width on smaller screens */
+    border: 1px solid var(--border-color);
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    margin-bottom: var(--spacing-lg);
+    color: var(--primary-btn-bg); /* Use an accent color for the title */
+    font-weight: 600;
+}
+
+.stopwatch-display {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-display);
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    letter-spacing: 2px;
+    color: var(--text-color);
+    background-color: var(--accent-color);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: 8px;
+    display: inline-block; /* To make padding effective around the text */
+}
+
+.controls {
+    display: flex; /* Flexbox for button layout */
+    justify-content: center;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    gap: var(--spacing-md); /* Space between buttons */
+    margin-bottom: var(--spacing-xl);
+}
+
+.btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: 6px;
+    font-size: var(--font-size-btn);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    min-width: 100px; /* Ensure buttons have a minimum width */
+    font-weight: 600;
+}
+
+/* Specific button styles */
+.btn.primary {
+    background-color: var(--primary-btn-bg);
+    color: var(--primary-btn-text);
+}
+
+.btn.secondary {
+    background-color: var(--secondary-btn-bg);
+    color: var(--secondary-btn-text);
+}
+
+.btn.tertiary {
+    background-color: var(--tertiary-btn-bg);
+    color: var(--tertiary-btn-text);
+}
+
+.btn.quaternary {
+    background-color: var(--quaternary-btn-bg);
+    color: var(--quaternary-btn-text);
+}
+
+/* Button hover and active states */
+.btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn.primary:hover:not(:disabled) { background-color: #ff6b84; }
+.btn.secondary:hover:not(:disabled) { background-color: #6a4c9b; }
+.btn.tertiary:hover:not(:disabled) { background-color: #0094ff; }
+.btn.quaternary:hover:not(:disabled) { background-color: #9a9a9a; }
+
+
+.btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn:disabled {
+    background-color: var(--disabled-color);
+    color: #b0b0b0;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.lap-times {
+    margin-top: var(--spacing-lg);
+    text-align: left;
+}
+
+.lap-times h2 {
+    font-size: var(--font-size-lap-title);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+#lapList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px; /* Fixed height for scrollable lap list */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--accent-color);
+}
+
+#lapList li {
+    display: flex; /* Flexbox for lap item layout */
+    justify-content: space-between;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-lap-item);
+}
+
+#lapList li:last-child {
+    border-bottom: none; /* No border for the last item */
+}
+
+#lapList li span:first-child {
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+#lapList li span:last-child {
+    font-weight: 700;
+    color: var(--primary-btn-bg); /* Highlight lap time */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    :root {
+        --font-size-h1: 2rem;
+        --font-size-display: 3rem;
+        --font-size-btn: 1rem;
+        --font-size-lap-title: 1.5rem;
+    }
+
+    .container {
+        padding: var(--spacing-lg);
+        border-radius: 8px;
+    }
+
+    .stopwatch-display {
+        font-size: var(--font-size-display);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .controls {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: stretch; /* Stretch buttons to full width */
+    }
+
+    .btn {
+        min-width: unset; /* Remove min-width for stacked buttons */
+        width: 100%;
+    }
+
+    #lapList {
+        max-height: 150px; /* Adjust max-height for smaller screens */
+    }
+}
+
+@media (max-width: 400px) {
+    :root {
+        --font-size-display: 2.5rem;
+    }
+    .stopwatch-display {
+        letter-spacing: 1px;
+    }
+}

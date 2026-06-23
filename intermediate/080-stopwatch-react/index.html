@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Stopwatch</h1>
+        <div class="stopwatch-display">
+            <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>.<span id="milliseconds">000</span>
+        </div>
+        <div class="controls">
+            <button id="startBtn" class="btn primary">Start</button>
+            <button id="pauseBtn" class="btn secondary" disabled>Pause</button>
+            <button id="resetBtn" class="btn tertiary" disabled>Reset</button>
+            <button id="lapBtn" class="btn quaternary" disabled>Lap</button>
+        </div>
+        <div class="lap-times">
+            <h2>Lap Times</h2>
+            <ul id="lapList">
+                <!-- Lap times will be inserted here by JavaScript -->
+            </ul>
+        </div>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>
