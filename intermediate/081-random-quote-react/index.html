@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Link to custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Quote Container -->
+    <div class="quote-container" id="quote-container">
+        <div class="quote-text">
+            <!-- Font Awesome icon for opening quote -->
+            <i class="fas fa-quote-left"></i>
+            <span id="quote">What you do makes a difference, and you have to decide what kind of difference you want to make.</span>
+            <!-- Font Awesome icon for closing quote -->
+            <i class="fas fa-quote-right"></i>
+        </div>
+        <div class="quote-author">
+            <span id="author">Jane Goodall</span>
+        </div>
+        <div class="button-container">
+            <button class="new-quote-btn" id="new-quote">New Quote</button>
+            <button class="share-btn twitter-btn" id="twitter" title="Tweet This Quote!">
+                <!-- Font Awesome icon for Twitter -->
+                <i class="fab fa-twitter"></i>
+            </button>
+            <button class="share-btn copy-btn" id="copy-quote" title="Copy Quote to Clipboard">
+                <!-- Font Awesome icon for Copy -->
+                <i class="fas fa-copy"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Loader element (initially hidden) -->
+    <div class="loader" id="loader"></div>
+
+    <!-- Font Awesome script for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Link to custom JavaScript, deferred for better page load performance -->
+    <script defer src="script.js"></script>
+</body>
+</html>
