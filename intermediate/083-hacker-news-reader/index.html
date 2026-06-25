@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker News Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hacker News Reader</h1>
+            <nav class="category-nav">
+                <button data-category="topstories" class="active">Top</button>
+                <button data-category="newstories">New</button>
+                <button data-category="askstories">Ask</button>
+                <button data-category="showstories">Show</button>
+                <button data-category="jobstories">Jobs</button>
+            </nav>
+        </header>
+
+        <main class="story-list">
+            <p class="loading-indicator" aria-live="polite">Loading stories...</p>
+            <p class="error-message" aria-live="assertive"></p>
+            <!-- Stories will be dynamically injected here by script.js -->
+        </main>
+
+        <div class="pagination-controls">
+            <button id="prevPage" disabled aria-label="Previous page">&laquo; Previous</button>
+            <span id="pageInfo" aria-live="polite">Page 1 of 1</span>
+            <button id="nextPage" disabled aria-label="Next page">Next &raquo;</button>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

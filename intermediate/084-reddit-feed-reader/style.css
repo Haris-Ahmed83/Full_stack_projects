@@ -1,0 +1,69 @@
+/* Basic Reset & Global Styles */
+:root {
+    --primary-color: #FF4500; /* Reddit orange */
+    --secondary-color: #0079D3; /* Reddit blue */
+    --text-color: #333;
+    --background-color: #DAE0E6; /* Light gray */
+    --card-background: #fff;
+    --border-color: #ccc;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* A common, clean font */
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 100%;
+}
+
+/* Header */
+header {
+    background-color: var(--card-background);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-color) 0px 2px 4px;
+}
+
+header h1 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Subreddit Selector */
+.subreddit-selector {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.subreddit-selector input[type="text"] {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    flex-grow: 1;
+    max-width: 300px;
+}
+
+.subreddit-selector button {
+    padding: 0.75rem 1.5rem;
