@@ -1,0 +1,13 @@
+/* Basic Reset & Body Styling */
+body {
+    font-family: 'Inter', sans-serif; /* A modern, clean font */
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a2e; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    -webkit-

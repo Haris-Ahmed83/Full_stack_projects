@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js CDN for interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Optional: Add a date picker library like flatpickr for enhanced UI -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> -->
+</head>
+<body>
+    <header>
+        <h1>Stock Market Dashboard</h1>
+    </header>
+
+    <main>
+        <section class="controls">
+            <div class="input-group">
+                <label for="stockSymbol">Stock Symbol:</label>
+                <input type="text" id="stockSymbol" placeholder="e.g., AAPL, MSFT">
+                <button id="searchButton">Search</button>
+            </div>
+            <div class="input-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate">
+            </div>
+            <div class="input-group">
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate">
+            </div>
+            <button id="applyFilters">Apply Filters</button>
+        </section>
+
+        <section class="dashboard">
+            <div class="stock-info">
+                <h2 id="currentSymbol"></h2>
+                <p>Price: <span id="currentPrice">N/A</span></p>
+                <p>Change: <span id="priceChange">N/A</span></p>
+                <p>Volume: <span id="currentVolume">N/A</span></p>
+                <p>High: <span id="dailyHigh">N/A</span></p>
+                <p>Low: <span id="dailyLow">N/A</span></p>
+            </div>
+            <div class="chart-container">
+                <canvas id="stockChart"></canvas>
+            </div>
+            <div id="errorMessage" class="error-message"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Stock Market Dashboard</p>
+    </footer>
+
+    <!-- Your main JavaScript file for API integration, chart rendering, and interactivity -->
+    <script src="script.js"></script>
+</body>
+</html>
