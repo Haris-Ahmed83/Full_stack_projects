@@ -1,0 +1,127 @@
+/* General body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 90vh;
+}
+
+/* Main editor container */
+.editor-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+}
+
+/* Toolbar styling */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #f8f8f8;
+}
+
+.toolbar button {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #555;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    min-width: 40px; /* Ensure consistent width for icons/short text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toolbar button:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-1px);
+}
+
+.toolbar button:active {
+    background-color: #c0c0c0;
+    transform: translateY(0);
+}
+
+/* Active button state */
+.toolbar button.active {
+    background-color: #007bff;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+/* Editor content area */
+.editor-content {
+    min-height: 300px;
+    padding: 15px;
+    line-height: 1.6;
+    font-size: 1rem;
+    outline: none; /* Remove default focus outline */
+    word-wrap: break-word; /* Ensure long words wrap */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    max-height: 600px; /* Optional: limit max height of editor */
+}
+
+/* Placeholder for empty editor */
+.editor-content:empty:before {
+    content: attr(data-placeholder);
+    color: #aaa;
+    pointer-events: none; /* Allows clicks to pass through */
+    display: block; /* Important for positioning */
+}
+
+/* Focus style for editor content */
+.editor-content:focus {
+    border-color: #007bff; /* A subtle indicator */
+    box-shadow: inset 0 0 0 1px #007bff; /* Inner shadow for focus */
+}
+
+/* Basic styling for common HTML elements within the editor */
+.editor-content h1, .editor-content h2, .editor-content h3, .editor-content h4, .editor-content h5, .editor-content h6 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+.editor-content p {
+    margin-bottom: 1em;
+}
+.editor-content ul, .editor-content ol {
+    margin-left: 20px;
+    margin-bottom: 1em;
+}
+.editor-content blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 10px;
+    color: #666;
+    margin: 1em 0;
+}
+.editor-content pre {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+    margin: 1em 0;
+}
+.editor-content code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.editor-content a {
+    color: #007bff;
+    text-decoration: underline;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rich Text Editor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            border: 1px solid #dcdcdc;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            background-color: #f8f8f8;
+            gap: 5px;
+        }
+        .toolbar button {
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, border-color 0.2s;
+            min-width: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .toolbar button:hover {
+            background-color: #dee2e6;
+            border-color: #adb5bd;
+        }
+        .toolbar button:active {
+            background-color: #ced4da;
+            border-color: #6c757d;
+        }
+        .toolbar button i, .toolbar button b, .toolbar button u, .toolbar button s {
+            pointer-events: none; /* Prevent icons from capturing click events */
+        }
+        .editor {
+            min-height: 400px;
+            padding: 20px;
+            outline: none;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            color: #333;
+            tab-size: 4;
+            -moz-tab-size: 4;
+            white-space: pre-wrap; /* Ensures new lines and spaces are preserved */
+            word-wrap: break-word; /* Prevents long words from overflowing */
+        }
+        .editor:focus {
+            border-color: #007bff;
+            box-shadow: inset 0 0 0 1px #007bff;
+        }
+        /* Basic styling for contentEditable content */
+        .editor p { margin: 0 0 1em 0; }
+        .editor h1, .editor h2, .editor h3, .editor h4, .editor h5, .editor h6 { margin: 0.8em 0 0.5em 0; }
+        .editor ul, .editor ol { margin: 1em 0; padding-left: 25px; }
+        .editor li { margin-bottom: 0.5em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <button data-command="bold"><b>B</b></button>
+            <button data-command="italic"><i>I</i></button>
+            <button data-command="underline"><u>U</u></button>
+            <button data-command="strikeThrough"><s>S</s></button>
+            <button data-command="insertUnorderedList">UL</button>
+            <button data-command="insertOrderedList">OL</button>
+            <button data-command="formatBlock" data-value="H1">H1</button>
+            <button data-command="formatBlock" data-value="H2">H2</button>
+            <button data-command="formatBlock" data-value="P">P</button>
+            <button data-command="createLink">Link</button>
+            <button data-command="unlink">Unlink</button>
+            <button data-command="justifyLeft">Left</button>
+            <button data-command="justifyCenter">Center</button>
+            <button data-command="justifyRight">Right</button>
+            <button data-command="justifyFull">Justify</button>
+            <button data-command="undo">Undo</button>
+            <button data-command="redo">Redo</button>
+        </div>
+        <div class="editor" contenteditable="true">
+            <p>Welcome to your Rich Text Editor!</p>
+            <p>You can <b>bold</b>, <i>italicize</i>, <u>underline</u>, or <s>strike through</s> text.</p>
+            <p>Try creating a <a href="https://example.com" target="_blank">link</a> or changing text alignment.</p>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+            </ul>
+            <ol>
+                <li>Numbered Item 1</li>
+                <li>Numbered Item 2</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const editor = document.querySelector('.editor');
+            const toolbar = document.querySelector('.toolbar');
+
+            toolbar.addEventListener('click', (event) => {
+                const button = event.target.closest('button');
+                if (!button) return;
+
+                const command = button.dataset.command;
+                const value = button.dataset.value;
+
+                editor.focus(); // Ensure the editor is focused before executing command
+
+                if (command === 'createLink') {
+                    const url = prompt('Enter the URL:', 'https://');
+                    if (url && url !== 'https://') { // Only create link if
