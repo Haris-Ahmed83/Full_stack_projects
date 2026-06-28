@@ -1,0 +1,139 @@
+/* Custom Properties */
+:root {
+    --primary-color: #6a0572; /* Darker purple */
+    --secondary-color: #9c27b0; /* Medium purple */
+    --accent-color: #e040fb; /* Bright purple/pink */
+    --text-color: #333;
+    --background-color: #f7f3f7; /* Light off-white purple */
+    --card-bg-color: #ffffff;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-bg-color: #f0f0f0;
+    --dragging-bg-color: #f5e0f7; /* Lighter purple for dragging */
+    --drag-over-border: 2px dashed var(--accent-color);
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+
+    --font-family-primary: 'Arial', sans-serif;
+    --font-family-secondary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Base Styles & Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-secondary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--spacing-md); /* Add some padding for smaller screens */
+    line-height: 1.6;
+}
+
+/* Container for the application */
+.container {
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 var(--spacing-sm) var(--spacing-xl) var(--shadow-color);
+    padding: var(--spacing-xl);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+    font-size: 2em;
+}
+
+p {
+    color: #666;
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Draggable List Styles */
+#draggable-list {
+    list-style: none; /* Remove default list bullets */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Use flexbox for list items */
+    flex-direction: column; /* Stack items vertically */
+    gap: var(--spacing-sm); /* Space between list items */
+}
+
+.draggable {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md);
+    cursor: grab; /* Indicate draggable */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+    color: var(--text-color);
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.draggable:hover {
+    background-color: var(--hover-bg-color);
+}
+
+/* Styles for when an item is being dragged */
+.draggable.dragging {
+    opacity: 0.6; /* Make dragged item semi-transparent */
+    background-color: var(--dragging-bg-color);
+    box-shadow: 0 var(--spacing-xs) var(--spacing-md) var(--shadow-color);
+    transform: scale(1.02); /* Slightly enlarge to give a lift effect */
+    border-color: var(--secondary-color);
+    cursor: grabbing;
+}
+
+/* Styles for the drop target */
+.draggable.drag-over {
+    border: var(--drag-over-border); /* Dashed border to indicate drop zone */
+    background-color: var(--dragging-bg-color);
+    transform: translateY(2px); /* Slight visual shift */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-md);
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .draggable {
+        padding: var(--spacing-sm);
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+}

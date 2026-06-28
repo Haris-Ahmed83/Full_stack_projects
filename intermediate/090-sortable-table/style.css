@@ -1,0 +1,91 @@
+/* General body styling for better presentation */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Table container styling */
+.sortable-table-container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures border-radius applies to children */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+/* Table header styling */
+thead {
+    background-color: #eef2f3;
+}
+
+th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+    position: relative; /* For sort indicator positioning */
+    user-select: none; /* Prevent text selection on click */
+    padding-right: 30px; /* Make space for the sort indicator */
+}
+
+/* Sortable header styling */
+th.sortable {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+th.sortable:hover {
+    background-color: #e0e6e9;
+}
+
+/* Active sorted column styling */
+th.sorted {
+    background-color: #dbe4e8;
+    color: #222;
+}
+
+/* Sort indicator using ::after pseudo-element */
+th.sortable::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* Centered vertically */
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+/* Show a faint arrow on hover for unsorted sortable columns */
+th.sortable:not(.sorted):hover::after {
+    content: ''; /* Ensure content is set */
+    border-top: 5px solid #aaa; /* Default down arrow (suggests initial ascending sort) */
+    opacity: 0.3;
+}
+
+/* Ascending indicator */
+th.sortable.sorted.asc::after {
+    border-bottom: 5px solid #333; /* Up arrow */
+    border-top: none; /* Clear any default top border */
+    opacity: 1;
+}
+
+/* Descending indicator */
+th.sortable.sorted.desc::after {
+    border-top: 5px solid #333; /* Down arrow */
+    border-
