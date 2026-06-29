@@ -1,0 +1,52 @@
+:root {
+    /* Light theme variables (default) */
+    --bg-color: #f0f2f5;
+    --text-color: #333;
+    --primary-color: #007bff;
+    --secondary-text-color: #666;
+    --card-bg-color: #ffffff;
+    --border-color: #e0e0e0;
+    --toggle-bg: #ccc;
+    --toggle-btn: #fff;
+    --toggle-shadow: rgba(0, 0, 0, 0.2);
+
+    /* General variables */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --border-radius: 8px;
+    --transition-speed: 0.3s ease-in-out;
+}
+
+/* Dark theme overrides */
+body.dark {
+    --bg-color: #282c36;
+    --text-color: #f0f0f0;
+    --primary-color: #61dafb; /* React blue */
+    --secondary-text-color: #b0b0b0;
+    --card-bg-color: #3a3f4a;
+    --border-color: #4a4f5a;
+    --toggle-bg: #555;
+    --toggle-btn: #f0f0f0;
+    --toggle-shadow: rgba(255, 255, 255, 0.2);
+}
+
+/* Base styles */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:
