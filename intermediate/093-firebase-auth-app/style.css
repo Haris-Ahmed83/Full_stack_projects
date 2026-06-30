@@ -1,0 +1,194 @@
+/* CSS Custom Properties for easy theme management */
+:root {
+    --primary-color: #4A90E2; /* A vibrant blue for main actions */
+    --secondary-color: #6C757D; /* A neutral gray for secondary actions */
+    --text-color: #333333;
+    --background-color: #F8F9FA; /* Light gray background */
+    --card-background: #FFFFFF;
+    --border-color: #E0E0E0;
+    --error-color: #D0021B; /* Red for error messages */
+    --font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --border-radius: 8px;
+    --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Basic Reset & Body Styles */
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox for full page layout */
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    box-shadow: var(--shadow-medium);
+}
+
+h1, h2 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    color: inherit;
+}
+
+header h1 {
+    color: white;
+}
+
+/* Main Container Styling (Flexbox for centering content) */
+.container {
+    flex-grow: 1; /* Allows container to take up remaining vertical space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg);
+}
+
+/* Card Styling for Auth and Protected Sections */
+.card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    padding: var(--spacing-lg);
+    width: 100%;
+    max-width: 400px; /* Max width for the card on larger screens */
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: var(--spacing-md);
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: bold;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: calc(100% - (var(--spacing-sm) * 2)); /* Full width minus padding */
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    /* Use rgba for focus shadow for a subtle effect */
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2); 
+}
+
+/* Button Group Styling (Flexbox for horizontal alignment) */
+.button-group {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+/* General Button Styling */
+.btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease; /* Smooth transitions for hover effects */
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: #3A7BD5; /* Slightly darker primary color on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.secondary-btn:hover {
+    background-color: #5A6268; /* Slightly darker secondary color on hover */
+    transform: translateY(-2px);
+}
+
+/* Error Message Styling */
+.error-message {
+    color: var(--error-color);
+    margin-top: var(--spacing-sm);
+    min-height: 1.5rem; /* Reserve space to prevent layout shift when error appears */
+    text-align: center;
+}
+
+/* Auth Toggle Link Styling */
+.auth-toggle {
+    margin-top: var(--spacing-md);
+    font-size: 0.9rem;
+}
+
+.auth-toggle a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-toggle a:hover {
+    text-decoration: underline;
+}
+
+/* Protected Section Specific Styles */
+#protected-section p {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+}
+
+#protected-section p strong {
+    color: var(--primary-color);
+}
+
+/* Responsive Design with Media Queries */
+@media (max-width: 600px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    .card {
+        padding: var(--spacing-md);
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+    }
+
+    .btn {
+        width: 100%; /* Full width buttons on small screens */
+    }
+}

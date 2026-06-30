@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Auth Login</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts - Roboto for a modern UI look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="container">
+        <h1>Google Auth Login</h1>
+        <p>Sign in with your Google account to securely access your personalized profile.</p>
+
+        <!-- Authentication Section (visible when logged out) -->
+        <section id="auth-section">
+            <button id="google-login-btn" class="btn primary-btn">
+                <!-- Google icon from Firebase UI for consistent branding -->
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google icon" class="google-icon">
+                Sign in with Google
+            </button>
+            <p class="error-message" id="error-message" aria-live="assertive"></p>
+        </section>
+
+        <!-- User Profile Section (visible when logged in) -->
+        <section id="profile-section" class="hidden">
+            <h2 class="profile-title">Welcome!</h2>
+            <div class="profile-card">
+                <img id="profile-photo" src="" alt="Profile Photo" class="profile-photo">
+                <p class="profile-name" id="profile-name"></p>
+                <p class="profile-email" id="profile-email"></p>
+            </div>
+            <button id="logout-btn" class="btn secondary-btn">Logout</button>
+        </section>
+    </main>
+
+    <!-- Defer script execution until HTML is parsed and allow ES module imports -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
