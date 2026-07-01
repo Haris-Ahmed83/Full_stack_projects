@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .comment-form {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #e8f0fe;
+            border-radius: 8px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .comment-form input[type="text"],
+        .comment-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .comment-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .comment-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .comment-form button:hover {
+            background-color: #45a049;
+        }
+
+        #comments-section {
+            padding-top: 20px;
+        }
+
+        .comment-item {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .comment-item.reply {
+            margin-left: 40px;
+            border-left: 3px solid #add8e6;
+            background-color: #f9fcff;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .comment-timestamp {
+            font-size: 0.8em;
+            color: #777;
+        }
+
+        .comment-content {
+            margin-bottom: 10px;
+            line-height: 1.5;
+            white-space: pre-wrap; /* Preserve line breaks */
+        }
+
+        .comment-actions button {
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-right: 10px;
+            padding: 0;
+            transition: color 0.2s ease;
+        }
+
+        .comment-actions button:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .comment-actions button.delete {
+            color: #dc3545;
+        }
+
+        .comment-actions button.delete:hover {
+            color: #a71d2a;
+        }
+
+        .reply-form {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .reply-form input[type="text"],
+        .reply-form textarea {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+
+        .reply-form textarea {
+            min-height: 60px;
+        }
+
+        .reply-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .reply-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+    <!-- Firebase SDK - Make sure to replace with your actual Firebase project config -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Discussion Board</h1>
+
+        <div class="comment-form">
+            <h2>Leave a Comment</h2>
+            <input type="text" id="comment-author" placeholder="Your Name" required>
+            <textarea id="comment-text" placeholder="Your comment..." required></textarea>
+            <button onclick="addComment()">Post Comment</button>
+        </div>
+
+        <div id="comments-section">
+            <!-- Comments will be loaded here -->
+            <p>Loading comments...</p>
+        </div>
+    </div>
+
+    <script>
+        // Your Firebase project configuration
+        // REPLACE WITH YOUR ACTUAL CONFIG
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Function to format timestamp
+        const formatTimestamp = (timestamp) => {
+            if (!timestamp) return 'No date';
+            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp); // Handle Firebase Timestamp object or raw date
+            return date.toLocaleString();
+        };
+
+        // Function to render a single comment or reply
+        const renderComment = (comment, parentElement, isReply = false) => {
+            const commentDiv = document.createElement('div');
+            commentDiv.className = `comment-item ${isReply ? 'reply' : ''}`;
+            commentDiv.dataset.id = comment.id;
+
+            commentDiv.innerHTML = `
+                <div class="comment-header">
+                    <span class="comment-author">${comment.author || 'Anonymous'}</span>
+                    <span class="comment-timestamp">${formatTimestamp(comment.timestamp)}</span>
+                </div>
+                <div class="comment-content">${comment.text}</div>
+                <div class="comment-actions">
+                    <button onclick="toggleReplyForm('${comment.id}')">Reply</button>
+                    <button onclick="editComment('${comment.id}', '${comment.author}', \`${comment.text}\`, ${isReply ? 'true' : 'false'})">Edit</button>
+                    <button class="delete" onclick="deleteComment('${comment.id}', ${isReply ? 'true' : 'false'})">Delete</button>
+                </div>
+                <div id="reply-form-${comment.id}" class="reply-form hidden">
+                    <input type="text" id="reply-author-${comment.id}" placeholder="Your Name" required>
+                    <textarea id="reply-text-${comment.id}" placeholder="Your reply..." required></textarea>
+                    <button onclick="addReply('${comment.id}')">Post Reply</button>
+                    <button onclick="toggleReplyForm('${comment.id}')">Cancel</button>
+                </div>
+                <div id="edit-form-${comment.id}" class="comment-form hidden">
+                    <input type="text" id="edit-author-${comment.id}" value="${comment.author}" required>
+                    <textarea id="edit-text-${comment.id}" required>${comment.text}</textarea>
+                    <button onclick="updateComment('${comment.id}', ${isReply ? 'true' : 'false'})">Update Comment</button>
+                    <button onclick="toggleEditForm('${comment.id}', '${comment.author}', \`${comment.text}\`)">Cancel</button>
+                </div>
+                <div class="replies-container" id="replies-for-${comment.id}"></div>
+            `;
+            parentElement.appendChild(commentDiv);
+
+            // Render replies recursively
+            if (comment.replies && comment.replies.length > 0) {
+                const repliesContainer = commentDiv.querySelector('.replies-container');
+                comment.replies.sort((a, b) => (a.timestamp && b.timestamp) ? a.timestamp.toDate() - b.timestamp.toDate() : 0);
+                comment.replies.forEach(reply => renderComment(reply, repliesContainer, true));
+            }
+        };
+
+        // Function to fetch and display all comments
+        const loadComments = () => {
+            const commentsSection = document.getElementById('comments-section');
+            commentsSection.innerHTML = '<p>Loading comments...</p>';
+
+            db.collection('comments').orderBy('timestamp', 'asc').onSnapshot(snapshot => {
+                commentsSection.innerHTML = ''; // Clear existing comments
+                if (snapshot.empty) {
+                    commentsSection.innerHTML = '<p>No comments yet. Be the first to comment!</p>';
+                    return;
+                }
+
+                snapshot.docs.forEach(doc => {
+                    const commentData = doc.data();
+                    commentData.id = doc.id;
+                    renderComment(commentData, commentsSection);
+                });
+            }, error => {
+                console.error("Error loading comments: ", error);
+                commentsSection.innerHTML = '<p style="color: red;">Error loading comments. Please try again.</p>';
+            });
+        };
+
+        // Function to add a new top-level comment
+        const addComment = async () => {
+            const authorInput = document.getElementById('comment-author');
+            const textInput = document.getElementById('comment-text');
+
+            const author = authorInput.value.trim();
+            const text = textInput.value.trim();
+
+            if (!author || !text) {
+                alert('Please enter your name and comment.');
+                return;
+            }
+
+            try {
+                await db.collection('comments').add({
+                    author: author,
+                    text: text,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    replies: [] // Initialize with an empty array for nested replies
+                });
+                authorInput.value = '';
+                textInput.value = '';
+            } catch (error) {
+                console.error("Error adding comment: ", error);
+                alert('Failed to post comment. Please try again.');
+            }
+        };
+
+        // Function to toggle reply form visibility
+        const toggleReplyForm = (commentId) => {
+            const form = document.getElementById(`reply-form-${commentId}`);
+            form.classList.toggle('hidden');
+            if (!form.classList.contains('hidden')) {
+                document.getElementById(`reply-author-${commentId}`).focus();
+            }
+        };
+
+        // Function to add a reply to a specific comment
+        const addReply = async (parentId) => {
+            const authorInput = document.getElementById(`reply-author-${parentId}`);
+            const textInput = document.getElementById(`reply-text-${parentId}`);
+
+            const author = authorInput.value.trim();
+            const text = textInput.value.trim();
+
+            if (!author || !text) {
+                alert('Please enter your name and reply.');
+                return;
+            }
+
+            const newReply = {
+                id: db.collection('comments').doc().id, // Generate a unique ID for the reply
+                author: author,
+                text: text,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            };
+
+            try {
+                // Use arrayUnion to add the new reply to the 'replies' array
+                await db.collection('comments').doc(parentId).update({
+                    replies: firebase.firestore.FieldValue.arrayUnion(newReply)
+                });
+                authorInput.value = '';
+                textInput.value = '';
+                toggleReplyForm(parentId); // Hide the form after posting
+            } catch (error) {
+                console.error("Error adding reply: ", error);
