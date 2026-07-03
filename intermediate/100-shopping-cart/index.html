@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .products-list, .cart-summary {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .products-list {
+            flex: 2;
+        }
+        .cart-summary {
+            flex: 1;
+        }
+        .product-item, .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .product-item:last-child, .cart-item:last-child {
+            border-bottom: none;
+        }
+        .product-info, .cart-info {
+            flex-grow: 1;
+        }
+        .product-info h3, .cart-info h3 {
+            margin: 0;
+            font-size: 1.1em;
+        }
+        .product-info p, .cart-info p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+        .product-actions button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .product-actions button:hover {
+            background-color: #0056b3;
+        }
+        .cart-actions {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .cart-actions button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+        }
+        .cart-actions button.add {
+            background-color: #28a745;
+        }
+        .cart-actions button.remove {
+            background-color: #ffc107; /* Changed to a warning color for decrement */
+        }
+        .cart-actions button.remove-all {
+            background-color: #dc3545; /* Red for complete removal */
+        }
+        .cart-actions button:hover.add { background-color: #218838; }
+        .cart-actions button:hover.remove { background-color: #e0a800; }
+        .cart-actions button:hover.remove-all { background-color: #c82333; }
+        .cart-total {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: right;
+        }
+        .empty-cart {
+            color: #666;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { createContext, useContext, useState, useEffect, useMemo } = React;
+
+        // 1. Create a Context
+        const CartContext = createContext();
+
+        // Sample product data
+        const PRODUCTS = [
+            { id: 1, name: "Laptop", price: 1200, description: "Powerful laptop for work and gaming" },
+            { id: 2, name: "Wireless Mouse", price: 25, description: "Ergonomic design with long battery life" },
+            { id: 3, name: "Mechanical Keyboard", price: 90, description: "Tactile switches for a satisfying typing experience" },
+            { id: 4, name: "Monitor", price: 300, description: "27-inch 4K display with vibrant colors" },
+            { id: 5, name: "Webcam", price: 50, description: "Full HD 1080p for clear video calls" },
+        ];
+
+        // 2. Create a Provider Component
+        const CartProvider = ({ children }) => {
+            const [cartItems, setCartItems] = useState(() => {
+                try {
+                    const localCart = localStorage.getItem('shoppingCart');
+                    return localCart ? JSON.parse(localCart) : [];
+                } catch (error) {
+                    console.error("Failed to parse cart from localStorage", error);
+                    return [];
+                }
+            });
+
+            useEffect(() => {
+                localStorage.setItem('shoppingCart', JSON.stringify(cartItems));
+            }, [cartItems]);
+
+            const addItemToCart = (product) => {
+                setCartItems(prevItems => {
+                    const existingItem = prevItems.find(item => item.id === product.id);
+                    if (existingItem) {
+                        return prevItems.map(item =>
+                            item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+                        );
+                    } else {
+                        return [...prevItems, { ...product, quantity: 1 }];
+                    }
+                });
+            };
+
+            const removeItemFromCart = (productId) => {
+                setCartItems(prevItems => {
+                    const existingItem = prevItems.find(item => item.id === productId);
+                    if (existingItem && existingItem.quantity > 1) {
+                        return prevItems.map(item =>
+                            item.id === productId ? { ...item, quantity: item.quantity - 1 } : item
+                        );
+                    } else {
+                        return prevItems.filter(item => item.id !== productId);
+                    }
+                });
+            };
+
+            const clearItemCompletely = (productId) => {
+                setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
+            };
+
+            const totalAmount = useMemo(() => {
+                return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+            }, [cartItems]);
+
+            const cartCount = useMemo(() => {
+                return cartItems.reduce((count, item) => count + item.quantity, 0);
+            }, [cartItems]);
+
+            const cartContextValue = {
+                cartItems,
+                addItemToCart,
+                removeItemFromCart,
+                clearItemCompletely,
+                totalAmount,
+                cartCount,
+            };
+
+            return (
+                <CartContext.Provider value={cartContextValue}>
+                    {children}
+                </CartContext.Provider>
+            );
+        };
+
+        // 3. Create a Custom Hook to use the Cart Context
+        const useCart = () => {
+            const context = useContext(CartContext);
+            if (!context) {
+                throw new Error('useCart must be used within a CartProvider');
+            }
+            return context;
+        };
+
+        // Product Item Component
+        const ProductItem = ({ product }) => {
+            const { addItemToCart } = useCart();
+            return (
+                <div className="product-item">
+                    <div className="product-info">
+                        <h3>{product.name}</h3>
+                        <p>${product.price.toFixed(2)}</p>
+                        <p>{product.description}</p>
+                    </div>
+                    <div className="product-actions">
+                        <button onClick={() => addItemToCart(product)}>Add to Cart</button>
+                    </div>
+                </div>
+            );
+        };
+
+        // Cart Item Component
+        const CartItem = ({ item }) => {
+            const { addItemToCart, removeItemFromCart, clearItemCompletely } = useCart();
+            return (
+                <div className="cart-item">
+                    <div className="cart-info">
+                        <h3>{item.name}</h3>
+                        <p>${item.price.toFixed(2)} x {item.quantity}</p>
+                    </div>
+                    <div className="cart-actions">
+                        <button className="remove" onClick={() => removeItemFromCart(item.id)}>-</button>
+                        <span>{item.quantity}</span>
+                        <button className="add" onClick={() => addItemToCart(item)}>+</button>
+                        <button className="remove-all" onClick={() => clearItemCompletely(item.id)}>Remove</button>
+                    </div>
+                </div>
+            );
+        };
+
+        // Product List Component
+        const ProductList = () => {
+            return (
+                <div className="products-list">
+                    <h2>Available Products</h2>
+                    {PRODUCTS.map(product => (
+                        <ProductItem key={product.id} product={product} />
+                    ))}
+                </div>
+            );
+        };
+
+        // Cart Summary Component
+        const CartSummary = () => {
+            const { cartItems, totalAmount, cartCount } = useCart();
+            return (
+                <div className="cart-summary">
+                    <h2>Your Cart ({cartCount} items)</h2>
+                    {cartItems.length === 0 ? (
+                        <p className="empty-cart">Your cart is empty.</p>
+                    ) : (
+                        <>
+                            {cartItems.map(item => (
+                                <CartItem key={item.id} item={item} />
+                            ))}
+                            <div className="cart-total">
+                                Total: ${totalAmount.toFixed(2)}
+                            </div>
+                        </>
+                    )}
+                </div>
+            );
+        };
+
+        // Main App Component
+        const App = () => {
+            return (
+                <CartProvider>
+                    <h1>Shopping Cart Application</h1>
+                    <div className="container">
+                        <ProductList />
+                        <CartSummary />
+                    </div>
+                </CartProvider>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

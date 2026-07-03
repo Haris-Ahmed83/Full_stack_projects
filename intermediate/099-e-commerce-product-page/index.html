@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Product Page</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for a modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="#" class="site-logo">AwesomeGadgets</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" aria-label="Shopping Cart">
+                🛒 <span id="cart-count" class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container product-page">
+        <section class="product-gallery">
+            <div class="main-image-wrapper">
+                <img id="main-product-image" src="" alt="Main Product Image" class="main-product-image">
+            </div>
+            <div id="thumbnail-gallery" class="thumbnail-gallery">
+                <!-- Thumbnails will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <section class="product-details">
+            <h1 id="product-title" class="product-title"></h1>
+            <p class="product-price"><span id="product-price"></span></p>
+            <p id="product-description" class="product-description"></p>
+
+            <div class="quantity-selector">
+                <button id="qty-decrement" aria-label="Decrease quantity">-</button>
+                <input type="number" id="qty-input" value="1" min="1" readonly aria-label="Product quantity">
+                <button id="qty-increment" aria-label="Increase quantity">+</button>
+            </div>
+
+            <button id="add-to-cart-btn" class="add-to-cart-button">Add to Cart</button>
+            <div id="add-to-cart-message" class="add-to-cart-message" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <section class="reviews-section container">
+        <h2>Customer Reviews</h2>
+        <div id="reviews-list" class="reviews-list">
+            <!-- Reviews will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2023 AwesomeGadgets. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
