@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Comparison</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+
+        .product-selection {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #e8f5e9;
+            border-radius: 6px;
+            border: 1px dashed #a5d6a7;
+        }
+
+        .product-selection label {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #2e7d32;
+            margin-right: 15px;
+        }
+
+        .product-selection select {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid #c8e6c9;
+            font-size: 1em;
+            margin-right: 10px;
+            background-color: #fff;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .product-selection select:focus {
+            border-color: #4caf50;
+        }
+
+        .product-selection button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .product-selection button:hover {
+            background-color: #43a047;
+            transform: translateY(-1px);
+        }
+        .product-selection button:active {
+            transform: translateY(0);
+        }
+
+        .comparison-table {
+            display: grid;
+            grid-template-columns: minmax(150px, 1fr); /* For feature column */
+            gap: 1px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .comparison-table > div {
+            padding: 15px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            display: flex; /* For aligning feature/value */
+            align-items: center;
+            min-height: 50px;
+        }
+        .comparison-table > div:last-child {
+            border-bottom: none;
+        }
+
+        .table-header {
+            background-color: #f8f8f8;
+            font-weight: 700;
+            text-align: center;
+            color: #555;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .feature-column {
+            background-color: #f0f4f7;
+            font-weight: 500;
+            color: #3f51b5;
+            justify-content: flex-start;
+            text-align: left;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .product-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .product-column .product-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .product-column .product-name {
+            font-weight: 600;
+            color: #2196f3;
+            margin-bottom: 5px;
+        }
+        .product-column .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #ef5350;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.8em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+        .product-column .remove-btn:hover {
+            background-color: #e53935;
+        }
+
+        .highlight {
+            background-color: #fffde7; /* Light yellow for highlighting */
+            border-left: 3px solid #ffeb3b;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .comparison-table {
+                display: block; /* Stack columns on smaller screens */
+            }
+            .comparison-table > div {
+                border-bottom: 1px solid #eee;
+            }
+            .feature-column {
+                border-right: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            .table-header {
+                text-align: left;
+                padding-left: 15px;
+            }
+            .product-column {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .product-column .product-image {
+                margin-right: 15px;
+                margin-bottom: 0;
+            }
+            .product-column .product-name {
+                flex-grow: 1;
+                margin-bottom: 0;
+            }
+            .product-column .remove-btn {
+                position: static;
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Comparison</h1>
+
+        <div class="product-selection">
+            <label for="productSelect">Add Product:</label>
+            <select id="productSelect">
+                <option value="">-- Select a Product --</option>
+                <option value="laptop_a">Laptop Pro X</option>
+                <option value="laptop_b">Laptop Ultra M</option>
+                <option value="laptop_c">Laptop Air S</option>
+                <option value="laptop_d">Laptop Elite Z</option>
+                <option value="laptop_e">Laptop Basic V</option>
+            </select>
+            <button onclick="addProduct()">Add to Compare</button>
+        </div>
+
+        <div id="comparisonGrid" class="comparison-table">
+            <!-- Header Row -->
+            <div class="table-header feature-column">Feature</div>
+            <!-- Product columns will be added here by JavaScript -->
+            <!-- Example of a product column header: -->
+            <!-- <div class="table-header product-column">
+                <img src="https://via.placeholder.com/80" alt="Product Image" class="product-image">
+                <span class="product-name">Laptop Pro X</span>
+                <button class="remove-btn" onclick="removeProduct('laptop_a')">X</button>
+            </div> -->
+        </div>
+    </div>
+
+    <script>
+        const allProductsData = {
+            laptop_a: {
+                name: "Laptop Pro X",
+                image: "https://via.placeholder.com/150/007bff/ffffff?text=Laptop+A",
+                features: {
+                    processor: "Intel Core i7-12700H",
+                    ram: "16GB DDR5",
+                    storage: "512GB NVMe SSD",
+                    display: "15.6\" OLED 4K",
+                    graphics: "NVIDIA RTX 3060",
+                    battery: "90Wh",
+                    ports: "2x USB-C, 2x USB-A, HDMI",
+                    os: "Windows 11 Pro",
+                    price: "$1899",
+                    weight: "1.8 kg"
+                }
+            },
+            laptop_b: {
+                name: "Laptop Ultra M",
+                image: "https://via.placeholder.com/150/28a745/ffffff?text=Laptop+B",
+                features: {
+                    processor: "AMD Ryzen 9 6900HS",
+                    ram: "32GB DDR5",
+                    storage: "1TB NVMe SSD",
+                    display: "14.0\" QHD IPS",
+                    graphics: "AMD Radeon RX 6700S",
+                    battery: "76Wh",
+                    ports: "2x USB-C, 1x USB-A, HDMI",
+                    os: "Windows 11 Home",
+                    price: "$2199",
+                    weight: "1.6 kg"
+                }
+            },
+            laptop_c: {
+                name: "Laptop Air S",
+                image: "https://via.placeholder.com/150/ffc107/333333?text=Laptop+C",
+                features: {
+                    processor: "Intel Core i5-1240P",
+                    ram: "8GB LPDDR4X",
+                    storage: "256GB NVMe SSD",
+                    display: "13.3\" FHD IPS",
+                    graphics: "Intel Iris Xe",
+                    battery: "60Wh",
+                    ports: "2x Thunderbolt 4, 1x USB-A",
+                    os: "Windows 11 Home",
+                    price: "$999",
+                    weight: "1.2 kg"
+                }
+            },
+            laptop_d: {
+                name: "Laptop Elite Z",
+                image: "https://via.placeholder.com/150/dc3545/ffffff?text=Laptop+D",
+                features: {
+                    processor: "Intel Core i9-12900HX",
+                    ram: "64GB DDR5",
+                    storage: "2TB NVMe SSD",
+                    display: "17.3\" QHD 240Hz",
+                    graphics: "NVIDIA RTX 3080 Ti",
+                    battery: "99Wh",
+                    ports: "3x USB-C, 3x USB-A, HDMI, Ethernet",
+                    os: "Windows 11 Pro",
+                    price: "$3499",
+                    weight: "2.8 kg"
+                }
+            },
+            laptop_e: {
+                name: "Laptop Basic V",
+                image: "https://via.placeholder.com/150/6c757d/ffffff?text=Laptop+E",
+                features: {
+                    processor: "Intel Core i3-1115G4",
+                    ram: "8GB DDR4",
+                    storage: "256GB SATA SSD",
+                    display: "15.6\" FHD TN",
+                    graphics: "Intel UHD Graphics",
+                    battery: "42Wh",
+                    ports: "1x USB-C, 2x USB-A, HDMI",
+                    os: "Windows 10 Home",
+                    price: "$599",
+                    weight: "1.9 kg"
+                }
+            }
+        };
+
+        let comparedProductIds = []; // Stores IDs of products currently in comparison
+        const comparisonGrid = document.getElementById('comparisonGrid');
+        const productSelect = document.getElementById('productSelect');
+
+        // Get all unique features from all products to define table rows
+        const allFeatures = Array.from(new Set(
+            Object.values(allProductsData).flatMap(product => Object.keys(product.features))
+        )).sort(); // Sort features alphabetically for consistent order
+
+        function renderComparisonTable() {
+            // Clear existing grid content except the first feature-column header
+            while (comparisonGrid.children.length > 1) {
+                comparisonGrid.removeChild(comparisonGrid.lastChild);
+            }
+
+            // Update grid-template-columns for CSS grid
+            comparisonGrid.style.gridTemplateColumns = `minmax(150px, 1fr) repeat(${comparedProductIds.length}, 1fr)`;
+
+            // Add product headers
+            comparedProductIds.forEach(productId => {
+                const product = allProductsData[productId];
+                const headerDiv = document.createElement('div');
+                headerDiv.classList.add('table-header', 'product-column');
+                headerDiv.dataset.productId = productId;
+                headerDiv.innerHTML = `
+                    <

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Filter App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Product Filter App</h1>
+        </header>
+
+        <main class="app-content">
+            <aside class="sidebar">
+                <h2>Filters</h2>
+
+                <div class="filter-group search-filter">
+                    <label for="search-input">Search Product</label>
+                    <input type="text" id="search-input" placeholder="e.g., laptop, shirt">
+                </div>
+
+                <div class="filter-group category-filter">
+                    <h3>Categories</h3>
+                    <div class="category-options">
+                        <label><input type="checkbox" class="category-checkbox" value="electronics"> Electronics</label>
+                        <label><input type="checkbox" class="category-checkbox" value="apparel"> Apparel</label>
+                        <label><input type="checkbox" class="category-checkbox" value="books"> Books</label>
+                        <label><input type="checkbox" class="category-checkbox" value="home"> Home Goods</label>
+                        <label><input type="checkbox" class="category-checkbox" value="food"> Food</label>
+                    </div>
+                </div>
+
+                <div class="filter-group price-filter">
+                    <h3>Price Range</h3>
+                    <div class="price-inputs">
+                        <label for="min-price">Min:</label>
+                        <input type="number" id="min-price" value="0" min="0">
+                        <label for="max-price">Max:</label>
+                        <input type="number" id="max-price" value="1000" min="0">
+                    </div>
+                    <div class="price-slider">
+                        <input type="range" id="price-range-min-slider" min="0" max="1000" value="0" step="1">
+                        <input type="range" id="price-range-max-slider" min="0" max="1000" value="1000" step="1">
+                    </div>
+                </div>
+
+                <button id="apply-filters">Apply Filters</button>
+                <button id="clear-filters">Clear Filters</button>
+            </aside>
+
+            <section class="product-grid-container">
+                <div id="product-grid" class="product-grid">
+                    <!-- Product cards will be loaded here by JavaScript or displayed as static content -->
+                    <div class="product-card" data-category="electronics" data-price="599.99">
+                        <img src="https://via.placeholder.com/150/0000FF/FFFFFF?text=Laptop" alt="Laptop">
+                        <h3>Laptop Pro</h3>
+                        <p>A powerful laptop for all your needs.</p>
+                        <span class="price">$599.99</span>
+                    </div>
+                    <div class="product-card" data-category="apparel" data-price="29.99">
+                        <img src="https://via.placeholder.com/150/FF0000/FFFFFF?text=T-Shirt" alt="T-Shirt">
+                        <h3>Comfort T-Shirt</h3>
+                        <p>Soft cotton t-shirt, various colors.</p>
+                        <span class="price">$29.99</span>
+                    </div>
+                    <div class="product-card" data-category="books" data-price="15.50">
+                        <img src="https://via.placeholder.com/150/00FF00/FFFFFF?text=Book" alt="Book">
+                        <h3>The Great Novel</h3>
+                        <p>An epic story you won't put down.</p>
+                        <span class="price">$15.50</span>
+                    </div>
+                    <div class="product-card" data-category="electronics" data-price="99.00">
+                        <img src="https://via.placeholder.com/150/FFFF00/000000?text=Headphones" alt="Headphones">
+                        <h3>Wireless Headphones</h3>
+                        <p>Immersive sound experience.</p>
+                        <span class="price">$99.00</span>
+                    </div>
+                    <div class="product-card" data-category="home" data-price="45.00">
+                        <img src="https://via.placeholder.com/150/FF00FF/FFFFFF?text=Lamp" alt="Lamp">
+                        <h3>Desk Lamp</h3>
+                        <p>Modern design, adjustable brightness.</p>
+                        <span class="price">$45.00</span>
+                    </div>
+                    <div class="product-card" data-category="apparel" data-price="75.00">
+                        <img src="https://via.placeholder.com/150/00FFFF/000000?text=Jeans" alt="Jeans">
+                        <h3>Classic Jeans</h3>
+                        <p>Durable denim, comfortable fit.</p>
+                        <span class="price">$75.00</span>
+                    </div>
+                    <div class="product-card" data-category="books" data-price="22.00">
+                        <img src="https://via.placeholder.com/150/FFA500/FFFFFF?text=Cookbook" alt="Cookbook">
+                        <h3>Healthy Cookbook</h3>
+                        <p>Delicious recipes for a healthy life.</p>
+                        <span class="price">$22.00</span>
+                    </div>
+                    <div class="product-card" data-category="home" data-price="120.00">
+                        <img src="https://via.placeholder.com/150/800080/FFFFFF?text=Rug" alt="Rug">
+                        <h3>Area Rug</h3>
+                        <p>Soft and stylish rug for your living room.</p>
+                        <span class="price">$120.00</span>
+                    </div>
+                </div>
+                <p id="no-results" style="display: none;">No products found matching your criteria.</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
