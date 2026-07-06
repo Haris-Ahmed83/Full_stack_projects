@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Scheduler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Event Scheduler</h1>
+
+        <div class="controls">
+            <button id="add-event-btn">Add New Event</button>
+        </div>
+
+        <div id="calendar-container">
+            <!-- The calendar will be rendered here by JavaScript -->
+            Loading Calendar...
+        </div>
+
+        <h2>Upcoming Events</h2>
+        <div id="event-list">
+            <!-- Events will be listed here by JavaScript -->
+            No events scheduled.
+        </div>
+    </div>
+
+    <!-- The Modal for adding/editing events -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modal-title">Add New Event</h2>
+            <form id="event-form">
+                <input type="hidden" id="event-id">
+
+                <div class="form-group">
+                    <label for="event-title">Event Title:</label>
+                    <input type="text" id="event-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-start">Start Time:</label>
+                    <input type="datetime-local" id="event-start" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-end">End Time:</label>
+                    <input type="datetime-local" id="event-end" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="event-description">Description:</label>
+                    <textarea id="event-description" rows="4"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="save-event-btn">Save Event</button>
+                    <button type="button" id="delete-event-btn" class="delete-btn" style="display: none;">Delete Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

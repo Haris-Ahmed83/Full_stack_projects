@@ -1,0 +1,111 @@
+/* Basic Reset & Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Calendar Container */
+.calendar-component {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensures rounded corners apply correctly */
+}
+
+/* Calendar Header (Month Navigation) */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #4CAF50; /* Green header */
+    color: #ffffff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.calendar-header h2 {
+    font-size: 1.8em;
+    font-weight: 500;
+}
+
+.calendar-nav-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.calendar-nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Weekday Names */
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: #e8f5e9; /* Lighter green for weekdays */
+    padding: 10px 0;
+    font-weight: bold;
+    color: #388E3C; /* Darker green text */
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.calendar-weekdays > div {
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.9em;
+}
+
+/* Days Grid */
+.calendar-days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px; /* Visual separator between cells */
+    background-color: #dcdcdc; /* Color for the gaps */
+    padding: 1px; /* Padding to ensure gaps around the grid */
+}
+
+/* Individual Day Cell */
+.calendar-day {
+    background-color: #ffffff;
+    min-height: 100px; /* Ensure a decent size for day cells */
+    padding: 10px;
+    text-align: right; /* Default for day number positioning */
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.1s ease, box-shadow 0.1s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes number to top, events to bottom */
+}
+
+.calendar-day:hover {
+    background-color: #f0f0f0;
+    box-shadow: inset 0 0 0 1px #a5d6a7; /* Subtle border on hover */
+    z-index: 1; /* Bring hovered day to front for shadow */
+}
+
+.calendar-day .day-number {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-align: left; /* Day number usually top-left */
+}
+
+/* Days not in current month */
+.calendar
