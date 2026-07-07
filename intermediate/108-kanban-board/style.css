@@ -1,0 +1,83 @@
+/* Global styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Main container for the Kanban board */
+.kanban-board-container {
+    padding: 20px;
+    width: 100%;
+    max-width: 1400px;
+    box-sizing: border-box;
+}
+
+/* Kanban board layout - horizontal scrollable */
+.kanban-board {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px; /* Space for scrollbar */
+    align-items: flex-start; /* Columns align to the top */
+}
+
+/* Kanban Column styles */
+.kanban-column {
+    flex-shrink: 0; /* Prevent columns from shrinking */
+    width: 300px; /* Fixed width for columns */
+    background-color: #ebecf0;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+    display: flex;
+    flex-direction: column;
+    min-height: 150px; /* Minimum height for empty columns */
+}
+
+.kanban-column-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #172b4d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-count {
+    background-color: #a0a0a0;
+    color: white;
+    font-size: 0.8em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+}
+
+/* Task list within a column - droppable area */
+.task-list {
+    flex-grow: 1; /* Allow the task list to take available space */
+    min-height: 50px; /* Minimum height for droppable area */
+    padding-bottom: 5px; /* Visual space */
+}
+
+/* Drag and Drop feedback for task list */
+.task-list.over {
+    outline: 2px dashed #007bff;
+    outline-offset: -5px;
+    border-radius: 5px;
+}
+
+/* Kanban Task styles - draggable items */
+.kanban-task {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 0 rgba(9, 30,

@@ -1,0 +1,231 @@
+:root {
+    /* Colors */
+    --primary-bg: #f4f5f7;
+    --secondary-bg: #ebecf0;
+    --card-bg: #ffffff;
+    --accent-color: #0079bf;
+    --text-color: #172b4d;
+    --light-text-color: #6b778c;
+    --border-color: #dfe1e6;
+    --delete-color: #eb5a46;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 12px;
+    --spacing-lg: 16px;
+    --spacing-xl: 24px;
+
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-size-base: 14px;
+    --font-size-lg: 16px;
+    --font-size-xl: 20px;
+
+    /* Border Radius */
+    --border-radius: 3px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 0 rgba(9, 30, 66, 0.25);
+    --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.4;
+    color: var(--text-color);
+    background-color: var(--primary-bg);
+    overflow-x: auto; /* Allows horizontal scrolling for the board */
+}
+
+.board-header {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding: var(--spacing-md) var(--spacing-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.board-header h1 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+}
+
+.board-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    align-items: flex-start; /* Ensures columns start at the top */
+    min-height: calc(100vh - 80px); /* Adjust based on header height */
+}
+
+.column {
+    flex-shrink: 0; /* Prevents columns from shrinking */
+    width: 280px;
+    background-color: var(--secondary-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.column-header h2 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.column-delete-btn {
+    background: none;
+    border: none;
+    color: var(--light-text-color);
+    font-size: var(--font-size-lg);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius);
+}
+
+.column-delete-btn:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+    color: var(--delete-color);
+}
+
+.cards-container {
+    flex-grow: 1; /* Allows cards container to expand */
+    min-height: var(--spacing-lg); /* Ensures drop target is visible even when empty */
+    padding-bottom: var(--spacing-sm);
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+    cursor: grab;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    word-break: break-word;
+}
+
+.card:last-of-type {
+    margin-bottom: 0;
+}
+
+.card:hover {
+    background-color: #f0f0f0;
+}
+
+.card-content {
+    flex-grow: 1;
+    padding-right: var(--spacing-sm);
+}
+
+.card-delete-btn {
+    background: none;
+    border: none;
+    color: var(--light-text-color);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.card:hover .card-delete-btn {
+    opacity: 1;
+}
+
+.card-delete-btn:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+    color: var(--delete-color);
+}
+
+.add-button {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    width: 100%;
+}
+
+.add-button:hover {
+    background-color: #026aa7;
+}
+
+.add-card-btn {
+    background-color: rgba(9, 30, 66, 0.08);
+    color: var(--light-text-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    width: 100%;
+    border: none;
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+}
+
+.add-card-btn:hover {
+    background-color: rgba(9, 30, 66, 0.13);
+    color: var(--text-color);
+}
+
+/* Drag and Drop Visuals */
+.is-dragging {
+    opacity: 0.5;
+    border: 2px dashed var(--accent-color);
+    background-color: #e0f2f7;
+    box-shadow: none;
+}
+
+.drag-over {
+    background-color: rgba(0, 121, 191, 0.1);
+    border-radius: var(--border-radius);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .board-container {
+        flex-direction: column;
+        align-items: center;
+        padding: var(--spacing-lg);
+    }
+
+    .column {
+        width: 90%; /* Make columns wider on smaller screens */
+        max-width: 400px;
+    }
+
+    .board-header {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+}
