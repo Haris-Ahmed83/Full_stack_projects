@@ -1,0 +1,15 @@
+/* Global Reset & Body Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #fafafa; /* Light gray background */
+    color: #262626; /* Dark text */
+    display: flex;
+    justify-content: center; /* Center the main content */
+    min-height: 100vh;
+}

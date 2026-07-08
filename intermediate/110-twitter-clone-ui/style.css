@@ -1,0 +1,9 @@
+/* Base Styles */
+:root {
+    --primary-color: #1DA1F2; /* Twitter Blue */
+    --secondary-color: #14171A; /* Dark Grey */
+    --text-color: #D9D9D9; /* Light Grey */
+    --border-color: #2F3336; /* Border Grey */
+    --background-color: #15202B; /* Dark Blue-Grey */
+    --card-background: #192734; /* Slightly lighter card background */
+    --hover-background: #1
