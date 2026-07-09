@@ -1,0 +1,8 @@
+/* Global Styles & Variables */
+:root {
+    --primary-bg: #121212; /* Darkest background */
+    --secondary-bg: #181818; /* Slightly lighter for cards/player */
+    --tertiary-bg: #282828; /* Even lighter for hover/active */
+    --text-color: #b3b3b3; /* Light gray text */
+    --text-color-light: #ffffff; /* White text */
+    --accent-green: #1db954; /* Spotify green

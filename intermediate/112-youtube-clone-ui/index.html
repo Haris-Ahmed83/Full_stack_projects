@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="left-section">
+            <button class="menu-button"><span class="material-icons">menu</span></button>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_of_YouTube_%282015-2017%29.svg" alt="YouTube Logo" class="youtube-logo">
+        </div>
+        <div class="middle-section">
+            <input type="text" placeholder="Search" class="search-bar">
+            <button class="search-button"><span class="material-icons">search</span></button>
+            <button class="voice-search-button"><span class="material-icons">mic</span></button>
+        </div>
+        <div class="right-section">
+            <button class="upload-button"><span class="material-icons">video_call</span></button>
+            <button class="apps-button"><span class="material-icons">apps</span></button>
+            <button class="notifications-button"><span class="material-icons">notifications</span><span class="notifications-count">3</span></button>
+            <img src="https://picsum.photos/id/237/200/300" alt="User Profile" class="user-profile-pic">
+        </div>
+    </header>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <div class="sidebar-item active">
+                <span class="material-icons">home</span>
+                <span>Home</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">explore</span>
+                <span>Explore</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">subscriptions</span>
+                <span>Subscriptions</span>
+            </div>
+            <hr>
+            <div class="sidebar-item">
+                <span class="material-icons">video_library</span>
+                <span>Library</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">history</span>
+                <span>History</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">watch_later</span>
+                <span>Watch later</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">thumb_up_alt</span>
+                <span>Liked videos</span>
+            </div>
+            <hr>
+            <div class="sidebar-heading">SUBSCRIPTIONS</div>
+            <div class="sidebar-item">
+                <img src="https://picsum.photos/id/10/50/50" alt="Channel 1" class="channel-icon">
+                <span>Channel Name 1</span>
+            </div>
+            <div class="sidebar-item">
+                <img src="https://picsum.photos/id/20/50/50" alt="Channel 2" class="channel-icon">
+                <span>Channel Name 2</span>
+            </div>
+            <div class="sidebar-item">
+                <img src="https://picsum.photos/id/30/50/50" alt="Channel 3" class="channel-icon">
+                <span>Channel Name 3</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">add_circle</span>
+                <span>Browse channels</span>
+            </div>
+            <hr>
+            <div class="sidebar-heading">MORE FROM YOUTUBE</div>
+            <div class="sidebar-item">
+                <span class="material-icons">sports_esports</span>
+                <span>Gaming</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">live_tv</span>
+                <span>Live</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">school</span>
+                <span>Learning</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">emoji_events</span>
+                <span>Sports</span>
+            </div>
+            <hr>
+            <div class="sidebar-item">
+                <span class="material-icons">settings</span>
+                <span>Settings</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">flag</span>
+                <span>Report history</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">help</span>
+                <span>Help</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="material-icons">feedback</span>
+                <span>Send feedback</span>
+            </div>
+        </aside>
+
+        <div class="content-area">
+            <div class="category-chips">
+                <button class="chip active">All</button>
+                <button class="chip">Music</button>
+                <button class="chip">Gaming</button>
+                <button class="chip">Mixes</button>
+                <button class="chip">Live</button>
+                <button class="chip">News</button>
+                <button class="chip">Cooking</button>
+                <button class="chip">Science</button>
+                <button class="chip">Programming</button>
+                <button class="chip">Comedy</button>
+                <button class="chip">JavaScript</button>
+                <button class="chip">React</button>
+                <button class="chip">CSS</button>
+                <button class="chip">HTML</button>
+            </div>
+
+            <div class="video-grid">
+                <!-- Video Card 1 -->
+                <div class="video-card">
+                    <img src="https://picsum.photos/id/100/360/202" alt="Video Thumbnail" class="thumbnail">
+                    <div class="video-info">
+                        <img src="https://picsum.photos/id/101/50/50" alt="Channel Avatar" class="channel-avatar">
+                        <div class="text-content">
+                            <h3 class="video-title">The Best Way to Learn Anything Fast</h3>
+                            <p class="channel-name">Learn Fast</p>
+                            <p class="video-stats">1.2M views &bull; 2 weeks ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 2 -->
+                <div class="video-card">
+                    <img src="https://picsum.photos/id/102/360/202" alt="Video Thumbnail" class="thumbnail">
+                    <div class="video-info">
+                        <img src="https://picsum.photos/id/103/50/50" alt="Channel Avatar" class="channel-avatar">
+                        <div class="text-content">
+                            <h3 class="video-title">Building a YouTube Clone with HTML & CSS</h3>
+                            <p class="channel-name">Web Dev Simplified</p>
+                            <p class="video-stats">500K views &bull; 1 month ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 3 -->
+                <div class="video-card">
+                    <img src="https://picsum.photos/id/104/360/202" alt="Video Thumbnail" class="thumbnail">
+                    <div class="video-info">
+                        <img src="https://picsum.photos/id/105/50/50" alt="Channel Avatar" class="channel-avatar">
+                        <div class="text-content">
+                            <h3 class="video-title">Top 10 JavaScript Features You Should Know</h3>
+                            <p class="channel-name">Code with Mosh</p>
+                            <p class="video-stats">800K views &bull; 3 months ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 4 -->
+                <div class="video-card">
+                    <img src="https://picsum.photos/id/106/360/202" alt="Video Thumbnail" class="thumbnail">
+                    <div class="video-info">
+                        <img src="https://picsum.photos/id/107/50/50" alt="Channel Avatar" class="channel-avatar">
+                        <div class="text-content">
+                            <h3 class="video-title">React Hooks Tutorial for Beginners</h3>
+                            <p class="channel-name">The Net Ninja</p>
+                            <p class="video-stats">1.5M views &bull; 6 months ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 5 -->
+                <div class="video-card">
+                    <img src="https://picsum.photos/id/108/360/202" alt="Video Thumbnail" class="thumbnail">
+                    <div class="video-info">
+                        <img src="https://picsum.photos/id/109/50/50" alt="Channel Avatar" class="channel-avatar">
+                        <div class="text-content">
+                            <h3 class="video-title">Mastering CSS Grid Layout in 10 Minutes</h3>
+                            <p class="channel-name">CSS-Tricks</p>
+                            <p class="video-stats">900K views &bull; 1 year ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 6 -->
+                <div class="video-card">
+                    <img src="https://picsum.photos/id/110/360/202" alt="Video Thumbnail" class="thumbnail">
+                    <div class="video-info">
+                        <img src="https://picsum.photos/id/111/50/50" alt="Channel Avatar" class="channel-avatar">
+                        <div class="text-content">
+                            <h3 class="video-title">Learn Python Full Course for Beginners</h3>
+                            <p class="channel-name">freeCodeCamp.org</p>
+                            <p class="video-stats">5M views &bull; 2 years ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 7 -->
+                <div class="video-card">
+                    <img src="https://picsum.photos/id/112/360/202" alt="Video Thumbnail" class="thumbnail">
+                    <div class="video-info">
+                        <img src="https://picsum.photos/id/113/50/50" alt="Channel Avatar" class="channel-avatar">
+                        <div class="text-content">
+                            <h3 class="video-title">Epic Gaming Moments Compilation 2023</h3>
+                            <p class="channel-name">Pro Gamer</p>
+                            <p class="video-stats">750K views &bull; 3 weeks ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 8 -->
+                <div class="video-card">
+                    <img src="https://picsum.photos/id/114/360/202" alt="Video Thumbnail" class="thumbnail">
+                    <div class="video-info">
+                        <img src="https://picsum.photos/id/115/50/50" alt="Channel Avatar" class="channel-avatar">
+                        <div class="text-content">
+                            <h3 class="video-title">Relaxing Lo-fi Hip Hop Radio - Beats to Study/Chill</h3>
+                            <p class="channel-name">Lofi Girl</p>
+                            <p class="video-stats">Live &bull; 10M listeners</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 9 -->
+                <div class="video-card">
+                    <img src="https://picsum.photos/id/116/360/202" alt="Video Thumbnail" class="thumbnail">
+                    <div class="video-info">
+                        <img src="https://picsum.photos/id/117/50/50" alt="Channel Avatar" class="channel-avatar">
+                        <div class="text-content">
+                            <h3 class="video-title">Cooking a Gourmet Meal in Under 30 Minutes</h3>
+                            <p class="channel-name">Tasty Food</p>
+                            <p class="video-stats">300K views &bull; 1 week ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 10 -->
+                <div class="video-card">
+                    <img src="https://picsum.photos/id/118/360/202" alt="Video Thumbnail" class="thumbnail">
+                    <div class="video-info">
+                        <img src="https://picsum.photos/id/119/50/50" alt="Channel Avatar" class="channel-avatar">
+                        <div class="text-content">
+                            <h3 class="video-title">The Science Behind Black Holes Explained</h3>
+                            <p class="channel-name">Veritasium</p>
+                            <p class="video-stats">2.5M views &bull; 4 months ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 11 -->
+                <div class="video-card">
+                    <img src="https://picsum.photos/id/120/360/202" alt="Video Thumbnail" class="thumbnail">
+                    <div class="video-info">
+                        <img src="https://picsum.photos/id/121/50/50" alt="Channel Avatar" class="channel-avatar">
+                        <div class="text-content">
+                            <h3 class="video-title">How to Stay Productive While Working Remotely</h3>
+                            <p class="channel-name">Productivity Guru</p>
+                            <p class="video-stats">450K views
