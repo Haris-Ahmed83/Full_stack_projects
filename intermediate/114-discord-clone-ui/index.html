@@ -1,0 +1,171 @@
+SCENE START
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Clone UI</title>
+    <!-- Basic styling or frameworks would be linked here for actual UI, e.g., <link rel="stylesheet" href="style.css"> -->
+</head>
+<body>
+    <div class="discord-layout">
+        <!-- Server Sidebar -->
+        <aside class="server-sidebar">
+            <div class="server-icon active">
+                <img src="https://via.placeholder.com/48/7289DA/FFFFFF?text=D" alt="Discord Icon">
+            </div>
+            <div class="server-icon">
+                <img src="https://via.placeholder.com/48/5865F2/FFFFFF?text=S1" alt="Server 1 Icon">
+            </div>
+            <div class="server-icon">
+                <img src="https://via.placeholder.com/48/5865F2/FFFFFF?text=S2" alt="Server 2 Icon">
+            </div>
+            <div class="server-icon create-server">
+                <span>+</span>
+            </div>
+        </aside>
+
+        <!-- Channel List -->
+        <nav class="channel-list-sidebar">
+            <header class="channel-list-header">
+                <h2>My Awesome Server</h2>
+                <button class="server-settings-btn">⚙️</button>
+            </header>
+            <div class="channel-search">
+                <input type="text" placeholder="Find or start a conversation">
+            </div>
+            <div class="channel-categories">
+                <div class="channel-category">
+                    <span>TEXT CHANNELS</span>
+                    <button class="add-channel-btn">+</button>
+                </div>
+                <div class="channel-item active">
+                    <span class="channel-icon">#</span>
+                    <span class="channel-name">general</span>
+                </div>
+                <div class="channel-item">
+                    <span class="channel-icon">#</span>
+                    <span class="channel-name">announcements</span>
+                </div>
+                <div class="channel-item">
+                    <span class="channel-icon">#</span>
+                    <span class="channel-name">random</span>
+                </div>
+                <div class="channel-category">
+                    <span>VOICE CHANNELS</span>
+                    <button class="add-channel-btn">+</button>
+                </div>
+                <div class="channel-item voice-channel">
+                    <span class="channel-icon">🔊</span>
+                    <span class="channel-name">General Voice</span>
+                </div>
+                <div class="channel-item voice-channel">
+                    <span class="channel-icon">🔊</span>
+                    <span class="channel-name">Gaming Lounge</span>
+                </div>
+            </div>
+            <footer class="user-panel">
+                <div class="user-avatar">
+                    <img src="https://via.placeholder.com/32/FFFFFF/000000?text=U" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <span class="username">CurrentUser</span>
+                    <span class="user-id">#1234</span>
+                </div>
+                <div class="user-controls">
+                    <button title="Mute">🎤</button>
+                    <button title="Deafen">🎧</button>
+                    <button title="User Settings">⚙️</button>
+                </div>
+            </footer>
+        </nav>
+
+        <!-- Chat Area -->
+        <main class="chat-area">
+            <header class="chat-header">
+                <div class="channel-info">
+                    <span class="channel-icon">#</span>
+                    <h3>general</h3>
+                </div>
+                <div class="chat-actions">
+                    <button class="action-btn">🔍 Search</button>
+                    <button class="action-btn">ℹ️ Info</button>
+                    <button class="action-btn">👥 Members</button>
+                </div>
+            </header>
+            <div class="chat-messages">
+                <!-- Example Message -->
+                <div class="message-item">
+                    <div class="message-avatar">
+                        <img src="https://via.placeholder.com/40/FF5733/FFFFFF?text=A" alt="Avatar">
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-author">Alice</span>
+                            <span class="message-timestamp">Today at 1:00 PM</span>
+                        </div>
+                        <p class="message-text">Hello everyone, how's it going?</p>
+                    </div>
+                </div>
+                <!-- Another Example Message -->
+                <div class="message-item">
+                    <div class="message-avatar">
+                        <img src="https://via.placeholder.com/40/33FF57/FFFFFF?text=B" alt="Avatar">
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-author">Bob</span>
+                            <span class="message-timestamp">Today at 1:05 PM</span>
+                        </div>
+                        <p class="message-text">It's going great, Alice! What about you?</p>
+                    </div>
+                </div>
+                <div class="message-item">
+                    <div class="message-avatar">
+                        <img src="https://via.placeholder.com/40/FF5733/FFFFFF?text=A" alt="Avatar">
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-author">Alice</span>
+                            <span class="message-timestamp">Today at 1:08 PM</span>
+                        </div>
+                        <p class="message-text">Just chillin', planning some frontend work for a Discord clone UI!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Input -->
+            <footer class="message-input-area">
+                <button class="attach-file-btn">+</button>
+                <input type="text" class="message-input" placeholder="Message #general">
+                <button class="emoji-btn">😀</button>
+                <button class="gif-btn">GIF</button>
+            </footer>
+        </main>
+
+        <!-- User List -->
+        <aside class="user-list-sidebar">
+            <div class="user-list-category">ONLINE — 2</div>
+            <div class="user-item">
+                <div class="user-avatar">
+                    <img src="https://via.placeholder.com/32/FF5733/FFFFFF?text=A" alt="Avatar">
+                </div>
+                <span class="username">Alice</span>
+            </div>
+            <div class="user-item">
+                <div class="user-avatar">
+                    <img src="https://via.placeholder.com/32/33FF57/FFFFFF?text=B" alt="Avatar">
+                </div>
+                <span class="username">Bob</span>
+            </div>
+            <div class="user-list-category">OFFLINE — 1</div>
+            <div class="user-item">
+                <div class="user-avatar">
+                    <img src="https://via.placeholder.com/32/AAAAAA/FFFFFF?text=C" alt="Avatar">
+                </div>
+                <span class="username">Charlie</span>
+            </div>
+        </aside>
+    </div>
+</body>
+</html>

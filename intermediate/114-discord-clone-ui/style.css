@@ -1,0 +1,8 @@
+:root {
+    --bg-primary: #1e1f22; /* Darkest background, server sidebar, channel list */
+    --bg-secondary: #2b2d31; /* Chat area background */
+    --bg-tertiary: #313338; /* Message input, hover backgrounds */
+    --bg-quaternary: #383a40; /* Even lighter for some elements */
+
+    --text-primary: #f2f3f5; /* Main text color */
+    --text-secondary: #949ba4; /* M

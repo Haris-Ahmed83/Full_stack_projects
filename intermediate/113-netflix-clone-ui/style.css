@@ -1,0 +1,13 @@
+/* Global Resets and Base Styles */
+:root {
+    --netflix-red: #e50914;
+    --text-white: #ffffff;
+    --text-gray: #a3a3a3;
+    --bg-dark: #141414;
+    --bg-medium: #1a1a1a;
+    --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --transition-speed: 0.3s ease;
+}
+
+*, *::before, *::after {
+    box-sizing
