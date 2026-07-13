@@ -1,0 +1,30 @@
+{
+  "name": "project-118-rest-api-nodejs",
+  "version": "1.0.0",
+  "description": "A RESTful API built with Node.js and Express, demonstrating CRUD operations, middleware, error handling, and data validation.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node.js",
+    "Express",
+    "REST API",
+    "CRUD Endpoints",
+    "Middleware",
+    "Error Handling",
+    "Validation",
+    "Intermediate"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "joi": "^17.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
