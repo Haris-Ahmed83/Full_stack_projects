@@ -1,0 +1,30 @@
+{
+  "name": "image-optimizer-api",
+  "version": "1.0.0",
+  "description": "An intermediate-level Image Optimizer API built with Express, utilizing the Sharp library for efficient image processing, including features like batch processing and format conversion.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "image-optimizer",
+    "api",
+    "sharp",
+    "express",
+    "batch-processing",
+    "format-conversion",
+    "intermediate",
+    "node"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.33.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
