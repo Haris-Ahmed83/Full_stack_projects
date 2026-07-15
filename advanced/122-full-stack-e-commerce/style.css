@@ -1,0 +1,15 @@
+/* General Resets and Base Styles */
+:root {
+    --primary-color: #6200EE; /* Deep Purple */
+    --primary-light: #BB86FC;
+    --secondary-color: #03DAC6; /* Teal */
+    --accent-color: #FFC107; /* Amber */
+    --background-color: #F5F5F5; /* Light Grey */
+    --surface-color: #FFFFFF; /* White */
+    --text-color-primary: #212121; /* Dark Grey */
+    --text-color-secondary: #757575; /* Medium Grey */
+    --error-color: #B00020; /* Red */
+    --success-color: #4CAF50; /* Green */
+    --warning-color: #FFEB3B; /* Yellow */
+
+    --font-family-primary: 'Roboto', sans
