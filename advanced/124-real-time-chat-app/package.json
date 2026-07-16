@@ -1,0 +1,33 @@
+{
+  "name": "real-time-chat-app",
+  "version": "1.0.0",
+  "description": "Project #124: A Real-Time Chat App built with Socket.io, MongoDB, and React, featuring online status, typing indicators, and chat rooms.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "real-time",
+    "chat",
+    "socket.io",
+    "mongodb",
+    "react",
+    "online-status",
+    "typing-indicator",
+    "rooms",
+    "advanced"
+  ],
+  "author": "Project #124 Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.3"
+  }
+}
