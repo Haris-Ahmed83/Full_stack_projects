@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Screen Share App</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; margin-top: 50px; }
+        #localVideo, #remoteVideo { width: 48%; height: 300px; background: #eee; border: 1px solid #ccc; margin: 10px; }
+        #videos { display: flex; width: 90%; justify-content: space-around; }
+        button { padding: 10px 20px; margin: 10px; cursor: pointer; }
+        #roomIdDisplay { margin-bottom: 20px; font-size: 1.2em; }
+        #callInput { padding: 8px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Screen Sharing App</h1>
+
+    <div id="roomIdDisplay"></div>
+
+    <div>
+        <button id="createRoomBtn">Create Room</button>
+        <input type="text" id="callInput" placeholder="Enter Room ID">
+        <button id="joinRoomBtn">Join Room</button>
+        <button id="startShareBtn">Start Sharing Screen</button>
+        <button id="stopShareBtn" disabled>Stop Sharing</button>
+    </div>
+
+    <div id="videos">
+        <video id="localVideo" autoplay muted></video>
+        <video id="remoteVideo" autoplay></video>
+    </div>
+
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <script>
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+        const createRoomBtn = document.getElementById('createRoomBtn');
+        const joinRoomBtn = document.getElementById('joinRoomBtn');
+        const startShareBtn = document.getElementById('startShareBtn');
+        const stopShareBtn = document.getElementById('stopShareBtn');
+        const callInput = document.getElementById('callInput');
+        const roomIdDisplay = document.getElementById('roomIdDisplay');
+
+        let peer = null;
+        let localStream = null;
+        let currentCall = null;
+
+        // Initialize PeerJS
+        function initializePeer() {
+            peer = new Peer();
+
+            peer.on('open', id => {
+                console.log('My peer ID is: ' + id);
+                roomIdDisplay.textContent = `Your ID: ${id}`;
+                createRoomBtn.disabled = false;
+            });
+
+            peer.on('call', call => {
+                console.log('Incoming call from:', call.peer);
+                // Automatically answer incoming calls
+                call.answer(localStream);
+                call.on('stream', remoteStream => {
+                    remoteVideo.srcObject = remoteStream;
+                });
+                call.on('close', () => {
+                    console.log('Call ended');
+                    remoteVideo.srcObject = null;
+                });
+                currentCall = call;
+            });
+
+            peer.on('error', err => {
+                console.error('PeerJS error:', err);
+            });
+        }
+
+        // Get local screen stream
+        async function getLocalScreenStream() {
+            try {
+                localStream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: true });
+                localVideo.srcObject = localStream;
+                startShareBtn.disabled = true;
+                stopShareBtn.disabled = false;
+
+                // Listen for screen sharing stop event
+                localStream.getVideoTracks()[0].onended = () => {
+                    console.log('Screen sharing stopped by user');
+                    stopSharing();
+                };
+            } catch (err) {
+                console.error('Error accessing screen media:', err);
+                alert('Failed to get screen sharing stream. Please ensure you grant permissions.');
+            }
+        }
+
+        // Start sharing screen
+        startShareBtn.addEventListener('click', async () => {
+            await getLocalScreenStream();
+            if (localStream && currentCall) {
+                // Replace track for existing call
+                const videoTrack = localStream.getVideoTracks()[0];
+                const audioTrack = localStream.getAudioTracks()[0];
+                const senderVideo = currentCall.peerConnection.getSenders().find(s => s.track.kind === 'video');
+                const senderAudio = currentCall.peerConnection.getSenders().find(s => s.track.kind === 'audio');
+                if (senderVideo) {
+                    senderVideo.replaceTrack(videoTrack);
+                } else {
+                    currentCall.peerConnection.addTrack(videoTrack, localStream);
+                }
+                if (senderAudio) {
+                    senderAudio.replaceTrack(audioTrack);
+                } else {
+                    currentCall.peerConnection.addTrack(audioTrack, localStream);
+                }
+            }
+        });
+
+        // Stop sharing screen
+        function stopSharing() {
+            if (localStream) {
+                localStream.getTracks().forEach(track => track.stop());
+                localStream = null;
+                localVideo.srcObject = null;
+            }
+            startShareBtn.disabled = false;
+            stopShareBtn.disabled = true;
+            if (currentCall) {
+                // If sharing stops, revert to a blank stream or end call
+                // For simplicity, we'll just remove the video track for now
+                // A more robust solution might involve sending a blank frame or renegotiating
+                const senderVideo = currentCall.peerConnection.getSenders().find(s => s.track.kind === 'video');
+                if (senderVideo) {
+                    senderVideo.replaceTrack(null); // Or replace with a static image track
+                }
+            }
+        }
+        stopShareBtn.addEventListener('click', stopSharing);
+
+
+        // Create a room (simply displays own ID)
+        createRoomBtn.addEventListener('click', () => {
+            if (!peer) {
+                alert('Peer not initialized. Please wait.');
+                return;
+            }
+            roomIdDisplay.textContent = `Room ID: ${peer.id} (Share this ID)`;
+            callInput.value = peer.id; // Pre-fill for easy joining if needed
+        });
+
+        // Join a room
+        joinRoomBtn.addEventListener('click', async () => {
+            const remoteId = callInput.value;
+            if (!remoteId) {
+                alert('Please enter a Room ID to join.');
+                return;
+            }
+            if (!peer) {
+                alert('Peer not initialized. Please wait.');
+                return;
+            }
+
+            // Ensure local stream is available before calling
+            if (!localStream) {
+                await getLocalScreenStream(); // Attempt to get screen stream on join
+                if (!localStream) {
+                    alert('Cannot join without a screen stream to share.');
+                    return;
+                }
+            }
+
+            console.log('Calling:', remoteId);
+            const call = peer.call(remoteId, localStream);
+            call.on('stream', remoteStream => {
+                remoteVideo.srcObject = remoteStream;
+            });
+            call.on('close', () => {
+                console.log('Call ended');
+                remoteVideo.srcObject = null;
+            });
+            call.on('error', err => {
+                console.error('Call error:', err);
+            });
+            currentCall = call;
+        });
+
+        // Initial setup
+        initializePeer();
+    </script>
+</body>
+</html>

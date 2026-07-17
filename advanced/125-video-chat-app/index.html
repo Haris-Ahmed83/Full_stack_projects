@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Video Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>WebRTC Video Chat</h1>
+        <p>Open this page in two separate browser tabs to simulate a call.</p>
+    </header>
+
+    <main>
+        <div class="video-container">
+            <div class="local-video-wrapper">
+                <h2>Local Stream</h2>
+                <video id="localVideo" autoplay muted playsinline></video>
+                <div class="controls">
+                    <button id="toggleAudioBtn" class="control-btn" aria-label="Toggle audio"><i class="fas fa-microphone"></i></button>
+                    <button id="toggleVideoBtn" class="control-btn" aria-label="Toggle video"><i class="fas fa-video"></i></button>
+                </div>
+            </div>
+            
+            <div class="remote-videos-wrapper">
+                <h2>Remote Streams</h2>
+                <div id="remoteVideos" class="video-grid"></div>
+            </div>
+        </div>
+
+        <div class="call-controls">
+            <button id="startCallBtn" class="action-btn primary">Start Call</button>
+            <button id="hangUpBtn" class="action-btn danger" disabled>Hang Up</button>
+        </div>
+
+        <div id="status" class="status-message">Ready to start.</div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 WebRTC Demo</p>
+    </footer>
+
+    <!-- FontAwesome for icons. Essential for modern UI with control icons. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
