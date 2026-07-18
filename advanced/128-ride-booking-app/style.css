@@ -1,0 +1,304 @@
+/* Custom Properties */
+:root {
+    --primary-color: #4A90E2;
+    --secondary-color: #50E3C2;
+    --danger-color: #e74c3c;
+    --text-color: #333;
+    --text-light: #666;
+    --background-color: #f4f7f6;
+    --card-background: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --font-family: 'Inter', sans-serif;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --border-radius: 8px;
+}
+
+/* Basic Reset & Typography */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.8rem; }
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+header h1 {
+    margin: 0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+header h1 .icon {
+    font-size: 1.8em;
+}
+
+/* Main Layout - CSS Grid */
+main {
+    flex-grow: 1;
+    display: grid;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    max-width: 1200px;
+    margin: var(--spacing-lg) auto;
+    grid-template-areas:
+        "input input"
+        "details map"
+        "history map";
+    grid-template-columns: 1fr 1.5fr; /* Adjust column width for map */
+}
+
+/* Common Section Styling */
+.card {
+    background-color: var(--card-background);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+/* Input Section */
+.ride-input-section {
+    grid-area: input;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+label {
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+input[type="text"] {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+/* Buttons */
+button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    color: white;
+    background-color: var(--primary-color);
+    width: auto; /* Default width */
+}
+
+button:hover:not(:disabled) {
+    background-color: #3a7bd5; /* Darker primary */
+    transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+#find-ride-btn {
+    align-self: flex-end; /* Align to the right in flex column */
+    margin-top: var(--spacing-sm);
+}
+
+.button-group {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+#book-ride-btn {
+    background-color: var(--secondary-color);
+    flex-grow: 1;
+}
+
+#book-ride-btn:hover:not(:disabled) {
+    background-color: #38c1a5; /* Darker secondary */
+}
+
+#cancel-ride-btn {
+    background-color: var(--danger-color);
+    flex-grow: 1;
+}
+
+#cancel-ride-btn:hover:not(:disabled) {
+    background-color: #c0392b;
+}
+
+/* Ride Details Section */
+.ride-details-section {
+    grid-area: details;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+}
+
+.status-message {
+    font-style: italic;
+    color: var(--text-light);
+    min-height: 1.5rem; /* Reserve space */
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Map Section */
+.map-section {
+    grid-area: map;
+    height: 500px; /* Fixed height for map */
+    display: flex; /* To contain map div */
+    padding: 0; /* Map div will have its own border/shadow if desired */
+    overflow: hidden; /* Ensure map doesn't overflow its container */
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    background-color: #e0e0e0; /* Placeholder background */
+}
+
+/* Ride History Section */
+.ride-history-section {
+    grid-area: history;
+}
+
+#ride-history-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+#ride-history-list li {
+    background-color: var(--background-color);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    font-size: 0.95rem;
+}
+
+#ride-history-list li strong {
+    color: var(--primary-color);
+}
+
+/* Utility classes */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    main {
+        grid-template-areas:
+            "input"
+            "details"
+            "map"
+            "history";
+        grid-template-columns: 1fr; /* Single column layout */
+        padding: var(--spacing-md);
+    }
+
+    .map-section {
+        height: 400px; /* Slightly smaller map on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+
+    main {
+        gap: var(--spacing-md);
+        padding: var(--spacing-sm);
+    }
+
+    .card {
+        padding: var(--spacing-sm);
+    }
+
+    .map-section {
+        height: 300px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #find-ride-btn {
+        align-self: stretch; /* Make it full width */
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+}
