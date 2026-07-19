@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="site-logo">Job Board</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/jobs">Browse Jobs</a></li>
+                    <li><a href="/post-job">Post a Job</a></li>
+                    <li class="auth-links">
+                        <a href="/login">Login</a>
+                        <a href="/register">Register</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <section class="hero-section">
+            <div class="container">
+                <h1>Find Your Dream Job</h1>
+                <p>Explore thousands of job opportunities from top companies.</p>
+                <form class="search-form">
+                    <input type="text" placeholder="Job title, keywords, company..." class="search-input">
+                    <input type="text" placeholder="Location" class="location-input">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="job-listings-section">
+            <div class="container">
+                <div class="filters-sidebar">
+                    <h3>Filter Jobs</h3>
+                    <div class="filter-group">
+                        <h4>Category</h4>
+                        <label><input type="checkbox" name="category" value="tech"> Tech</label>
+                        <label><input type="checkbox" name="category" value="marketing"> Marketing</label>
+                        <label><input type="checkbox" name="category" value="design"> Design</label>
+                        <!-- More categories -->
+                    </div>
+                    <div class="filter-group">
+                        <h4>Job Type</h4>
+                        <label><input type="checkbox" name="job-type" value="full-time"> Full-time</label>
+                        <label><input type="checkbox" name="job-type" value="part-time"> Part-time</label>
+                        <label><input type="checkbox" name="job-type" value="contract"> Contract</label>
+                    </div>
+                    <button class="apply-filters-button">Apply Filters</button>
+                </div>
+
+                <div class="job-list">
+                    <h2>Latest Jobs</h2>
+                    <div class="job-card">
+                        <h3>Software Engineer</h3>
+                        <p class="company">Tech Innovators Inc.</p>
+                        <p class="location">San Francisco, CA</p>
+                        <p class="description">Developing scalable web applications using modern frameworks.</p>
+                        <a href="/job/123" class="view-details-button">View Details</a>
+                    </div>
+                    <div class="job-card">
+                        <h3>Marketing Manager</h3>
+                        <p class="company">Global Solutions Co.</p>
+                        <p class="location">New York, NY</p>
+                        <p class="description">Lead marketing campaigns and strategy for new products.</p>
+                        <a href="/job/124" class="view-details-button">View Details</a>
+                    </div>
+                    <div class="job-card">
+                        <h3>UX/UI Designer</h3>
+                        <p class="company">Creative Minds Studio</p>
+                        <p class="location">Remote</p>
+                        <p class="description">Design intuitive and engaging user experiences.</p>
+                        <a href="/job/125" class="view-details-button">View Details</a>
+                    </div>
+                    <!-- More job cards will be dynamically loaded here -->
+
+                    <div class="pagination">
+                        <a href="#" class="page-link disabled">Previous</a>
+                        <a href="#" class="page-link active">1</a>
+                        <a href="#" class="page-link">2</a>
+                        <a href="#" class="page-link">3</a>
+                        <a href="#" class="page-link">Next</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2023 Job Board Platform. All rights reserved.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

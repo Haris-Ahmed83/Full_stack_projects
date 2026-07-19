@@ -1,0 +1,22 @@
+/* style.css */
+
+/* 1. Global Reset & Box-Sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Variables */
+:root {
+    --primary-color: #007bff; /* Blue */
+    --secondary-color: #6c757d; /* Gray */
+    --accent-color: #28a745; /* Green */
+    --danger-color: #dc3545; /* Red */
+    --light-bg: #f8f9fa; /* Light Gray Background */
+    --dark-text: #343a40; /* Dark Gray Text */
+    --light-text: #ffffff; /* White Text */
+    --border-color: #dee2e6; /* Light Border */
+    --card-bg: #

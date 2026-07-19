@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-logo"><a href="#" id="brand-link">Freelance Connect</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" data-view="projects-list-view" class="nav-link active">Browse Projects</a></li>
+                    <li><a href="#" data-view="post-project-view" class="nav-link">Post Project</a></li>
+                    <li><a href="#" data-view="my-profile-view" class="nav-link">My Profile</a></li>
+                    <li><a href="#" data-view="messages-view" class="nav-link">Messages</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="app-container" class="container">
+        <!-- Projects List View -->
+        <section id="projects-list-view" class="view active">
+            <h2>Available Projects</h2>
+            <div id="projects-list" class="project-grid"></div>
+        </section>
+
+        <!-- Project Detail View -->
+        <section id="project-detail-view" class="view">
+            <button class="back-button" data-view="projects-list-view">&larr; Back to Projects</button>
+            <div id="project-details" class="project-details-card">
+                <!-- Project details will be loaded here by script.js -->
+            </div>
+            <h3>Place a Bid</h3>
+            <form id="place-bid-form" class="form-card">
+                <label for="bid-amount">Bid Amount ($):</label>
+                <input type="number" id="bid-amount" name="bidAmount" min="1" required>
+
+                <label for="bid-message">Your Proposal:</label>
+                <textarea id="bid-message" name="bidMessage" rows="5" required></textarea>
+
+                <button type="submit" class="btn btn-primary">Submit Bid</button>
+            </form>
+        </section>
+
+        <!-- Post Project View -->
+        <section id="post-project-view" class="view">
+            <h2>Post a New Project</h2>
+            <form id="post-project-form" class="form-card">
+                <label for="project-title">Project Title:</label>
+                <input type="text" id="project-title" name="title" required>
+
+                <label for="project-description">Description:</label>
+                <textarea id="project-description" name="description" rows="8" required></textarea>
+
+                <label for="project-budget">Budget ($):</label>
+                <input type="number" id="project-budget" name="budget" min="1" required>
+
+                <label for="project-skills">Required Skills (comma-separated):</label>
+                <input type="text" id="project-skills" name="skills" placeholder="e.g., JavaScript, CSS, HTML">
+
+                <button type="submit" class="btn btn-primary">Post Project</button>
+            </form>
+        </section>
+
+        <!-- My Profile View -->
+        <section id="my-profile-view" class="view">
+            <h2>My Profile</h2>
+            <div id="profile-card" class="profile-card">
+                <!-- User profile details will be loaded here by script.js -->
+            </div>
+        </section>
+
+        <!-- Messages View -->
+        <section id="messages-view" class="view">
+            <h2>Messages</h2>
+            <div class="message-list-card">
+                <p>No messages yet. Start bidding on projects or post one to connect with freelancers!</p>
+                <p><em>(Messaging system not implemented in this demo for brevity.)</em></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2023 Freelance Connect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

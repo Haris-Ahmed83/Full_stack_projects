@@ -1,0 +1,19 @@
+This Freelance Marketplace project provides a clean, modern UI with essential features like browsing projects, viewing details, posting new projects, and placing bids. User profiles and a basic messaging placeholder are also included.
+
+Key features implemented:
+- **Dynamic View Switching:** Navigation links and back buttons seamlessly switch between different sections (Browse Projects, Post Project, My Profile, Messages, Project Details).
+- **Project Listing:** Displays a grid of project cards with title, budget, and a description snippet.
+- **Project Details:** Shows comprehensive information about a selected project, including its description, budget, and a list of existing bids. Allows placing a new bid.
+- **Project Posting:** A form to create and add new projects to the marketplace.
+- **Bidding System:** Users can place bids on projects. The system also handles updating existing bids.
+- **User Profile:** Displays details for a simulated current user, including projects they've posted and projects they've bid on.
+- **Responsive Design:** Adapts layout for various screen sizes using media queries.
+- **Modern CSS:** Utilizes Flexbox for navigation and card layouts, custom properties for theme management, and responsive units.
+- **Vanilla JavaScript:** All interactivity is handled without external libraries, using DOM manipulation and event listeners.
+- **In-memory Data:** All project, user, and bid data is stored in JavaScript arrays for simplicity in this client-side demo.
+
+To run:
+1. Save the content of 'index.html' to `index.html`.
+2. Save the content of 'style.css' to `style.css`.
+3. Save the content of 'script.js' to `script.js`.
+4. Open `index.html` in your web browser.
