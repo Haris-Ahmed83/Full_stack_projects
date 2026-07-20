@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #004085;
+            padding: 0.5em 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8em 1.5em;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #002a5c;
+        }
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            margin: 2em auto;
+            background-color: white;
+            padding: 2em;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        section {
+            margin-bottom: 2em;
+            padding-bottom: 1em;
+            border-bottom: 1px solid #eee;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 0.8em 1.5em;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 1em;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        .btn-primary {
+            background-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+        }
+        .results-table th, .results-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .results-table th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #333;
+            color: white;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Online Exam System</h1>
+        <p>Your platform for efficient and secure online assessments.</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#take-exam">Take Exam</a>
+        <a href="#results">Results Dashboard</a>
+        <a href="#admin">Admin Panel</a>
+    </nav>
+
+    <div class="container">
+        <section id="home">
+            <h2>Welcome to the Online Exam System!</h2>
+            <p>Prepare for your exams, test your knowledge, and track your progress with our comprehensive online examination platform. Featuring a robust <strong>Question Bank</strong>, real-time <strong>Timer</strong>, instant <strong>Scoring</strong>, and a detailed <strong>Results Dashboard</strong>.</p>
+            <p>Administrators can manage exams, questions, and users through the dedicated <strong>Admin Panel</strong>.</p>
+            <a href="#take-exam" class="btn btn-primary">Get Started - Take an Exam!</a>
+        </section>
+
+        <section id="take-exam">
+            <h2>Take an Exam</h2>
+            <p>Ready to challenge yourself? Select an exam from the list below and begin. You'll have a timer counting down, so manage your time wisely!</p>
+            <div id="exam-list">
+                <p><em>(In a real application, a list of available exams would be dynamically loaded here from the Question Bank.)</em></p>
+                <p>No exams available yet. Please check back later or contact support.</p>
+                <!-- Example of how an exam link might look -->
+                <!-- <a href="exam.html?id=101" class="btn">Start General Knowledge Exam</a> -->
+            </div>
+            <p><em>Key Concepts: Timer, Question Bank</em></p>
+        </section>
+
+        <section id="results">
+            <h2>Results Dashboard</h2>
+            <p>View your past exam performance, scores, and detailed breakdowns here.</p>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Exam Name</th>
+                        <th>Score</th>
+                        <th>Date Taken</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mathematics Fundamentals</td>
+                        <td>85%</td>
+                        <td>2023-10-26</td>
+                        <td>Passed</td>
+                        <td><a href="#">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>English Grammar Test</td>
+                        <td>72%</td>
+                        <td>2023-10-20</td>
+                        <td>Passed</td>
+                        <td><a href="#">View</a></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"><em>(More results would be dynamically loaded here, demonstrating Scoring and Results Dashboard.)</em></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>Key Concepts: Scoring, Results Dashboard</em></p>
+        </section>
+
+        <section id="admin">
+            <h2>Admin Panel</h2>
+            <p>For administrators to manage exams, questions, users, and review system analytics.</p>
+            <p>
+                <a href="admin/login.html" class="btn">Go to Admin Login</a>
+            </p>
+            <p><em>Key Concept: Admin Panel</em></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Online Exam System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
