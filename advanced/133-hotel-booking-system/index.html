@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .hero {
+            background: url('https://via.placeholder.com/1500x500/007bff/ffffff?text=Your+Dream+Stay+Awaits') no-repeat center center/cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero h2 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+        .search-form-section {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-top: -60px; /* Overlap with hero */
+            position: relative;
+            z-index: 3;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            align-items: flex-end;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #495057;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: calc(100% - 22px); /* Account for padding and border */
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        .search-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
+        .search-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px 0;
+            font-size: 2.5em;
+            color: #007bff;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #28a745;
+            border-radius: 2px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .feature-item {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .feature-item h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .feature-item p {
+            color: #6c757d;
+        }
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 80px;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #6c757d;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HotelBooking System</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Search Hotels</a></li>
+                    <li><a href="#">My Bookings</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Admin Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Discover and Book Your Ideal Hotel</h2>
+            <p>Experience seamless booking, real-time availability, and secure payments for your next adventure.</p>
+        </div>
+    </section>
+
+    <section class="search-form-section container">
+        <form class="search-form" action="#" method="GET">
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" id="destination" name="destination" placeholder="e.g., Paris, New York, Tokyo" required>
+            </div>
+            <div class="form-group">
+                <label for="checkin">Check-in Date</label>
+                <input type="date" id="checkin" name="checkin" required>
+            </div>
+            <div class="form-group">
+                <label for="checkout">Check-out Date</label>
+                <input type="date" id="checkout" name="checkout" required>
+            </div>
+            <div class="form-group">
+                <label for="guests">Guests</label>
+                <input type="number" id="guests" name="guests" min="1" value="1" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="search-button">Search Hotels</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Key Features for Your Advanced Experience</h2>
+        <div class="features">
+            <div class="feature-item">
+                <h3>Intelligent Search Engine</h3>
+                <p>Find the perfect hotel with advanced filters, location-based search, and smart recommendations tailored to your preferences.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Dynamic Availability Calendar</h3>
+                <p>View real-time room availability across different dates and room types, making planning effortless and accurate.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Streamlined Booking Flow</h3>
+                <p>A multi-step, user-friendly process from room selection to confirmation, designed for clarity and efficiency.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Secure Payment Gateway</h3>
+                <p>Integrate with leading payment providers for secure, encrypted transactions, supporting various payment methods.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Comprehensive Admin Panel</h3>
+                <p>Empower hotel managers with tools to manage inventory, rates, bookings, user accounts, and generate reports.</p>

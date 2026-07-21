@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="container">
+            <h1>Flight Booker</h1>
+        </div>
+    </header>
+
+    <main class="app-main container">
+        <!-- Search Section -->
+        <section id="search-section" class="app-section">
+            <h2>Find Your Flight</h2>
+            <form id="flight-search-form" class="form-grid">
+                <div class="form-group">
+                    <label for="origin">Origin</label>
+                    <input type="text" id="origin" value="JFK" placeholder="e.g., JFK" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" value="LAX" placeholder="e.g., LAX" required>
+                </div>
+                <div class="form-group">
+                    <label for="departure-date">Departure Date</label>
+                    <input type="date" id="departure-date" value="2023-12-25" required>
+                </div>
+                <div class="form-group">
+                    <label for="return-date">Return Date (Optional)</label>
+                    <input type="date" id="return-date">
+                </div>
+                <div class="form-group">
+                    <label for="passengers">Passengers</label>
+                    <input type="number" id="passengers" value="1" min="1" required>
+                </div>
+                <button type="submit" class="btn primary full-width">Search Flights</button>
+            </form>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="app-section hidden">
+            <h2>Available Flights</h2>
+            <div class="filters-sort-bar">
+                <div class="filter-group">
+                    <label for="sort-by">Sort by:</label>
+                    <select id="sort-by">
+                        <option value="price-asc">Price (Lowest)</option>
+                        <option value="price-desc">Price (Highest)</option>
+                        <option value="duration-asc">Duration (Shortest)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="non-stop-filter">
+                    <label for="non-stop-filter">Non-stop only</label>
+                </div>
+            </div>
+            <div id="flight-results-list" class="flight-list-grid">
+                <!-- Flight cards will be injected here -->
+            </div>
+            <button id="back-to-search" class="btn secondary mt-large">Back to Search</button>
+        </section>
+
+        <!-- Seat Selection Section -->
+        <section id="seat-selection-section" class="app-section hidden">
+            <h2>Select Your Seat</h2>
+            <div id="selected-flight-details" class="flight-details-summary">
+                <!-- Selected flight details will be injected here -->
+            </div>
+            <div class="seat-map-container">
+                <div id="seat-map" class="seat-map">
+                    <!-- Seats will be injected here -->
+                </div>
+                <div class="seat-legend">
+                    <span class="legend-item"><span class="seat available"></span> Available</span>
+                    <span class="legend-item"><span class="seat selected"></span> Selected</span>
+                    <span class="legend-item"><span class="seat occupied"></span> Occupied</span>
+                </div>
+            </div>
+            <p class="selected-seat-info">Selected Seat: <span id="selected-seat-info-display">None</span></p>
+            <div class="actions-bar">
+                <button id="confirm-seat-selection" class="btn primary" disabled>Confirm Seat</button>
+                <button id="back-to-results" class="btn secondary">Back to Results</button>
+            </div>
+        </section>
+
+        <!-- Booking Summary Section -->
+        <section id="booking-summary-section" class="app-section hidden">
+            <h2>Booking Summary</h2>
+            <div id="booking-details" class="booking-summary-details">
+                <!-- Summary details will be injected here -->
+            </div>
+            <div class="actions-bar">
+                <button id="confirm-booking" class="btn primary">Confirm Booking</button>
+                <button id="back-to-seat-selection" class="btn secondary">Back to Seat Selection</button>
+            </div>
+        </section>
+
+        <!-- Confirmation Section -->
+        <section id="confirmation-section" class="app-section hidden">
+            <h2>Booking Confirmed!</h2>
+            <p class="confirmation-message">Thank you for your booking. Your e-ticket has been sent to your email address.</p>
+            <button id="start-new-search" class="btn primary">Start New Search</button>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <p>&copy; 2023 Flight Booker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

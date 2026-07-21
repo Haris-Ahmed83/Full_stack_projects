@@ -1,0 +1,18 @@
+/* General Resets and Box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #007bff; /* Blue for primary actions/branding */
+    --secondary-color: #6c757d; /* Grey for secondary actions/text */
+    --accent-color: #28a745; /* Green for success/availability */
+    --warning-color: #ffc107; /* Yellow for warnings/pending */
+    --danger-color: #dc3545; /* Red for errors/unavailable */
+    --light-bg: #f8f9fa; /* Light background */
+    --dark-text: #343a40; /* Dark text */
+    --border-color: #dee2e6; /* Border
