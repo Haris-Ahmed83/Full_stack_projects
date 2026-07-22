@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='80' text-anchor='middle' dominant-baseline='central'%3E%F0%9F%93%8B%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Project Manager</h1>
+        <div class="header-actions">
+            <button class="btn btn-primary" id="addTaskBtn">+ Add Task</button>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <nav class="sidebar">
+            <button class="sidebar-btn active" data-view="tasks">Tasks</button>
+            <button class="sidebar-btn" data-view="sprint-board">Sprint Board</button>
+            <button class="sidebar-btn" data-view="gantt-chart">Gantt Chart</button>
+            <button class="sidebar-btn" data-view="teams">Teams</button>
+        </nav>
+
+        <section class="content" id="appContent">
+            <!-- Content will be dynamically loaded here by JavaScript -->
+            <div class="loading-spinner"></div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Add New Task</h2>
+            <form id="taskForm">
+                <label for="taskName">Task Name:</label>
+                <input type="text" id="taskName" name="name" required>
+
+                <label for="taskDescription">Description:</label>
+                <textarea id="taskDescription" name="description"></textarea>
+
+                <label for="taskAssignee">Assignee:</label>
+                <input type="text" id="taskAssignee" name="assignee">
+
+                <label for="taskStatus">Status:</label>
+                <select id="taskStatus" name="status">
+                    <option value="todo">To Do</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+
+                <label for="taskDueDate">Due Date:</label>
+                <input type="date" id="taskDueDate" name="dueDate" required>
+
+                <label for="taskStartDate">Start Date:</label>
+                <input type="date" id="taskStartDate" name="startDate" required>
+
+                <label for="taskEndDate">End Date:</label>
+                <input type="date" id="taskEndDate" name="endDate" required>
+
+                <button type="submit" class="btn btn-primary">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="teamModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Add New Team</h2>
+            <form id="teamForm">
+                <label for="teamName">Team Name:</label>
+                <input type="text" id="teamName" name="name" required>
+
+                <label for="teamMembers">Members (comma-separated):</label>
+                <input type="text" id="teamMembers" name="members" placeholder="Alice, Bob, Charlie">
+
+                <button type="submit" class="btn btn-primary">Add Team</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

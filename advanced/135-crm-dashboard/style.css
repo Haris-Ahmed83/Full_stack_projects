@@ -1,0 +1,18 @@
+:root {
+    /* Colors */
+    --primary-color: #5C6BC0; /* Indigo */
+    --primary-light: #7986CB;
+    --primary-dark: #3F51B5;
+    --accent-color: #FFC107; /* Amber */
+    --text-color: #333;
+    --text-light: #666;
+    --bg-color: #f4f7f6; /* Light grey background */
+    --card-bg: #fff;
+    --border-color: #e0e0e0;
+    --success-color: #4CAF50;
+    --warning-color: #FF9800;
+    --danger-color: #F44336;
+    --info-color: #2196F3;
+
+    /* Spacing */
+    --spacing-xs: 8px;
