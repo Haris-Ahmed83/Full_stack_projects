@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+</head>
+<body>
+    <header class="app-header">
+        <h1>AI Image Generator ✨</h1>
+    </header>
+
+    <main class="app-container">
+        <section class="prompt-section">
+            <label for="prompt-input" class="sr-only">Enter your image prompt:</label>
+            <textarea id="prompt-input" placeholder="A futuristic city at sunset, cyberpunk style, neon lights, highly detailed, 8k" rows="4"></textarea>
+            <div class="controls">
+                <select id="image-size">
+                    <option value="512x512">512x512</option>
+                    <option value="1024x1024" selected>1024x1024</option>
+                    <option value="1792x1024">1792x1024</option>
+                    <option value="1024x1792">1024x1792</option>
+                </select>
+                <button id="generate-btn">Generate Images</button>
+            </div>
+            <div id="loading-indicator" class="loading-spinner hidden"></div>
+            <p id="error-message" class="error-message hidden"></p>
+        </section>
+
+        <section class="gallery-section">
+            <h2>Generated Images</h2>
+            <div id="image-gallery" class="image-gallery">
+                <!-- Image cards will be inserted here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2023 AI Image Generator. Powered by imagination (and a simulated API).</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
