@@ -1,0 +1,32 @@
+{
+  "name": "api-documentation-generator",
+  "version": "1.0.0",
+  "description": "An advanced API documentation generator featuring Markdown parsing, auto-generation, interactive try-it functionality, and code samples.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "documentation",
+    "generator",
+    "markdown",
+    "auto-generate",
+    "interactive",
+    "code-samples",
+    "advanced"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "marked": "^12.0.2",
+    "highlight.js": "^11.9.0",
+    "ejs": "^3.1.10"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

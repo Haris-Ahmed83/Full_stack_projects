@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippet Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Example for syntax highlighting library CSS. Replace with your chosen library. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+</head>
+<body>
+    <header>
+        <h1>Code Snippet Manager</h1>
+        <nav>
+            <button id="add-new-snippet-btn">Add New Snippet</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="search-filter-section">
+            <input type="text" id="search-input" placeholder="Search snippets by title or code...">
+            <input type="text" id="tag-filter-input" placeholder="Filter by tags (e.g., js, python)">
+        </section>
+
+        <section id="snippet-form-section" style="display: none;">
+            <h2><span id="form-mode">Add</span> Snippet</h2>
+            <form id="snippet-form">
+                <input type="hidden" id="snippet-id">
+                <label for="snippet-title">Title:</label>
+                <input type="text" id="snippet-title" required>
+
+                <label for="snippet-code">Code:</label>
+                <textarea id="snippet-code" rows="15" required></textarea>
+
+                <label for="snippet-language">Language (for highlighting, e.g., javascript, python):</label>
+                <input type="text" id="snippet-language" placeholder="e.g., javascript, python, css">
+
+                <label for="snippet-tags">Tags (comma-separated):</label>
+                <input type="text" id="snippet-tags" placeholder="e.g., frontend, utility, react">
+
+                <button type="submit">Save Snippet</button>
+                <button type="button" id="cancel-form-btn">Cancel</button>
+            </form>
+        </section>
+
+        <section id="snippet-list-section">
+            <h2>Your Snippets</h2>
+            <div id="snippets-container">
+                <!-- Example Snippet Card (dynamically loaded by JS) -->
+                <!--
+                <div class="snippet-card" data-id="1">
+                    <h3>Example JavaScript Function</h3>
+                    <pre><code class="language-javascript">function greet(name) {
+    console.log(`Hello, ${name}!`);
+}
+greet('World');</code></pre>
+                    <div class="tags">
+                        <span class="tag">#javascript</span>
+                        <span class="tag">#example</span>
+                        <span class="tag">#frontend</span>
+                    </div>
+                    <div class="snippet-actions">
+                        <button class="copy-btn">Copy</button>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </div>
+                </div>
+                -->
+                <p id="no-snippets-message">No snippets found. Add one to get started!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Code Snippet Manager</p>
+    </footer>
+
+    <!-- Example for syntax highlighting library JS. Replace with your chosen library. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <!-- Your main application logic -->
+    <script src="script.js"></script>
+</body>
+</html>
