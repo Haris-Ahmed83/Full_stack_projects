@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Scanner App</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Optional: Link to Google Fonts for Roboto if not already available -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Barcode Scanner</h1>
+    </header>
+
+    <main class="app-container">
+        <section class="scanner-section">
+            <h2>Live Scanner</h2>
+            <div class="video-container">
+                <video id="video" autoplay playsinline></video>
+                <div id="scan-feedback" class="scan-feedback">Scanning...</div>
+            </div>
+            <div class="controls">
+                <button id="start-scan-btn">Start Scan</button>
+                <button id="stop-scan-btn" disabled>Stop Scan</button>
+            </div>
+            <p id="status-message" class="status-message"></p>
+            <!-- Message for BarcodeDetector API support -->
+            <div id="barcode-detector-support" class="support-message"></div>
+        </section>
+
+        <section class="results-section">
+            <h2>Last Scanned Product</h2>
+            <div id="product-info" class="product-info">
+                <p>No product scanned yet. Start the scanner to find products!</p>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <h2>Scan History</h2>
+            <button id="clear-history-btn" class="clear-history-btn" disabled>Clear History</button>
+            <ul id="history-list" class="history-list">
+                <!-- History items will be inserted here by JavaScript -->
+            </ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

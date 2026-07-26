@@ -1,0 +1,273 @@
+/* Global Reset & Box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Custom Properties (CSS Variables) for modern styling */
+:root {
+    --primary-color: #4A90E2; /* A vibrant blue */
+    --primary-color-dark: #357ABD;
+    --secondary-color: #50E3C2; /* A light teal */
+    --text-color: #333;
+    --text-color-light: #555;
+    --bg-color: #F8F9FA; /* Light gray background */
+    --card-bg-color: #FFFFFF;
+    --border-color: #E0E0E0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --border-radius: 8px;
+    --gap-xs: 8px;
+    --gap-sm: 12px;
+    --gap-md: 20px;
+    --gap-lg: 32px;
+}
+
+/* Base Body Styles */
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    min-height: 100vh;
+    display: grid; /* Use grid to center content */
+    place-items: center;
+    padding: var(--gap-md);
+}
+
+/* Main Container Styling */
+main {
+    width: 100%;
+    max-width: 900px;
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: var(--gap-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-lg);
+}
+
+/* Headings */
+h1,
+h2 {
+    text-align: center;
+    color: var(--primary-color-dark);
+    margin-top: 0;
+    margin-bottom: var(--gap-sm);
+}
+
+.description {
+    text-align: center;
+    color: var(--text-color-light);
+    margin-bottom: var(--gap-lg);
+    font-size: 0.95em;
+}
+
+/* Card Styling for sections */
+.card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--gap-md);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Input Group Styling */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+}
+
+.input-group label {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Form Element Styling */
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: var(--gap-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family);
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Color and File Input Specifics */
+input[type="color"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 40px; /* Adjust height to match other inputs */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2px; /* Small padding inside color picker */
+    cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: var(--border-radius);
+}
+
+input[type="file"] {
+    padding: var(--gap-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-color);
+    cursor: pointer;
+}
+
+/* Grid for options */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--gap-md);
+    margin-bottom: var(--gap-md);
+}
+
+/* Button Styling */
+button {
+    padding: var(--gap-sm) var(--gap-md);
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* QR Code Gallery */
+.qr-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for QR items */
+    gap: var(--gap-md);
+    justify-content: center;
+    align-items: start;
+}
+
+.qr-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-sm);
+    padding: var(--gap-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--card-bg-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.qr-item canvas {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.download-btn {
+    display: inline-block;
+    padding: var(--gap-xs) var(--gap-sm);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.download-btn:hover {
+    background-color: #40D0B0;
+    transform: translateY(-1px);
+}
+
+/* Placeholder text for empty output */
+.placeholder {
+    grid-column: 1 / -1; /* Span across all columns */
+    text-align: center;
+    color: var(--text-color-light);
+    font-style: italic;
+    padding: var(--gap-md);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    main {
+        padding: var(--gap-md);
+        gap: var(--gap-md);
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        font-size: 1em;
+        padding: var(--gap-sm);
+    }
+
+    .qr-gallery {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: var(--gap-sm);
+    }
+
+    main {
+        padding: var(--gap-sm);
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+}

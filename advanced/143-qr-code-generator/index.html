@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- QRious library for client-side QR code generation on canvas -->
+    <script src="https://unpkg.com/qrious@4.1.0/dist/qrious.min.js"></script>
+</head>
+<body>
+    <main>
+        <h1>QR Code Generator</h1>
+        <p class="description">Generate custom QR codes with colors, size, and even embed your logo. Enter multiple lines for batch generation!</p>
+
+        <section class="controls card">
+            <div class="input-group">
+                <label for="qrData">Text or URL (one per line for batch):</label>
+                <textarea id="qrData" rows="6" placeholder="https://example.com&#10;Hello World!&#10;Another line of text..." aria-label="QR code data input"></textarea>
+            </div>
+
+            <div class="options-grid">
+                <div class="input-group">
+                    <label for="qrSize">Size (pixels):</label>
+                    <input type="number" id="qrSize" value="250" min="50" max="1000" step="10" aria-label="QR code size in pixels">
+                </div>
+
+                <div class="input-group">
+                    <label for="qrColor">Foreground Color:</label>
+                    <input type="color" id="qrColor" value="#000000" aria-label="QR code foreground color">
+                </div>
+
+                <div class="input-group">
+                    <label for="qrBgColor">Background Color:</label>
+                    <input type="color" id="qrBgColor" value="#ffffff" aria-label="QR code background color">
+                </div>
+
+                <div class="input-group">
+                    <label for="qrLogo">Logo (image file, optional):</label>
+                    <input type="file" id="qrLogo" accept="image/*" aria-label="Upload logo image">
+                </div>
+            </div>
+
+            <button id="generateBtn" aria-label="Generate QR Code(s)">Generate QR Code(s)</button>
+        </section>
+
+        <section class="output card">
+            <h2>Generated QR Codes</h2>
+            <div id="qrOutput" class="qr-gallery">
+                <p class="placeholder">Your QR codes will appear here.</p>
+            </div>
+        </section>
+    </main>
+    <script src="script.js" defer></script>
+</body>
+</html>
