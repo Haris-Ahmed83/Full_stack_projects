@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsPulse - Your Personalized News Aggregator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons (optional, if used in style.css) -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">NewsPulse</h1>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search news...">
+                <button id="searchButton">Search</button>
+            </div>
+            <nav class="main-nav">
+                <button id="bookmarksButton" class="nav-button">Bookmarks</button>
+                <button id="addSourceButton" class="nav-button">Manage Sources</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <aside class="sidebar">
+            <h2>Categories</h2>
+            <ul id="categoryList" class="category-list">
+                <li class="active" data-category="all">All News</li>
+                <li data-category="technology">Technology</li>
+                <li data-category="sports">Sports</li>
+                <li data-category="politics">Politics</li>
+                <li data-category="business">Business</li>
+                <li data-category="entertainment">Entertainment</li>
+                <li data-category="science">Science</li>
+                <li data-category="health">Health</li>
+            </ul>
+
+            <h2>Sources</h2>
+            <ul id="sourceFilterList" class="source-list">
+                <!-- Dynamic list of sources will be loaded here by JavaScript -->
+                <li class="active" data-source-id="all">All Sources</li>
+            </ul>
+        </aside>
+
+        <main class="news-feed">
+            <h2 id="feedTitle">Latest News</h2>
+            <div id="newsContainer" class="news-grid">
+                <!-- News articles will be loaded here by JavaScript -->
+                <p id="loadingMessage" class="info-message">Loading news...</p>
+                <p id="noResultsMessage" class="info-message" style="display:none;">No news found matching your criteria.</p>
+            </div>
+            <button id="loadMoreButton" class="load-more-btn" style="display:none;">Load More</button>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 NewsPulse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for managing RSS sources -->
+    <div id="sourceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Manage RSS Sources</h2>
+            <div class="source-management-form">
+                <input type="text" id="rssUrlInput" placeholder="Enter RSS Feed URL" required>
+                <input type="text" id="sourceNameInput" placeholder="Source Name (optional)">
+                <select id="sourceCategorySelect">
+                    <option value="">Select Category (optional)</option>
+                    <option value="technology">Technology</option>
+                    <option value="sports">Sports</option>
+                    <option value="politics">Politics</option>
+                    <option value="business">Business</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="science">Science</option>
+                    <option value="health">Health</option>
+                    <option value="general">General</option>
+                </select>
+                <button id="addRssSourceButton">Add Source</button>
+            </div>
+            <h3>Your Feeds</h3>
+            <ul id="currentSourcesList" class="current-sources-list">
+                <!-- Added sources will be listed here dynamically by JavaScript -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal for displaying Bookmarks -->
+    <div id="bookmarksModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Your Bookmarks</h2>
+            <div id="bookmarkedNewsContainer" class="news-grid">
+                <!-- Bookmarked articles will be loaded here by JavaScript -->
+                <p id="noBookmarksMessage" class="info-message">You haven't bookmarked any articles yet.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

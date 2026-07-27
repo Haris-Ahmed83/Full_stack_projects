@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Mapbox GL JS CSS: Essential for map integration -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>Weather Dashboard</h1>
+        <div class="search-container">
+            <input type="text" id="city-search-input" placeholder="Enter city name..." autocomplete="off">
+            <button id="search-button">Search</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="current-weather" class="weather-section">
+            <h2 id="current-city-name">Loading...</h2>
+            <p id="current-date"></p>
+            <div class="current-details">
+                <img id="current-weather-icon" src="" alt="Weather icon" class="weather-icon" aria-label="Current weather icon">
+                <div class="current-temp-desc">
+                    <p id="current-temp">--°C</p>
+                    <p id="current-description">Loading...</p>
+                </div>
+                <ul class="weather-info-list">
+                    <li>Humidity: <span id="current-humidity">--%</span></li>
+                    <li>Wind Speed: <span id="current-wind-speed">-- m/s</span></li>
+                </ul>
+            </div>
+            <p id="error-message" class="error-message" aria-live="assertive"></p>
+        </section>
+
+        <section id="map-section" class="map-section">
+            <h2>Location Map</h2>
+            <div id="map" class="map-container" role="img" aria-label="Map showing current weather location"></div>
+        </section>
+
+        <section id="forecast" class="weather-section">
+            <h2>5-Day Forecast</h2>
+            <div id="forecast-container" class="forecast-container">
+                <!-- Forecast cards will be injected here by JavaScript -->
+                <p class="loading-text">Loading forecast...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mapbox GL JS: Essential for map integration -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
