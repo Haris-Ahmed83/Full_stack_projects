@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>GitHub Profile Analyzer</h1>
+            <div class="search-box">
+                <input type="text" id="username-input" placeholder="Enter GitHub username" value="octocat">
+                <button id="search-button">Search</button>
+            </div>
+        </header>
+
+        <main class="profile-content">
+            <div id="loading-spinner" class="spinner"></div>
+            <div id="error-message" class="error-message"></div>
+
+            <section id="profile-summary" class="card profile-summary hidden">
+                <img id="profile-avatar" src="" alt="Profile Avatar" class="profile-avatar">
+                <div class="profile-info">
+                    <h2 id="profile-name" class="profile-name"></h2>
+                    <p id="profile-login" class="profile-login"></p>
+                    <p id="profile-bio" class="profile-bio"></p>
+                    <div class="profile-stats">
+                        <span><strong id="followers-count">0</strong> Followers</span>
+                        <span><strong id="following-count">0</strong> Following</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="stats-cards" class="stats-grid hidden">
+                <div class="stat-card">
+                    <h3>Public Repositories</h3>
+                    <p id="repos-count" class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Public Gists</h3>
+                    <p id="gists-count" class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Contributions (Last Year)</h3>
+                    <p id="contributions-count" class="stat-value">0</p>
+                </div>
+            </section>
+
+            <section id="contributions-graph" class="card hidden">
+                <h2>Contributions Last Year</h2>
+                <div class="graph-legend">
+                    <span class="legend-item">Less</span>
+                    <div class="legend-colors">
+                        <span style="background-color: #ebedf0;"></span>
+                        <span style="background-color: #9be9a8;"></span>
+                        <span style="background-color: #40c463;"></span>
+                        <span style="background-color: #30a14e;"></span>
+                        <span style="background-color: #216e39;"></span>
+                    </div>
+                    <span class="legend-item">More</span>
+                </div>
+                <div id="contribution-calendar" class="contribution-calendar"></div>
+            </section>
+
+            <section id="repositories-list" class="hidden">
+                <h2>Popular Repositories</h2>
+                <div id="repo-grid" class="repo-grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

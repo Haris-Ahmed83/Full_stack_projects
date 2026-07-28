@@ -1,0 +1,12 @@
+/* Global Styles & Resets */
+:root {
+    --primary-color: #007bff; /* A vibrant blue */
+    --primary-dark: #0056b3;
+    --secondary-color: #6c757d; /* A muted grey */
+    --accent-color: #28a745; /* Green for success/highlight */
+    --background-light: #f8f9fa; /* Very light grey */
+    --background-dark: #e9ecef; /* Slightly darker grey */
+    --text-color-dark: #343a40; /* Dark grey for text */
+    --text-color-light: #ffffff;
+    --border-color: #dee2e6; /* Light border grey */
+    --shadow-light: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.
