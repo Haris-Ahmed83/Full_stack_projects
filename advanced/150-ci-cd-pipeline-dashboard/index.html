@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Pipeline Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <h1>CI/CD Pipeline Dashboard</h1>
+        <p>Real-time insights into your continuous integration and deployment pipelines.</p>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="dashboard-sidebar">
+            <section class="pipeline-overview-section card">
+                <h2>Pipeline Overview</h2>
+                <div id="pipeline-summary" class="pipeline-summary-grid">
+                    <!-- Summary cards will be injected here by JS -->
+                </div>
+            </section>
+
+            <section class="workflow-list-section card">
+                <h2>Workflows</h2>
+                <div id="workflow-list" class="workflow-grid">
+                    <!-- Workflow cards will be injected here by JS -->
+                </div>
+            </section>
+        </div>
+
+        <section class="workflow-details-section card">
+            <h2>Workflow Details & Logs</h2>
+            <div id="workflow-details-container" class="workflow-details-container">
+                <p class="no-selection-message">Select a workflow from the list to view its details and logs.</p>
+                <!-- Workflow details and logs will be injected here by JS -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
