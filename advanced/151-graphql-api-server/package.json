@@ -1,0 +1,35 @@
+{
+  "name": "graphql-api-server-151",
+  "version": "1.0.0",
+  "description": "Project #151: An advanced GraphQL API Server using Apollo Server, focusing on schema design, resolvers, mutations, and subscriptions.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "graphql",
+    "api",
+    "server",
+    "apollo-server",
+    "schema-design",
+    "resolvers",
+    "mutations",
+    "subscriptions",
+    "advanced"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "graphql": "^16.8.0",
+    "dotenv": "^16.4.5",
+    "graphql-ws": "^5.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
