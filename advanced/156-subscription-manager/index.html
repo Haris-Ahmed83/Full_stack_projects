@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Subscription Manager</h1>
+            <nav class="main-nav">
+                <button id="customerPortalBtn" class="button primary">Customer Portal</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="subscriptions-section">
+            <h2>My Subscriptions</h2>
+            <div id="subscriptionsList" class="subscription-grid">
+                <!-- Subscriptions will be rendered here by script.js -->
+            </div>
+            <p id="noSubscriptionsMessage" class="info-message hidden">You don't have any active subscriptions. Explore our plans below!</p>
+        </section>
+
+        <section class="plans-section">
+            <h2>Available Plans</h2>
+            <div id="plansList" class="plan-grid">
+                <!-- Plans will be rendered here by script.js -->
+            </div>
+        </section>
+
+        <section class="add-subscription-section card">
+            <h2>Add New Subscription</h2>
+            <div class="add-sub-form">
+                <label for="planSelect">Choose a plan:</label>
+                <select id="planSelect" class="form-control">
+                    <!-- Options populated by script.js -->
+                </select>
+                <button id="addSubscriptionBtn" class="button primary">Subscribe Now</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Subscription Manager. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

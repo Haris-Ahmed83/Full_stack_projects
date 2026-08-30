@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Payment Integration Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Essential: Stripe.js v3 library for client-side interactions -->
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Premium Membership</h1>
+            <p class="tagline">Unlock exclusive features and content.</p>
+        </header>
+
+        <section class="product-details">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150/007bff/ffffff?text=Premium" alt="Premium Membership Icon" class="product-icon">
+                <h2>Monthly Subscription</h2>
+                <p class="price">$9.99 / month</p>
+                <ul>
+                    <li>Access to all premium articles</li>
+                    <li>Ad-free browsing experience</li>
+                    <li>Priority customer support</li>
+                    <li>Exclusive community access</li>
+                </ul>
+                <button id="checkout-button" class="buy-button">Subscribe Now</button>
+                <p id="payment-status" class="status-message"></p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 Payment Demo. All rights reserved.</p>
+            <p class="note"><strong>Important:</strong> This is a client-side demonstration. A real Stripe integration for creating Checkout Sessions or Payment Intents requires a secure server-side component.</p>
+        </footer>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
