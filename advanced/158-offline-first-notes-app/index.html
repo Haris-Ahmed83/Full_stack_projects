@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline-First Notes</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="theme-color" content="#2196F3">
+</head>
+<body>
+    <header>
+        <h1>Offline-First Notes</h1>
+    </header>
+
+    <main>
+        <section id="note-editor">
+            <h2>Add/Edit Note</h2>
+            <input type="hidden" id="note-id">
+            <textarea id="note-content" placeholder="Write your note here..." rows="10"></textarea>
+            <button id="save-note-btn">Save Note</button>
+            <button id="clear-editor-btn">Clear Editor</button>
+        </section>
+
+        <section id="notes-list">
+            <h2>Your Notes</h2>
+            <div id="notes-container">
+                <!-- Notes will be loaded here by JavaScript -->
+                <p>Loading notes...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Offline-First Notes App</p>
+    </footer>
+
+    <script src="/js/db.js"></script> <!-- Handles IndexedDB operations -->
+    <script src="/js/sync.js"></script> <!-- Handles sync logic and conflict resolution -->
+    <script src="/js/app.js"></script> <!-- Main application logic -->
+
+    <script>
+        // Service Worker registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registered! Scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

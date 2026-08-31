@@ -1,0 +1,92 @@
+:root {
+    --primary-color: #4CAF50;
+    --primary-dark: #388E3C;
+    --secondary-color: #2196F3;
+    --secondary-dark: #1976D2;
+    --background-light: #f4f7f6;
+    --background-dark: #e0e0e0;
+    --text-color: #333;
+    --text-light: #666;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --danger-color: #f44336;
+    --warning-color: #ff9800;
+    --success-color: #4CAF50;
+    --font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --border-radius: 6px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-light);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#app-container {
+    display: flex;
+    flex-grow: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-shadow: 0 0 20px var(--shadow-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: #fff;
+}
+
+header {
+    background-color: var(--primary-dark);
+    color: #fff;
+    padding: var(--spacing-md) var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.sync-status {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.sync-status .icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--warning-color);
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+.sync-status.online .icon { background-color: var(--success-color); animation: none; }
+.sync-status.offline .icon { background-color: var(--danger-color); animation: none; }
+.sync-status.syncing .icon { background-color: var

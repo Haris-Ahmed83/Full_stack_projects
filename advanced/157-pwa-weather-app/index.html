@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- IMPORTANT: For full PWA functionality (caching, offline support, installability),
+         you MUST create two additional files in the root directory:
+         1. `sw.js`: Contains the Service Worker logic (content provided in script.js comments).
+         2. `manifest.json`: Contains app metadata (example below).
+    -->
+    <!-- Example manifest.json content (create this file yourself in the root):
+    {
+      "name": "PWA Weather App",
+      "short_name": "Weather",
+      "start_url": ".",
+      "display": "standalone",
+      "background_color": "#282c34",
+      "theme_color": "#61dafb",
+      "icons": [
+        {
+          "src": "/icons/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        },
+        {
+          "src": "/icons/icon-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ]
+    }
+    -->
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <h1>PWA Weather App</h1>
+
+        <div class="search-bar">
+            <input type="text" id="city-input" placeholder="Enter city name..." aria-label="City name">
+            <button id="search-button">Search</button>
+        </div>
+
+        <div id="weather-display" class="weather-card">
+            <!-- Weather data will be loaded here -->
+            <p class="loading-message">Loading weather data...</p>
+        </div>
+
+        <div class="pwa-info">
+            <p>To experience offline capabilities, install this app to your home screen.</p>
+            <p><strong>Note:</strong> For full PWA functionality (caching, offline support), you need to create a `sw.js` file and a `manifest.json` file as described in the comments of `script.js` and this file.</p>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
