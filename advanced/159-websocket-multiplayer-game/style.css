@@ -1,0 +1,249 @@
+/* General Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+/* Main Application Container */
+#game-app {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 30px;
+    background-color: #2a2a4a;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    max-width: 1000px;
+    width: 95%;
+    margin: 20px auto;
+}
+
+/* Headers */
+h1, h2, h3 {
+    color: #00f0ff;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.4em; }
+
+/* Canvas Styling */
+canvas {
+    border: 3px solid #00f0ff;
+    background-color: #0d0d1a;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    max-width: 100%;
+    height: auto;
+}
+
+/* UI Panels & Sections */
+.ui-section {
+    background-color: #1a1a3a;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #0088cc;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    align-items: center;
+    justify-items: center;
+}
+
+/* Forms & Inputs */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #0088cc;
+    border-radius: 6px;
+    background-color: #0d0d1a;
+    color: #e0e0e0;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #00f0ff;
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+    outline: none;
+}
+
+input::placeholder {
+    color: #888;
+}
+
+/* Buttons */
+button {
+    background-color: #0088cc;
+    color: #ffffff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #00b0ff;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #006bb3;
+    transform: translateY(0);
+}
+
+button:disabled {
+    background-color: #4a4a4a;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Lists (e.g., Player List, Room List) */
+.player-list,
+.room-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.player-list li,
+.room-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #3a3a5a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-list li:last-child,
+.room-list li:last-child {
+    border-bottom: none;
+}
+
+.player-score {
+    color: #00f0ff;
+    font-weight: bold;
+}
+
+/* Chat Area */
+.chat-window {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-messages {
+    height: 200px;
+    overflow-y: auto;
+    border: 1px solid #0088cc;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #0d0d1a;
+    font-size: 0.95rem;
+    word-wrap: break-word;
+}
+
+.chat-messages p {
+    margin: 0 0 8px 0;
+}
+
+.chat-messages p strong {
+    color: #00f0ff;
+}
+
+.chat-input-container {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input-container input[type="text"] {
+    flex-grow: 1;
+    width: auto;
+}
+
+.chat-input-container button {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #game-app {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.5em; }
+    h3 { font-size: 1.2em; }
+
+    .controls-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chat-input-container {
+        flex-direction: column;
+    }
+
+    .chat-input-container button {
+        width: 100%;
+    }
+}

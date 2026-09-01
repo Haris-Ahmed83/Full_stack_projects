@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Multiplayer Game</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #1a1a2e; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; }
+        #gameCanvas { background-color: #0f0f1a; border: 2px solid #007bff; display: block; margin-top: 20px; }
+        #controls { margin-top: 20px; display: flex; gap: 10px; }
+        #controls button, #controls input { padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; }
+        #controls button { background-color: #007bff; color: white; transition: background-color 0.3s ease; }
+        #controls button:hover { background-color: #0056b3; }
+        #controls input[type="text"] { background-color: #333; color: white; border: 1px solid #555; width: 150px; }
+        #messages { margin-top: 20px; width: 80%; max-width: 600px; height: 100px; overflow-y: scroll; background-color: #222; border: 1px solid #444; padding: 10px; border-radius: 5px; font-size: 0.9em; }
+        .message { margin-bottom: 5px; }
+        .player-list { margin-top: 20px; background-color: #222; border: 1px solid #444; padding: 10px; border-radius: 5px; width: 200px; }
+        .player-list h3 { margin-top: 0; color: #007bff; }
+        .player-list ul { list-style: none; padding: 0; }
+        .player-list li { margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <h1>WebSocket Multiplayer Game</h1>
+
+    <div id="controls">
+        <input type="text" id="playerName" placeholder="Enter your name" value="Player">
+        <input type="text" id="roomName" placeholder="Enter room name" value="default-room">
+        <button id="joinRoomBtn">Join/Create Room</button>
+        <button id="leaveRoomBtn" disabled>Leave Room</button>
+    </div>
+
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <div id="messages"></div>
+
+    <div class="player-list">
+        <h3>Players in Room:</h3>
+        <ul id="playersInRoom"></ul>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const playerNameInput = document.getElementById('playerName');
+        const roomNameInput = document.getElementById('roomName');
+        const joinRoomBtn = document.getElementById('joinRoomBtn');
+        const leaveRoomBtn = document.getElementById('leaveRoomBtn');
+        const messagesDiv = document.getElementById('messages');
+        const playersInRoomUl = document.getElementById('playersInRoom');
+
+        let ws = null;
+        let playerId = null;
+        let currentRoom = null;
+        let gameState = { players: {} };
+        let inputState = {
+            up: false,
+            down: false,
+            left: false,
+            right: false
+        };
+
+        const PLAYER_SIZE = 20;
+        const PLAYER_COLOR = '#ff007b';
+        const ENEMY_COLOR = '#ffcc00';
+
+        function addMessage(text, color = '#e0e0e0') {
+            const msg = document.createElement('div');
+            msg.className = 'message';
+            msg.textContent = text;
+            msg.style.color = color;
+            messagesDiv.appendChild(msg);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function connectWebSocket() {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.close();
+            }
+            ws = new WebSocket('ws://localhost:3000'); // Adjust if your server is on a different port/host
+
+            ws.onopen = () => {
+                addMessage('Connected to game server.', 'lime');
+                joinRoomBtn.disabled = false;
+                leaveRoomBtn.disabled = true;
+            };
+
+            ws.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+
+                switch (data.type) {
+                    case 'init':
+                        playerId = data.playerId;
+                        addMessage(`Your Player ID: ${playerId}`, '#007bff');
+                        break;
+                    case 'roomJoined':
+                        currentRoom = data.roomName;
+                        addMessage(`Joined room: "${currentRoom}"`, 'cyan');
+                        joinRoomBtn.disabled = true;
+                        leaveRoomBtn.disabled = false;
+                        break;
+                    case 'roomLeft':
+                        currentRoom = null;
+                        gameState = { players: {} }; // Clear game state
+                        addMessage(`Left room: "${data.roomName}"`, 'orange');
+                        joinRoomBtn.disabled = false;
+                        leaveRoomBtn.disabled = true;
+                        break;
+                    case 'gameState':
+                        gameState = data.state;
+                        updatePlayerList();
+                        break;
+                    case 'playerJoined':
+                        addMessage(`Player "${data.playerName}" (${data.id}) joined the room.`, '#aaa');
+                        break;
+                    case 'playerLeft':
+                        addMessage(`Player "${data.playerName}" (${data.id}) left the room.`, '#aaa');
+                        break;
+                    case 'error':
+                        addMessage(`Error: ${data.message}`, 'red');
+                        break;
+                    default:
+                        console.warn('Unknown message type:', data.type);
+                }
+            };
+
+            ws.onclose = () => {
+                addMessage('Disconnected from game server.', 'red');
+                joinRoomBtn.disabled = false;
+                leaveRoomBtn.disabled = true;
+                playerId = null;
+                currentRoom = null;
+                gameState = { players: {} };
+                updatePlayerList();
+            };
+
+            ws.onerror = (error) => {
+                addMessage(`WebSocket Error: ${error.message}`, 'red');
+                console.error('WebSocket Error:', error);
+            };
+        }
+
+        function joinRoom() {
+            const name = playerNameInput.value.trim();
+            const room = roomNameInput.value.trim();
+            if (!name) {
+                addMessage('Please enter a player name.', 'red');
+                return;
+            }
+            if (!room) {
+                addMessage('Please enter a room name.', 'red');
+                return;
+            }
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({ type: 'joinRoom', roomName: room, playerName: name }));
+            } else {
+                addMessage('Not connected to server. Please wait or refresh.', 'red');
+            }
+        }
+
+        function leaveRoom() {
+            if (ws && ws.readyState === WebSocket.OPEN && currentRoom) {
+                ws.send(JSON.stringify({ type: 'leaveRoom', roomName: currentRoom }));
+            }
+        }
+
+        function sendPlayerInput() {
+            if (ws && ws.readyState === WebSocket.OPEN && currentRoom) {
+                ws.send(JSON.stringify({ type: 'playerInput', input: inputState }));
+            }
+        }
+
+        function updatePlayerList() {
+            playersInRoomUl.innerHTML = '';
+            for (const id in gameState.players) {
+                const player = gameState.players[id];
+                const li = document.createElement('li');
+                li.textContent = `${player.name} ${id === playerId ? '(You)' : ''}`;
+                playersInRoomUl.appendChild(li);
+            }
+        }
+
+        // Game Loop
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        function update() {
+            // Client-side prediction (optional, but good for responsiveness)
+            // For now, we rely heavily on server state.
+            // If we were doing client-side prediction, we'd update our local player's
+            // position based on input here, then reconcile with server updates.
+
+            // Send input to server at a regular interval
+            if (currentRoom) {
+                sendPlayerInput();
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+            // Draw players
+            for (const id in gameState.players) {
+                const player = gameState.players[id];
+                ctx.fillStyle = (id === playerId) ? PLAYER_COLOR : ENEMY_COLOR;
+                ctx.beginPath();
+                ctx.arc(player.x, player.y, PLAYER_SIZE / 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Draw player name
+                ctx.fillStyle = 'white';
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(player.name, player.x, player.y - PLAYER_SIZE);
+            }
+        }
+
+        // Input Handling
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp' || e.key === 'w') inputState.up = true;
+            if (e.key === 'ArrowDown' || e.key === 's') inputState.down = true;
+            if (e.key === 'ArrowLeft' || e.key === 'a') inputState.left = true;
+            if (e.key === 'ArrowRight' || e.key === 'd') inputState.right = true;
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'ArrowUp' || e.key === 'w') inputState.up = false;
+            if (e.key === 'ArrowDown' || e.key === 's') inputState.down = false;
+            if (e.key === 'ArrowLeft' || e.key === 'a') inputState.left = false;
+            if (e.key === 'ArrowRight' || e.key === 'd') inputState.right = false;
+        });
+
+        // Event Listeners
+        joinRoomBtn.addEventListener('click', joinRoom);
+        leaveRoomBtn.addEventListener('click', leaveRoom);
+
+        // Initialize
+        connectWebSocket();
+        requestAnimationFrame(gameLoop); // Start the game loop
+    </script>
+</body>
+</html>

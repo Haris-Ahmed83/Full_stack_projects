@@ -1,0 +1,149 @@
+/* Basic Reset & Global Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+    color: #333;
+}
+
+/* Toolbar Styling */
+#toolbar {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    gap: 15px; /* Space between tool items */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex-shrink: 0; /* Prevent toolbar from shrinking */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+/* Tool Button Styling */
+.tool-button {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #555;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 45px; /* Ensure consistent size */
+    height: 40px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.tool-button:hover {
+    background-color: #e9e9e9;
+    border-color: #a0a0a0;
+    color: #222;
+}
+
+.tool-button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* Color Picker */
+#colorPicker {
+    width: 45px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-appearance: none; /* Remove default browser styling */
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+#colorPicker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+#colorPicker::-webkit-color-swatch {
+    border: none;
+    border-radius: 4px;
+}
+
+/* Brush Size Slider */
+.brush-size-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+#brushSize {
+    width: 120px;
+    height: 8px; /* Thinner slider track */
+    -webkit-appearance: none;
+    appearance: none;
+    background: #e0e0e0;
+    outline: none;
+    opacity: 0.8;
+    transition: opacity .2s;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#brushSize:hover {
+    opacity: 1;
+}
+
+#brushSize::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: grab;
+    border: 2px solid #fff; /* White border around thumb */
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+#brushSize::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: grab;
+    border: 2px solid #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+/* Canvas Styling */
+#whiteboard {
+    display: block;
+    background-color: #ffffff;
+    flex-grow: 1; /* Takes up remaining vertical space */
+    cursor: crosshair; /* Default drawing cursor */
+    touch-action: none; /* Prevent browser default touch actions like pan/zoom */
+}
+
+/* Specific cursors for different tools */
+#whiteboard.cursor-pen {
+    cursor: crosshair;
+}
+
+#whiteboard.cursor-eraser {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23333" d="M16.2 3.8c-.4-.4-1-.4-1.4 0L4 14.6c-.4.4-.4 1 0 1.4L10 22l7.6-7.6c.4-.4.4-1 0-1.4L16.2 3.8zM14.8 18L8.2 11.4 11.4 8.2 18 14.8 14.8 18z"/></svg>') 12 12, cell;
+}
+
+/* Basic Responsive Adjustments */
+@media (max-width: 600px) {
+    #toolbar {
+        padding: 8px 1
