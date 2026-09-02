@@ -1,0 +1,14 @@
+:root {
+    --primary-color: #28a745; /* Green for positive finance elements */
+    --primary-dark: #218838;
+    --secondary-color: #007bff; /* Blue for general UI elements */
+    --secondary-dark: #0056b3;
+    --accent-color: #ffc107; /* Yellow for highlights/warnings */
+    --danger-color: #dc3545; /* Red for expenses/negative alerts */
+    --success-color: #28a745; /* Matches primary for consistency */
+
+    --text-color-dark: #343a40;
+    --text-color-light: #6c757d;
+    --background-color: #f8f9fa;
+    --surface-color: #ffffff;
+    --border-color: #e9ecef;

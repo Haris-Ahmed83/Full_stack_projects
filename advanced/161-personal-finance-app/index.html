@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance App</title>
+    <!-- Chart.js for interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Link to your custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Personal Finance Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#transactions">Transactions</a></li>
+                    <li><a href="#budgets">Budgets</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#reports">Reports</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="dashboard" class="content-section">
+            <h2>Dashboard Overview</h2>
+            <div class="summary-cards">
+                <div class="card">
+                    <h3>Current Balance</h3>
+                    <p class="amount">$12,345.67</p>
+                </div>
+                <div class="card">
+                    <h3>Monthly Income</h3>
+                    <p class="amount">$5,000.00</p>
+                </div>
+                <div class="card">
+                    <h3>Monthly Expenses</h3>
+                    <p class="amount">$3,500.00</p>
+                </div>
+                <div class="card">
+                    <h3>Net Savings (Month)</h3>
+                    <p class="amount">$1,500.00</p>
+                </div>
+            </div>
+
+            <div class="chart-grid">
+                <div class="chart-container">
+                    <h3>Income vs Expenses (Current Month)</h3>
+                    <canvas id="incomeExpenseChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Spending by Category (Current Month)</h3>
+                    <canvas id="categorySpendingChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Budget vs Actual Spending</h3>
+                    <canvas id="budgetActualChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Net Worth Over Time</h3>
+                    <canvas id="netWorthChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="transactions" class="content-section">
+            <h2>Transaction Tracking</h2>
+            <button class="btn primary-btn">Add New Transaction</button>
+
+            <div class="transaction-filter">
+                <label for="filterCategory">Category:</label>
+                <select id="filterCategory">
+                    <option value="">All</option>
+                    <option value="food">Food</option>
+                    <option value="transport">Transportation</option>
+                    <option value="income">Income</option>
+                </select>
+                <label for="filterType">Type:</label>
+                <select id="filterType">
+                    <option value="">All</option>
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
+                </select>
+                <button class="btn">Apply Filter</button>
+            </div>
+
+            <table class="transaction-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2023-10-26</td>
+                        <td>Groceries</td>
+                        <td>Food</td>
+                        <td class="expense">-$75.50</td>
+                        <td>Expense</td>
+                        <td><button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-25</td>
+                        <td>Monthly Salary</td>
+                        <td>Income</td>
+                        <td class="income">+$2,500.00</td>
+                        <td>Income</td>
+                        <td><button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>2023-10-24</td>
+                        <td>Bus Fare</td>
+                        <td>Transportation</td>
+                        <td class="expense">-$3.00</td>
+                        <td>Expense</td>
+                        <td><button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button></td>
+                    </tr>
+                    <!-- More transactions would be loaded here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="budgets" class="content-section">
+            <h2>Budgets</h2>
+            <button class="btn primary-btn">Create New Budget</button>
+
+            <div class="budget-list">
+                <div class="budget-item card">
+                    <h3>Food Budget (October)</h3>
+                    <p>Allocated: <span class="amount">$500.00</span> | Spent: <span class="amount">$300.00</span> | Remaining: <span class="amount">$200.00</span></p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 60%;"></div>
+                    </div>
+                    <button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button>
+                </div>
+                <div class="budget-item card">
+                    <h3>Utilities Budget (October)</h3>
+                    <p>Allocated: <span class="amount">$200.00</span> | Spent: <span class="amount">$180.00</span> | Remaining: <span class="amount">$20.00</span></p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 90%; background-color: #ff6384;"></div>
+                    </div>
+                    <button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button>
+                </div>
+                <div class="budget-item card">
+                    <h3>Entertainment Budget (October)</h3>
+                    <p>Allocated: <span class="amount">$150.00</span> | Spent: <span class="amount">$50.00</span> | Remaining: <span class="amount">$100.00</span></p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 33%;"></div>
+                    </div>
+                    <button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="categories" class="content-section">
+            <h2>Categories</h2>
+            <button class="btn primary-btn">Add New Category</button>
+
+            <ul class="category-list">
+                <li class="card">Food <button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button></li>
+                <li class="card">Transportation <button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button></li>
+                <li class="card">Housing <button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button></li>
+                <li class="card">Utilities <button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button></li>
+                <li class="card">Entertainment <button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button></li>
+                <li class="card">Salary (Income) <button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button></li>
+                <li class="card">Investments (Income) <button class="btn small-btn">Edit</button> <button class="btn small-btn delete-btn">Delete</button></li>
+            </ul>
+        </section>
+
+        <section id="reports" class="content-section">
+            <h2>Reports</h2>
+            <p>Generate various financial reports to gain insights into your spending and savings habits.</p>
+
+            <div class="report-options card">
+                <h3>Generate a New Report</h3>
+                <label for="reportType">Report Type:</label>
+                <select id="reportType">
+                    <option value="monthlySpending">Monthly Spending Breakdown</option>
+                    <option value="incomeStatement">Income Statement</option>
+                    <option value="netWorthHistory">Net Worth History</option>
+                    <option value="categoryComparison">Category Comparison</option>
+                </select>
+                <label for="reportPeriod">Period:</label>
+                <select id="reportPeriod">
+                    <option value="currentMonth">Current Month</option>
+                    <option value="last3Months">Last 3 Months</option>
+                    <option value="currentYear">Current Year</option>
+                    <option value="custom">Custom Range</option>
+                </select>
+                <button class="btn primary-btn">Generate Report</button>
+            </div>
+
+            <div class="chart-container report-chart-display">
+                <h3>Generated Report Chart</h3>
+                <canvas id="reportChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Personal Finance App. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Link to your custom JavaScript file -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize Chart.js charts on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample data for charts (would typically come from a backend or user input)
+
+            // Income vs Expenses Chart
+            const incomeExpenseCtx = document.getElementById('incomeExpenseChart').getContext('2d');
+            new Chart(incomeExpenseCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Income', 'Expenses'],
+                    datasets: [{
+                        label: 'Amount ($)',
+                        data: [5000, 3500],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.7)', // Income
+                            'rgba(255, 99, 132, 0.7)'  // Expenses
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',

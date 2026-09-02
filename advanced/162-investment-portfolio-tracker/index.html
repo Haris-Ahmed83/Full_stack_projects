@@ -1,0 +1,527 @@
+SCENARIO: The user wants HTML content for a complex project. I need to provide a complete, well-structured index.html file that reflects the 'advanced' category and the 'Key Concepts'. This means including a good layout, placeholder for API data, chart integration (using a popular library like Chart.js), and sections for portfolio allocation, performance, and alerts.<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Portfolio Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50; /* Green */
+            --secondary-color: #2196F3; /* Blue */
+            --background-color: #f4f7f6;
+            --card-background: #ffffff;
+            --text-color: #333;
+            --secondary-text-color: #666;
+            --border-color: #e0e0e0;
+            --shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: var(--card-background);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
+        }
+        .sidebar h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar nav ul li {
+            margin-bottom: 15px;
+        }
+        .sidebar nav ul li a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: var(--secondary-text-color);
+            border-radius: 8px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .sidebar nav ul li a i {
+            margin-right: 10px;
+            font-size: 1.1em;
+        }
+        .sidebar nav ul li a:hover,
+        .sidebar nav ul li a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            margin: 0;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+        }
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid var(--primary-color);
+        }
+        .user-profile span {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            flex-grow: 1;
+        }
+        .card {
+            background-color: var(--card-background);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+        .card .metric-value {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .card .metric-change {
+            font-size: 0.9em;
+            color: var(--secondary-text-color);
+            display: flex;
+            align-items: center;
+        }
+        .card .metric-change.positive { color: #28a745; }
+        .card .metric-change.negative { color: #dc3545; }
+        .card .metric-change i {
+            margin-right: 5px;
+        }
+
+        /* Portfolio Allocation specific styles */
+        .allocation-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .allocation-item:last-child {
+            border-bottom: none;
+        }
+        .allocation-item span:first-child {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        .allocation-item span:last-child {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        /* Performance Tracking specific styles */
+        .performance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .performance-table th, .performance-table td {
+            text-align: left;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .performance-table th {
+            font-weight: 600;
+            color: var(--secondary-text-color);
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+        .performance-table td {
+            color: var(--text-color);
+        }
+        .performance-table .positive { color: #28a745; font-weight: 500; }
+        .performance-table .negative { color: #dc3545; font-weight: 500; }
+        .performance-table .neutral { color: var(--secondary-text-color); }
+
+        /* Alerts specific styles */
+        .alert-item {
+            display: flex;
+            align-items: center;
+            background-color: #fff3cd; /* Light yellow for warning */
+            color: #856404;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ffeeba;
+        }
+        .alert-item.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border-color: #bee5eb;
+        }
+        .alert-item.critical {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+        .alert-item i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        .alert-item div {
+            flex-grow: 1;
+        }
+        .alert-item .alert-time {
+            font-size: 0.8em;
+            color: rgba(0,0,0,0.6);
+            margin-left: 15px;
+            white-space: nowrap;
+        }
+
+        /* Chart specific styles */
+        .chart-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 250px; /* Ensure chart has some height */
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2><i class="fas fa-chart-line"></i> FinTrack</h2>
+        <nav>
+            <ul>
+                <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-wallet"></i> My Portfolio</a></li>
+                <li><a href="#"><i class="fas fa-chart-pie"></i> Allocation</a></li>
+                <li><a href="#"><i class="fas fa-balance-scale"></i> Rebalance</a></li>
+                <li><a href="#"><i class="fas fa-bell"></i> Alerts</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Dashboard</h1>
+            <div class="user-profile">
+                <img src="https://via.placeholder.com/40" alt="User Avatar">
+                <span>John Doe</span>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>Total Portfolio Value</h3>
+                <div class="metric-value" id="total-value">$1,234,567.89</div>
+                <div class="metric-change positive"><i class="fas fa-caret-up"></i> +1.5% ($18,234.56) today</div>
+            </div>
+
+            <div class="card">
+                <h3>Daily Gain/Loss</h3>
+                <div class="metric-value positive" id="daily-gain">$1,234.56</div>
+                <div class="metric-change positive"><i class="fas fa-caret-up"></i> +0.1%</div>
+            </div>
+
+            <div class="card">
+                <h3>Annualized Return</h3>
+                <div class="metric-value" id="annualized-return">12.34%</div>
+                <div class="metric-change positive"><i class="fas fa-caret-up"></i> vs. S&P 500 (10.1%)</div>
+            </div>
+
+            <div class="card">
+                <h3>Cash Available</h3>
+                <div class="metric-value" id="cash-available">$25,000.00</div>
+                <div class="metric-change neutral">Ready to invest</div>
+            </div>
+
+            <div class="card" style="grid-column: span 2;">
+                <h3>Portfolio Performance (Last 30 Days)</h3>
+                <div class="chart-container">
+                    <canvas id="portfolioPerformanceChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Portfolio Allocation</h3>
+                <div class="chart-container">
+                    <canvas id="portfolioAllocationChart"></canvas>
+                </div>
+                <div style="margin-top: 20px;">
+                    <div class="allocation-item">
+                        <span>Stocks</span>
+                        <span>55%</span>
+                    </div>
+                    <div class="allocation-item">
+                        <span>Bonds</span>
+                        <span>25%</span>
+                    </div>
+                    <div class="allocation-item">
+                        <span>Real Estate</span>
+                        <span>10%</span>
+                    </div>
+                    <div class="allocation-item">
+                        <span>Cash</span>
+                        <span>10%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="grid-column: span 2;">
+                <h3>Recent Performance Tracking</h3>
+                <table class="performance-table">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Name</th>
+                            <th>Current Price</th>
+                            <th>Daily Change</th>
+                            <th>Holding Value</th>
+                            <th>Avg. Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody id="performance-body">
+                        <tr>
+                            <td>AAPL</td>
+                            <td>Apple Inc.</td>
+                            <td>$175.20</td>
+                            <td class="positive">+1.12%</td>
+                            <td>$52,560.00</td>
+                            <td>$168.50</td>
+                        </tr>
+                        <tr>
+                            <td>MSFT</td>
+                            <td>Microsoft Corp.</td>
+                            <td>$320.10</td>
+                            <td class="negative">-0.55%</td>
+                            <td>$64,020.00</td>
+                            <td>$315.00</td>
+                        </tr>
+                        <tr>
+                            <td>GOOGL</td>
+                            <td>Alphabet Inc.</td>
+                            <td>$130.05</td>
+                            <td class="positive">+2.01%</td>
+                            <td>$39,015.00</td>
+                            <td>$128.00</td>
+                        </tr>
+                        <tr>
+                            <td>TSLA</td>
+                            <td>Tesla Inc.</td>
+                            <td>$205.80</td>
+                            <td class="negative">-1.80%</td>
+                            <td>$41,160.00</td>
+                            <td>$210.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>Alerts & Notifications</h3>
+                <div class="alert-item critical">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <strong>CRITICAL:</strong> AAPL dropped below your stop-loss limit.
+                    </div>
+                    <span class="alert-time">5 min ago</span>
+                </div>
+                <div class="alert-item info">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>INFO:</strong> Your portfolio is 5% overweight in tech.
+                    </div>
+                    <span class="alert-time">1 hour ago</span>
+                </div>
+                <div class="alert-item">
+                    <i class="fas fa-bell"></i>
+                    <div>
+                        <strong>WATCH:</strong> TSLA earnings report expected tomorrow.
+                    </div>
+                    <span class="alert-time">Yesterday</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script>
+        // Portfolio Performance Chart
+        const performanceCtx = document.getElementById('portfolioPerformanceChart').getContext('2d');
+        const portfolioPerformanceChart = new Chart(performanceCtx, {
+            type: 'line',
+            data: {
+                labels: ['Day 1', 'Day 5', 'Day 10', 'Day 15', 'Day 20', 'Day 25', 'Day 30'],
+                datasets: [{
+                    label: 'Portfolio Value',
+                    data: [1200000, 1210000, 1205000, 1220000, 1235000, 1230000, 1234567],
+                    borderColor: 'var(--primary-color)',
+                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            color: 'var(--border-color)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Portfolio Allocation Chart
+        const allocationCtx = document.getElementById('portfolioAllocationChart').getContext('2d');
+        const portfolioAllocationChart = new Chart(allocationCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Stocks', 'Bonds', 'Real Estate', 'Cash'],
+                datasets: [{
+                    data: [55, 25, 10, 10],
+                    backgroundColor: [
+                        '#4CAF50', // Primary Green
+                        '#2196F3', // Secondary Blue
+                        '#FFC107', // Amber
+                        '#9E9E9E'  // Grey
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            boxWidth: 20,
+                            padding: 15,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Placeholder for API calls and dynamic updates
+        function fetchData() {
+            // Simulate API calls to fetch real-time data
+            // In a real application, you would use fetch() or axios
+            // to get data from your backend or external financial APIs.
+
+            // Example: Update total value
+            // document.getElementById('total-value').textContent = '$' + (Math.random() * 1000000 + 500000).toFixed(2);
+
+            // Example: Update performance table
+            // const performanceBody = document.getElementById('performance-body');
+            // performanceBody.innerHTML = ''; // Clear existing
+            // const mockData = [
+            //     { symbol: 'AAPL', name: 'Apple Inc.', price: 175.20, change: 1.12, value: 52560.00, cost: 168.50 },
+            //     // ... more data
+            // ];
+            // mockData.forEach(item => {
+            //     const row = performanceBody.insertRow();
+            //     row.insertCell().textContent = item.symbol;
+            //     row.insertCell().textContent = item.name;
+            //     row.insertCell().textContent = '$' + item.price.toFixed(2);
+            //     const changeCell = row.insertCell();
+            //     changeCell.textContent = (item.change > 0 ? '+' : '') + item.change.toFixed(2) + '%';
+            //     changeCell.className = item.change > 0 ? 'positive' : 'negative';
+            //     row.insertCell().textContent = '$' + item.value.toFixed(2);
+            //     row.insertCell().textContent = '$' + item.cost.toFixed(2);
+            // });
+
+            console.log("Fetching latest portfolio data...");
+        }
+
+        // Call fetchData on load
+        document.addEventListener('DOMContentLoaded', fetchData);
+
+        // Optional: Periodically refresh data
+        // setInterval(fetchData, 60000); // Refresh every 60 seconds
+    </script>
+</body>
+</html>
