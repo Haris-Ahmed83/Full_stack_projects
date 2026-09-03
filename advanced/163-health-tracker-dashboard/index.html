@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tracker Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <h1>Health Tracker Dashboard</h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#data-entry">Data Entry</a></li>
+                <li><a href="#goals">Goals</a></li>
+                <li><a href="#progress-charts">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <h2>Welcome, User!</h2>
+                <p>Last updated: <span id="last-updated">N/A</span></p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#overview"><i class="icon-dashboard"></i> Dashboard</a></li>
+                    <li><a href="#data-entry"><i class="icon-entry"></i> Log Data</a></li>
+                    <li><a href="#goals"><i class="icon-goals"></i> My Goals</a></li>
+                    <li><a href="#progress-charts"><i class="icon-charts"></i> Charts & Reports</a></li>
+                    <li><a href="#settings"><i class="icon-settings"></i> Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="overview" class="dashboard-section active">
+                <h2>Dashboard Overview</h2>
+                <div class="summary-cards">
+                    <div class="card">
+                        <h3>Current Weight</h3>
+                        <p><span id="current-weight">--</span> kg</p>
+                    </div>
+                    <div class="card">
+                        <h3>Daily Calories</h3>
+                        <p><span id="daily-calories">--</span> kcal</p>
+                    </div>
+                    <div class="card">
+                        <h3>Active Minutes</h3>
+                        <p><span id="active-minutes">--</span> min</p>
+                    </div>
+                    <div class="card">
+                        <h3>Goal Progress</h3>
+                        <p><span id="goal-progress">--</span>%</p>
+                    </div>
+                </div>
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <ul id="activity-list">
+                        <li>No recent activity logged.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="data-entry" class="dashboard-section">
+                <h2>Log New Data</h2>
+                <div class="data-entry-forms">
+                    <form id="weight-form" class="entry-form">
+                        <h3>Log Weight</h3>
+                        <label for="weight-input">Weight (kg):</label>
+                        <input type="number" id="weight-input" step="0.1" required>
+                        <label for="weight-date">Date:</label>
+                        <input type="date" id="weight-date" required>
+                        <button type="submit">Add Weight</button>
+                    </form>
+
+                    <form id="food-form" class="entry-form">
+                        <h3>Log Food Intake</h3>
+                        <label for="food-item">Food Item:</label>
+                        <input type="text" id="food-item" required>
+                        <label for="calories-input">Calories (kcal):</label>
+                        <input type="number" id="calories-input" required>
+                        <label for="food-date">Date:</label>
+                        <input type="date" id="food-date" required>
+                        <button type="submit">Add Food</button>
+                    </form>
+
+                    <form id="exercise-form" class="entry-form">
+                        <h3>Log Exercise</h3>
+                        <label for="exercise-type">Type:</label>
+                        <input type="text" id="exercise-type" required>
+                        <label for="duration-input">Duration (minutes):</label>
+                        <input type="number" id="duration-input" required>
+                        <label for="calories-burned">Calories Burned (approx):</label>
+                        <input type="number" id="calories-burned">
+                        <label for="exercise-date">Date:</label>
+                        <input type="date" id="exercise-date" required>
+                        <button type="submit">Add Exercise</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="goals" class="dashboard-section">
+                <h2>My Health Goals</h2>
+                <div class="goals-list" id="goals-list">
+                    <div class="goal-item">
+                        <h3>Weight Loss Goal</h3>
+                        <p>Target: <span class="goal-target">70 kg</span> (from 80 kg)</p>
+                        <p>Current: <span class="goal-current">75 kg</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" style="width: 50%;"></div></div>
+                        <p>Progress: 50% achieved</p>
+                    </div>
+                    <div class="goal-item">
+                        <h3>Daily Steps Goal</h3>
+                        <p>Target: <span class="goal-target">10,000 steps</span></p>
+                        <p>Current (today): <span class="goal-current">7,500 steps</span></p>
+                        <div class="progress-bar-container"><div class="progress-bar" style="width: 75%;"></div></div>
+                        <p>Progress: 75% achieved</p>
+                    </div>
+                </div>
+                <form id="add-goal-form" class="entry-form">
+                    <h3>Set New Goal</h3>
+                    <label for="goal-name">Goal Name:</label>
+                    <input type="text" id="goal-name" required>
+                    <label for="goal-target-value">Target Value:</label>
+                    <input type="text" id="goal-target-value" placeholder="e.g., 70kg, 10000 steps" required>
+                    <label for="goal-start-date">Start Date:</label>
+                    <input type="date" id="goal-start-date" required>
+                    <label for="goal-end-date">End Date (optional):</label>
+                    <input type="date" id="goal-end-date">
+                    <button type="submit">Add Goal</button>
+                </form>
+            </section>
+
+            <section id="progress-charts" class="dashboard-section">
+                <h2>Progress Visualization & Charts</h2>
+                <div class="chart-container">
+                    <h3>Weight Progress</h3>
+                    <canvas id="weightChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Calorie Intake vs. Burned</h3>
+                    <canvas id="calorieBalanceChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Activity Levels</h3>
+                    <canvas id="activityChart"></canvas>
+                </div>
+            </section>
+
+            <section id="settings" class="dashboard-section">
+                <h2>Settings</h2>
+                <form id="user-settings-form" class="entry-form">
+                    <label for="user-name">Name:</label>
+                    <input type="text" id="user-name" value="User">
+                    <label for="user-email">Email:</label>
+                    <input type="email" id="user-email" value="user@example.com">
+                    <button type="submit">Save Settings</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer class="dashboard-footer">
+        <p>&copy; 2023 Health Tracker Dashboard. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
