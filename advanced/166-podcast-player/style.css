@@ -1,0 +1,24 @@
+/* Basic Reset & Box-Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body & Typography */
+body {
+    font-family: 'Inter', sans-serif; /* Assuming Inter font is imported */
+    background-color: #1a1a2e; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns content to the top of the viewport */
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Main Podcast Player Container */
+.podcast-player-container {
+    background-color: #
