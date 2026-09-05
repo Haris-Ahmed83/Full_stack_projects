@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your SaaS - Multi-Tenant Cloud Platform</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        .container { width: 80%; margin: auto; overflow: hidden; padding: 20px 0; }
+        header { background: #333; color: #fff; padding-top: 30px; min-height: 70px; border-bottom: #77aaff 3px solid; }
+        header h1 { text-align: center; margin: 0; }
+        nav { text-align: center; margin-top: 20px; }
+        nav a { color: #fff; text-decoration: none; text-transform: uppercase; font-size: 16px; margin: 0 15px; }
+        .hero { background: #77aaff; color: #fff; padding: 50px 0; text-align: center; }
+        .hero h2 { margin-bottom: 10px; }
+        .hero p { font-size: 1.2em; max-width: 800px; margin: 0 auto 30px auto; }
+        .btn { display: inline-block; background: #333; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin: 10px; }
+        .features { padding: 40px 0; background: #fff; text-align: center; }
+        .feature-item { display: inline-block; width: 30%; margin: 0 1.5%; vertical-align: top; box-sizing: border-box; }
+        @media (max-width: 768px) {
+            .feature-item { width: 45%; }
+        }
+        @media (max-width: 480px) {
+            .feature-item { width: 90%; }
+        }
+        footer { text-align: center; padding: 20px; background: #333; color: #fff; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Your SaaS Name</h1>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="/login">Login</a>
+                <a href="/signup">Sign Up</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Your Ultimate Multi-Tenant SaaS Platform</h2>
+            <p>Empower your business with our scalable and secure cloud application. Experience robust tenant isolation, seamless authentication, flexible billing, and powerful admin tools, all accessible via dedicated subdomains.</p>
+            <a href="/signup" class="btn">Get Started Free</a>
+            <a href="/login" class="btn">Log In</a>
+        </div>
+    </section>
+
+    <section id="features" class="features container">
+        <h3>Key Features</h3>
+        <div class="feature-item">
+            <h4>Tenant Isolation</h4>
+            <p>Dedicated environments ensure your data and operations are secure and completely separate from other tenants.</p>
+        </div>
+        <div class="feature-item">
+            <h4>Secure Authentication</h4>
+            <p>Robust user authentication and authorization mechanisms protect access to your tenant-specific resources.</p>
+        </div>
+        <div class="feature-item">
+            <h4>Flexible Billing</h4>
+            <p>Manage subscriptions, usage, and payments with our integrated and customizable billing system.</p>
+        </div>
+        <div class="feature-item">
+            <h4>Admin Dashboard</h4>
+            <p>Gain full control with a comprehensive dashboard for managing users, settings, and application-wide configurations.</p>
+        </div>
+        <div class="feature-item">
+            <h4>Custom Subdomains</h4>
+            <p>Access your unique SaaS instance easily through your personalized subdomain (e.g., <code>yourcompany.yoursaas.com</code>).</p>
+        </div>
+    </section>
+
+    <section id="pricing" class="hero" style="background: #555; padding: 30px 0;">
+        <div class="container">
+            <h2>Simple & Transparent Pricing</h2>
+            <p>Choose a plan that fits your business needs. Scalable options for every size.</p>
+            <a href="/pricing" class="btn" style="background: #77aaff;">View Plans</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Your SaaS Name. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
