@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization App - Project #172</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        #chart-container {
+            width: 90%;
+            max-width: 960px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px; /* Provides a clear area for the chart */
+            position: relative; /* For tooltips or overlays */
+        }
+        /* Basic styling for D3 elements, can be expanded in app.js or style.css */
+        .bar {
+            fill: steelblue;
+        }
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #ccc;
+            shape-rendering: crispEdges;
+        }
+        .axis text {
+            font-family: sans-serif;
+            font-size: 10px;
+            fill: #666;
+        }
+        .tooltip {
+            position: absolute;
+            text-align: center;
+            padding: 8px;
+            font: 12px sans-serif;
+            background: lightsteelblue;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none; /* Allows mouse events to pass through */
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Data Visualization App</h1>
+    <div id="chart-container">
+        <!-- D3.js will dynamically create and append an SVG element here -->
+        <p>Loading interactive chart...</p>
+    </div>
+
+    <!-- D3.js library from CDN -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Your application's JavaScript code -->
+    <script src="app.js"></script>
+</body>
+</html>

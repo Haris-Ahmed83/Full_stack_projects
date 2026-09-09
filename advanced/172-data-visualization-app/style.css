@@ -1,0 +1,200 @@
+/* General Resets and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: hsl(210, 30%, 8%); /* Dark background */
+    color: hsl(210, 20%, 85%); /* Light text */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* App Layout */
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 15px;
+    gap: 15px;
+}
+
+#app-header {
+    background-color: hsl(210, 20%, 15%);
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#app-header h1 {
+    font-size: 2.2em;
+    color: hsl(180, 70%, 50%); /* Accent color */
+    margin: 0;
+}
+
+#main-content {
+    display: flex;
+    flex-grow: 1;
+    gap: 15px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Controls Panel (Sidebar) */
+#controls-panel {
+    flex: 0 0 280px; /* Fixed width, shrinkable */
+    background-color: hsl(210, 20%, 15%);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 250px; /* Minimum width for readability */
+}
+
+#controls-panel h2 {
+    font-size: 1.5em;
+    color: hsl(180, 70%, 50%);
+    margin-bottom: 10px;
+    border-bottom: 1px solid hsl(210, 20%, 25%);
+    padding-bottom: 8px;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: hsl(210, 20%, 75%);
+}
+
+.control-group select,
+.control-group input[type="range"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid hsl(210, 20%, 25%);
+    border-radius: 4px;
+    background-color: hsl(210, 20%, 10%);
+    color: hsl(210, 20%, 85%);
+    font-size: 1em;
+    -webkit-appearance: none; /* For range input */
+    appearance: none;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: hsl(180, 70%, 50%);
+    cursor: pointer;
+    margin-top: -5px; /* Adjust to center thumb vertically */
+    box-shadow: 0 0 0 2px hsl(210, 20%, 10%);
+}
+
+.control-group input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: hsl(180, 70%, 50%);
+    cursor: pointer;
+    box-shadow: 0 0 0 2px hsl(210, 20%, 10%);
+}
+
+.control-group input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background: hsl(210, 20%, 25%);
+    border-radius: 3px;
+}
+
+.control-group input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    background: hsl(210, 20%, 25%);
+    border-radius: 3px;
+}
+
+
+/* Visualization Area */
+#visualization-container {
+    flex-grow: 1;
+    background-color: hsl(210, 20%, 15%);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 400px; /* Minimum height for the chart */
+    overflow: hidden; /* Hide overflow from SVG elements */
+}
+
+/* SVG and D3 Specific Styles */
+svg {
+    display: block;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: hsl(210, 20%, 50%); /* Axis lines */
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-size: 0.9em;
+    fill: hsl(210, 20%, 75%); /* Axis labels */
+}
+
+.grid line {
+    stroke: hsl(210, 20%, 25%);
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+}
+
+.data-point {
+    fill: hsl(180, 70%, 50%); /* Default data point color */
+    stroke: hsl(180, 70%, 40%);
+    stroke-width: 1px;
+    transition: fill 0.2s ease, stroke 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.data-point:hover {
+    fill: hsl(180, 80%, 65%); /* Hover color */
+    transform: scale(1.1);
+}
+
+.data-point.selected {
+    fill: hsl(30, 70%, 60%); /* Selected color (orange accent) */
+    stroke: hsl(30, 70%, 50%);
+    stroke-width: 2px;
+}
+
+.line-chart-line {
+    fill: none;
+    stroke: hsl(180, 70%, 50%);
+    stroke-width: 3px;
+    transition: stroke 0.3s ease;
+}
+
+.area-chart-area {
+    fill: hsl(180, 70%, 50%);
+    fill-opacity: 0.6;
+    transition: fill 0.3s ease;
+}
+
+.bar-chart-bar {
+    fill: hsl(180, 70%, 50%);
+    transition: fill 0.2s ease, transform 0.2s ease;
+}

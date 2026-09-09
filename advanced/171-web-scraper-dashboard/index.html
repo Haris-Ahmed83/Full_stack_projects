@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper Dashboard - Project #171</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            background-color: #fdfdfd;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .control-panel-item {
+            background-color: #e9f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #d0e0e0;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 5px;
+            width: 150px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .status-log {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #d0d3d4;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Web Scraper Dashboard <small>Project #171</small></h1>
+
+        <div class="controls">
+            <div class="control-panel-item">
+                <h2>Scheduling</h2>
+                <p><strong>Current Schedule:</strong> Every 24 hours</p>
+                <button id="runNowBtn">Run Scraper Now</button>
+                <br><br>
+                <label for="scheduleInput">Set Schedule (hours):</label>
+                <input type="number" id="scheduleInput" value="24" min="1">
+                <button id="setScheduleBtn">Set Schedule</button>
+            </div>
+
+            <div class="control-panel-item">
+                <h2>Data Export</h2>
+                <p>Export the currently available scraped data to a CSV file.</p>
+                <button id="exportCsvBtn">Export Data (CSV)</button>
+            </div>
+            
+            <div class="control-panel-item">
+                <h2>Scraper Status</h2>
+                <div id="scraperStatus" class="status-log">
+                    [2023-10-27 10:00:00] Scraper initialized.<br>
+                    [2023-10-27 10:00:05] Starting new scrape job.<br>
+                    [2023-10-27 10:00:30] Puppeteer launched. Navigating to target URL.<br>
+                    [2023-10-27 10:01:15] Data extracted using Cheerio.<br>
+                    [2023-10-27 10:01:20] Data saved to database.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Latest Scraped Data</h2>
+            <table id="scrapedDataTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>URL</th>
+                        <th>Price/Value</th>
+                        <th>Last Updated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Product A - Latest Model</td>
+                        <td><a href="https://example.com/product-a" target="_blank">https://example.com/product-a</a></td>
+                        <td>$129.99</td>
+                        <td>2023-10-27 10:01:25</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Service B - Premium Package</td>
+                        <td><a href="https://example.com/service-b" target="_blank">https://example.com/service-b</a></td>
+                        <td>$49.99/month</td>
+                        <td>2023-10-27 10:01:25</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Article C - New Research</td>
+                        <td><a href="https://example.com/article-c" target="_blank">https://example.com/article-c</a></td>
+                        <td>N/A</td>
+                        <td>2023-10-27 10:01:25</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Item D - Limited Edition</td>
+                        <td><a href="https://example.com/item-d" target="_blank">https://example.com/item-d</a></td>
+                        <td>$249.00</td>
+                        <td>2023-10-27 10:01:25</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
