@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Sports Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Real-Time Sports Dashboard</h1>
+    </header>
+
+    <main>
+        <section id="filters-controls">
+            <div class="filter-group">
+                <label for="sport-select">Sport:</label>
+                <select id="sport-select">
+                    <option value="all">All Sports</option>
+                    <!-- Options will be populated by JS (e.g., Football, Basketball, Tennis) -->
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="team-search">Team:</label>
+                <input type="text" id="team-search" placeholder="Search team...">
+            </div>
+            <div class="filter-group notification-toggle">
+                <input type="checkbox" id="enable-notifications">
+                <label for="enable-notifications">Enable Notifications</label>
+            </div>
+        </section>
+
+        <section id="live-scores-container">
+            <h2>Live Matches</h2>
+            <div id="matches-grid">
+                <!-- Live match cards will be injected here by JavaScript -->
+                <p class="loading-message">Loading live scores...</p>
+                <p class="no-matches-message" style="display: none;">No live matches found for your selection.</p>
+            </div>
+        </section>
+
+        <section id="notifications-area" style="display: none;">
+            <h2>Notifications</h2>
+            <div id="notification-list">
+                <!-- Notifications will appear here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Real-Time Sports Dashboard</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+/* Global Resets & Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Colors */
+    --primary-color: #007bff; /* Blue for primary actions/branding */
+    --secondary-color: #6c757d; /* Grey for secondary actions */
+    --accent-color: #28a745; /* Green for live/success */
+    --background-dark: #1a1a2e; /* Dark background */
+    --background-light: #2c2c44; /* Slightly lighter background for cards/sections */
+    --text-color-primary: #e0e0e0; /* Light text */
+    --text-color-secondary: #a0a0a0; /* Lighter grey text */
+    --border-color:
