@@ -1,0 +1,102 @@
+:root {
+    --color-primary: #6a00ff; /* Deep purple */
+    --color-primary-light: #8e2aff;
+    --color-primary-dark: #4b00b3;
+    --color-accent: #00e676; /* Bright green for active/success */
+    --color-accent-dark: #00b35a;
+    --color-background-dark: #1e1e1e; /* Main app background */
+    --color-background-medium: #2d2d2d; /* Panel background */
+    --color-background-light: #3a3a3a; /* Hover/selected background */
+    --color-canvas-background: #252526; /* Flow editor background */
+    --color-text-light: #f0f0f0;
+    --color-text-dark: #cccccc;
+    --color-border: #444444;
+    --color-error: #ff5252;
+    --color-warning: #ffc107;
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+
+    --border-radius: 6px;
+    --font-family-primary: 'Inter', sans-serif; /* Assuming Inter is available or fallback */
+    --font-size-base: 14px;
+    --font-size-sm: 12px;
+    --font-size-lg: 16px;
+}
+
+/* Base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    color: var(--color-text-light);
+    background-color: var(--color-background-dark);
+    line-height: 1.6;
+    overflow: hidden; /* Prevent body scroll, app will manage its own */
+}
+
+/* App Layout */
+#app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--color-background-dark);
+}
+
+.sidebar {
+    width: 280px;
+    background-color: var(--color-background-medium);
+    border-right: 1px solid var(--color-border);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.sidebar h2 {
+    color: var(--color-primary-light);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar {
+    background-color: var(--color-background-medium);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.toolbar .buttons-group button {
+    margin-left: var(--spacing-sm);
+}
+
+.flow-editor-canvas {
+    flex-grow: 1;
+    background-color: var(--color-canvas-background);
+    position: relative;
+    overflow: hidden; /* Managed by a pan/zoom library usually */
+    cursor: grab;
+}
+
+.flow-editor-canvas.panning {
+    cursor: grabbing;
+}
+
+/* Drag and Drop elements
