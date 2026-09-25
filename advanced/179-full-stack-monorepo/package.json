@@ -1,0 +1,31 @@
+{
+  "name": "full-stack-monorepo-179",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Project #179: Full Stack Monorepo (Advanced) using Turborepo, Shared Packages, ESLint, TypeScript, and Workspace Config.",
+  "license": "MIT",
+  "author": "Your Name <your.email@example.com>",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "clean": "rm -rf node_modules && turbo run clean"
+  },
+  "devDependencies": {
+    "@turbo/gen": "^1.10.16",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.0.3",
+    "turbo": "^1.10.16",
+    "typescript": "^5.2.2"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "packageManager": "pnpm@8.10.2"
+}

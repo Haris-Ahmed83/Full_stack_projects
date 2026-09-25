@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project #179: Full Stack Monorepo</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f7f6;
+        color: #333;
+      }
+      .container {
+        max-width: 900px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      h2 {
+        color: #34495e;
+        border-bottom: 2px solid #ecf0f1;
+        padding-bottom: 10px;
+        margin-top: 30px;
+      }
+      p {
+        margin-bottom: 15px;
+      }
+      ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        margin-bottom: 15px;
+      }
+      ul li {
+        margin-bottom: 8px;
+      }
+      .category, .difficulty {
+        display: inline-block;
+        background-color: #e0f7fa;
+        color: #00796b;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.9em;
+        margin-right: 10px;
+        font-weight: bold;
+      }
+      .difficulty {
+        background-color: #ffe0b2;
+        color: #e65100;
+      }
+      .key-concepts {
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 1px dashed #ecf0f1;
+      }
+      .key-concepts span {
+        display: inline-block;
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        padding: 5px 12px;
+        border-radius: 20px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        font-size: 0.85em;
+      }
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 0.8em;
+        color: #7f8c8d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Project #179: Full Stack Monorepo</h1>
+      <p>
+        <span class="category">Category: advanced</span>
+        <span class="difficulty">Difficulty: advanced</span>
+      </p>
+
+      <h2>Description</h2>
+      <p>
+        This project guides you through setting up a full-stack monorepo using Turborepo.
+        A monorepo is a single repository containing multiple distinct projects, often with shared code.
+        This setup promotes code reuse, simplifies dependency management, and streamlines development workflows
+        across different parts of an application (e.g., frontend, backend, shared utilities).
+      </p>
+      <p>
+        You will learn how to structure a monorepo, configure shared packages, set up consistent
+        linting and TypeScript configurations across all workspaces, and leverage Turborepo's
+        performance features for efficient build and test processes.
+      </p>
+
+      <h2>Key Features & Learning Outcomes</h2>
+      <ul>
+        <li><strong>Monorepo Structure:</strong> Understand the benefits and architecture of a monorepo.</li>
+        <li><strong>Turborepo Integration:</strong> Set up and configure Turborepo for optimized build caching and task orchestration.</li>
+        <li><strong>Shared Packages:</strong> Create and manage internal packages (e.g., UI components, utility functions, types) that can be shared across different applications within the monorepo.</li>
+        <li><strong>ESLint Configuration:</strong> Implement a consistent ESLint setup across all workspaces using a shared configuration.</li>
+        <li><strong>TypeScript Configuration:</strong> Configure TypeScript with project references and shared base configurations for improved type safety and developer experience.</li>
+        <li><strong>Workspace Config:</strong> Learn how to define and manage dependencies and scripts within a monorepo using `package.json` workspaces.</li>
+        <li><strong>End-to-End Setup:</strong> Build a simple full-stack application with a frontend and backend, both residing in the same monorepo and utilizing shared code.</li>
+      </ul>
+
+      <div class="key-concepts">
+        <h2>Key Concepts</h2>
+        <span>Turborepo</span>
+        <span>Shared Packages</span>
+        <span>ESLint</span>
+        <span>TypeScript</span>
+        <span>Workspace Config</span>
+      </div>
+
+      <h2>Setup Instructions (Conceptual)</h2>
+      <p>
+        While this page provides an overview, the actual project would involve detailed steps like:
+      </p>
+      <ol>
+        <li>Initialize a new npm/yarn workspace.</li>
+        <li>Install Turborepo and configure its `turbo.json`.</li>
+        <li>Create `apps/` directory for frontend (e.g., React/Next.js) and backend (e.g., Node.js/Express).</li>
+        <li>Create `packages/` directory for shared UI components, utility functions, and TypeScript types.</li>
+        <li>Configure `tsconfig.json` files for each app and package, extending from a shared base.</li>
+        <li>Set up a root `.eslintrc.js` and extend it in app/package specific configurations.</li>
+        <li>Demonstrate how to import shared packages into applications.</li>
+        <li>Add scripts to `package.json` for building, testing, and linting across the monorepo using Turborepo.</li>
+      </ol>
+
+      <footer>
+        <p>&copy; 2023 Project Catalog. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>

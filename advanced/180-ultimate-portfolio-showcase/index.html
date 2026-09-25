@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Portfolio Showcase</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>My Creative Portfolio</h1>
+            <p>Showcasing a collection of my diverse projects and skills.</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <nav class="filter-nav">
+                <button class="filter-btn active" data-category="all">All Projects</button>
+                <button class="filter-btn" data-category="web-development">Web Development</button>
+                <button class="filter-btn" data-category="mobile-app">Mobile Apps</button>
+                <button class="filter-btn" data-category="ui-ux">UI/UX Design</button>
+                <button class="filter-btn" data-category="data-science">Data Science</button>
+            </nav>
+
+            <section id="portfolio-grid" class="portfolio-grid">
+                <!-- Project cards will be dynamically injected here by JavaScript -->
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
